@@ -26,11 +26,13 @@
 		</div>
 		<h3 v-else>
 			<ReplicateIcon :size="20" class="icon" />
-			{{ t('integration_replicate', 'Replicate prediction') + ': ' }}
-			&nbsp;
-			<strong>
-				{{ prediction?.input?.prompt }}
-			</strong>
+			<span>
+				{{ t('integration_replicate', 'Replicate prediction') + ':' }}
+				&nbsp;
+				<strong>
+					{{ prediction?.input?.prompt }}
+				</strong>
+			</span>
 		</h3>
 		<div v-if="predictionIsProcessing" class="processing-prediction">
 			<p>{{ t('integration_replicate', 'Prediction is processing...') }}</p>
@@ -162,7 +164,8 @@ export default {
 		display: flex;
 		margin-top: 0;
 		.icon {
-			margin-right: 8px;
+			align-self: start;
+			margin: 2px 8px 0 0;
 		}
 	}
 
