@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<info>
+    <id>integration_replicate</id>
+    <name>Replicate integration</name>
+    <summary>Integration of Replicate stable-diffusion</summary>
+    <description><![CDATA[Replicate integration provides a link reference provider.]]></description>
+    <version>1.0.0</version>
+    <licence>agpl</licence>
+    <author>Julien Veyssier</author>
+    <namespace>Replicate</namespace>
+    <documentation>
+        <developer>https://github.com/julien-nc/integration_replicate</developer>
+    </documentation>
+    <category>integration</category>
+    <category>dashboard</category>
+    <website>https://github.com/julien-nc/integration_replicate</website>
+    <bugs>https://github.com/julien-nc/integration_replicate/issues</bugs>
+    <screenshot>https://github.com/julien-nc/integration_replicate/raw/master/img/screenshot1.jpg</screenshot>
+    <dependencies>
+        <nextcloud min-version="26" max-version="26"/>
+    </dependencies>
+    <settings>
+        <admin>OCA\Replicate\Settings\Admin</admin>
+        <admin-section>OCA\Replicate\Settings\AdminSection</admin-section>
+    </settings>
+</info>
