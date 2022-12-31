@@ -101,8 +101,8 @@ class ReplicateReferenceProvider extends ADiscoverableReferenceProvider  {
 		$startIndex = $this->urlGenerator->getAbsoluteURL('/index.php/apps/' . Application::APP_ID);
 
 		// link example: https://nextcloud.local/index.php/apps/integration_replicate/3jf5wq3hibbqvickir7ysqehfi
-		$noIndexMatch = preg_match('/^' . preg_quote($start, '/') . '\/predictions\/[0-9a-z]+$/', $referenceText) === 1;
-		$indexMatch = preg_match('/^' . preg_quote($startIndex, '/') . '\/predictions\/[0-9a-z]+$/', $referenceText) === 1;
+		$noIndexMatch = preg_match('/^' . preg_quote($start, '/') . '\/p\/[0-9a-z]+$/', $referenceText) === 1;
+		$indexMatch = preg_match('/^' . preg_quote($startIndex, '/') . '\/p\/[0-9a-z]+$/', $referenceText) === 1;
 		return $noIndexMatch || $indexMatch;
 	}
 
@@ -132,7 +132,7 @@ class ReplicateReferenceProvider extends ADiscoverableReferenceProvider  {
 	 * @return array|null
 	 */
 	private function getPredictionId(string $url): ?string {
-		preg_match('/\/predictions\/([0-9a-z]+)$/i', $url, $matches);
+		preg_match('/\/p\/([0-9a-z]+)$/i', $url, $matches);
 		if (count($matches) > 1) {
 			return $matches[1];
 		}

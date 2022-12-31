@@ -17,6 +17,7 @@ const appId = 'integration_replicate'
 webpackConfig.entry = {
 	adminSettings: { import: path.join(__dirname, 'src', 'adminSettings.js'), filename: appId + '-adminSettings.js' },
 	referenceReplicate: { import: path.join(__dirname, 'src', 'referenceReplicate.js'), filename: appId + '-referenceReplicate.js' },
+	predictionPage: { import: path.join(__dirname, 'src', 'predictionPage.js'), filename: appId + '-predictionPage.js' },
 }
 
 webpackConfig.plugins.push(

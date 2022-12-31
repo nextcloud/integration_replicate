@@ -20,36 +20,35 @@
   -->
 
 <template>
-	<Prediction :prediction-id="richObject.predictionId" />
+	<NcContent app-name="integration_replicate">
+		<NcAppContent>
+			<Prediction :prediction-id="predictionId" />
+		</NcAppContent>
+	</NcContent>
 </template>
 
 <script>
 import Prediction from '../components/Prediction.vue'
+import NcContent from '@nextcloud/vue/dist/Components/NcContent.js'
+import NcAppContent from '@nextcloud/vue/dist/Components/NcAppContent.js'
+
+import { loadState } from '@nextcloud/initial-state'
 
 export default {
-	name: 'ReplicateReferenceWidget',
+	name: 'PredictionPage',
 
 	components: {
 		Prediction,
+		NcContent,
+		NcAppContent,
 	},
 
 	props: {
-		richObjectType: {
-			type: String,
-			default: '',
-		},
-		richObject: {
-			type: Object,
-			default: null,
-		},
-		accessible: {
-			type: Boolean,
-			default: true,
-		},
 	},
 
 	data() {
 		return {
+			predictionId: loadState('integration_replicate', 'predictionId'),
 		}
 	},
 
@@ -65,5 +64,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-// nothing yet
+::v-deep .prediction {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+}
 </style>

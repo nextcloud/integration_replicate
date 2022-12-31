@@ -117,7 +117,7 @@ export default {
 					console.debug('predictions response', response.data)
 					if (!['failed', 'canceled'].includes(response.data.status)) {
 						const internalUrl = window.location.protocol + '//' + window.location.host
-							+ generateUrl('/apps/integration_replicate/predictions/{id}', { id: response.data.id })
+							+ generateUrl('/apps/integration_replicate/p/{id}', { id: response.data.id })
 						this.onSubmit(internalUrl)
 					} else {
 						this.error = response.data.error

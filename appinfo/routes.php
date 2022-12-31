@@ -13,6 +13,7 @@ return [
 	'routes' => [
 		['name' => 'config#setAdminConfig', 'url' => '/admin-config', 'verb' => 'PUT'],
 		['name' => 'replicateAPI#createPrediction', 'url' => '/predictions', 'verb' => 'POST'],
+		['name' => 'replicateAPI#getPredictionPage', 'url' => '/p/{predictionId}', 'verb' => 'GET'],
 		['name' => 'replicateAPI#getPrediction', 'url' => '/predictions/{predictionId}', 'verb' => 'GET'],
 		['name' => 'replicateAPI#getPredictionImage', 'url' => '/predictions/{predictionId}/image', 'verb' => 'GET'],
 	],

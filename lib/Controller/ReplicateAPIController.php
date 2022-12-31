@@ -11,10 +11,13 @@
 
 namespace OCA\Replicate\Controller;
 
+use OCA\Replicate\AppInfo\Application;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataDisplayResponse;
 use OCP\AppFramework\Http\DataResponse;
+use OCP\AppFramework\Http\TemplateResponse;
+use OCP\AppFramework\Services\IInitialState;
 use OCP\IRequest;
 
 use OCA\Replicate\Service\ReplicateAPIService;
@@ -22,13 +25,16 @@ use OCA\Replicate\Service\ReplicateAPIService;
 class ReplicateAPIController extends Controller {
 
 	private ReplicateAPIService $replicateAPIService;
+	private IInitialState $initialStateService;
 
 	public function __construct(string          $appName,
 								IRequest        $request,
 								ReplicateAPIService $replicateAPIService,
+								IInitialState $initialStateService,
 								?string         $userId) {
 		parent::__construct($appName, $request);
 		$this->replicateAPIService = $replicateAPIService;
+		$this->initialStateService = $initialStateService;
 	}
 
 	/**
@@ -77,5 +83,17 @@ class ReplicateAPIController extends Controller {
 			return $response;
 		}
 		return new DataDisplayResponse('', Http::STATUS_NOT_FOUND);
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 *
+	 * @param string $predictionId
+	 * @return TemplateResponse
+	 */
+	public function getPredictionPage(string $predictionId): TemplateResponse {
+		$this->initialStateService->provideInitialState('predictionId', $predictionId);
+		return new TemplateResponse(Application::APP_ID, 'predictionPage');
 	}
 }
