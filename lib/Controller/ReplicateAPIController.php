@@ -27,11 +27,11 @@ class ReplicateAPIController extends Controller {
 	private ReplicateAPIService $replicateAPIService;
 	private IInitialState $initialStateService;
 
-	public function __construct(string          $appName,
-								IRequest        $request,
+	public function __construct(string              $appName,
+								IRequest            $request,
 								ReplicateAPIService $replicateAPIService,
-								IInitialState $initialStateService,
-								?string         $userId) {
+								IInitialState       $initialStateService,
+								?string             $userId) {
 		parent::__construct($appName, $request);
 		$this->replicateAPIService = $replicateAPIService;
 		$this->initialStateService = $initialStateService;

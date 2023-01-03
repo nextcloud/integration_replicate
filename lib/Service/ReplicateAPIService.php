@@ -88,7 +88,7 @@ class ReplicateAPIService {
 
 	/**
 	 * Make an HTTP request to the Replicate API
-	 * @param string $endPoint The path to reach in api.github.com
+	 * @param string $endPoint The path to reach
 	 * @param array $params Query parameters (key/val pairs)
 	 * @param string $method HTTP query method
 	 * @return array decoded request result or error

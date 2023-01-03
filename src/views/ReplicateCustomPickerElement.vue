@@ -1,40 +1,37 @@
 <template>
-	<div v-if="show" id="replicate-picker-modal-wrapper">
-		<NcModal
-			size="large"
-			:container="'#replicate-picker-modal-wrapper'"
-			@close="onCancel">
-			<div class="replicate-picker-modal-content">
-				<h2>
-					{{ t('integration_replicate', 'Generate stable-diffusion image') }}
-					<a class="attribution"
-						target="_blank"
-						href="https://replicate.com">
-						{{ poweredByTitle }}
-					</a>
-				</h2>
-				<div class="input-wrapper">
-					<input ref="search-input"
-						v-model="query"
-						type="text"
-						:placeholder="inputPlaceholder"
-						@keydown.enter="onInputEnter"
-						@keyup.esc="onCancel">
-					<NcLoadingIcon v-if="loading"
-						:size="20"
-						:title="t('integration_replicate', 'Loading')" />
-					<NcButton v-else @click="onInputEnter">
-						{{ t('integration_replicate', 'Submit') }}
-					</NcButton>
-				</div>
-				<div class="footer">
-					<NcButton @click="onCancel">
-						{{ t('integration_replicate', 'Cancel') }}
-					</NcButton>
-				</div>
+	<NcModal v-if="show"
+		size="large"
+		@close="onCancel">
+		<div class="replicate-picker-modal-content">
+			<h2>
+				{{ t('integration_replicate', 'Generate stable-diffusion image') }}
+				<a class="attribution"
+					target="_blank"
+					href="https://replicate.com">
+					{{ poweredByTitle }}
+				</a>
+			</h2>
+			<div class="input-wrapper">
+				<input ref="search-input"
+					v-model="query"
+					type="text"
+					:placeholder="inputPlaceholder"
+					@keydown.enter="onInputEnter"
+					@keyup.esc="onCancel">
+				<NcLoadingIcon v-if="loading"
+					:size="20"
+					:title="t('integration_replicate', 'Loading')" />
+				<NcButton v-else @click="onInputEnter">
+					{{ t('integration_replicate', 'Submit') }}
+				</NcButton>
 			</div>
-		</NcModal>
-	</div>
+			<div class="footer">
+				<NcButton @click="onCancel">
+					{{ t('integration_replicate', 'Cancel') }}
+				</NcButton>
+			</div>
+		</div>
+	</NcModal>
 </template>
 
 <script>
@@ -136,7 +133,6 @@ export default {
 
 <style scoped lang="scss">
 .replicate-picker-modal-content {
-	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
