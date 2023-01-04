@@ -1,41 +1,31 @@
 <template>
-	<NcModal v-if="show"
-		size="large"
-		@close="onCancel">
-		<div class="replicate-picker-modal-content">
-			<h2>
-				{{ t('integration_replicate', 'Generate stable-diffusion image') }}
-				<a class="attribution"
-					target="_blank"
-					href="https://replicate.com">
-					{{ poweredByTitle }}
-				</a>
-			</h2>
-			<div class="input-wrapper">
-				<input ref="search-input"
-					v-model="query"
-					type="text"
-					:placeholder="inputPlaceholder"
-					@keydown.enter="onInputEnter"
-					@keyup.esc="onCancel">
-				<NcLoadingIcon v-if="loading"
-					:size="20"
-					:title="t('integration_replicate', 'Loading')" />
-				<NcButton v-else @click="onInputEnter">
-					{{ t('integration_replicate', 'Submit') }}
-				</NcButton>
-			</div>
-			<div class="footer">
-				<NcButton @click="onCancel">
-					{{ t('integration_replicate', 'Cancel') }}
-				</NcButton>
-			</div>
+	<div class="replicate-picker-content">
+		<h2>
+			{{ t('integration_replicate', 'Generate stable-diffusion image') }}
+			<a class="attribution"
+				target="_blank"
+				href="https://replicate.com">
+				{{ poweredByTitle }}
+			</a>
+		</h2>
+		<div class="input-wrapper">
+			<input ref="replicate-search-input"
+				v-model="query"
+				type="text"
+				:placeholder="inputPlaceholder"
+				@keydown.enter="onInputEnter"
+				@keyup.esc="onCancel">
+			<NcLoadingIcon v-if="loading"
+				:size="20"
+				:title="t('integration_replicate', 'Loading')" />
+			<NcButton v-else @click="onInputEnter">
+				{{ t('integration_replicate', 'Submit') }}
+			</NcButton>
 		</div>
-	</NcModal>
+	</div>
 </template>
 
 <script>
-import NcModal from '@nextcloud/vue/dist/Components/NcModal.js'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 
@@ -50,7 +40,6 @@ export default {
 	name: 'ReplicateCustomPickerElement',
 
 	components: {
-		NcModal,
 		NcButton,
 		NcLoadingIcon,
 	},
@@ -68,7 +57,6 @@ export default {
 
 	data() {
 		return {
-			show: true,
 			query: '',
 			loading: false,
 			inputPlaceholder: t('integration_replicate', 'cyberpunk nextcloud logo with chrismas hats'),
@@ -88,16 +76,14 @@ export default {
 
 	methods: {
 		focusOnInput() {
-			this.$nextTick(() => {
-				this.$refs['search-input']?.focus()
-			})
+			setTimeout(() => {
+				this.$refs['replicate-search-input']?.focus()
+			}, 300)
 		},
 		onCancel() {
-			this.show = false
 			this.$emit('cancel')
 		},
 		onSubmit(url) {
-			this.show = false
 			this.$emit('submit', url)
 		},
 		onInputEnter() {
@@ -132,12 +118,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.replicate-picker-modal-content {
+.replicate-picker-content {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	padding: 16px;
+	//padding: 16px;
 
 	h2 {
 		display: flex;
@@ -154,13 +140,6 @@ export default {
 		input {
 			flex-grow: 1;
 		}
-	}
-
-	.footer {
-		width: 100%;
-		margin-top: 8px;
-		display: flex;
-		justify-content: end;
 	}
 }
 </style>
