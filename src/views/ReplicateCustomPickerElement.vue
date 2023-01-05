@@ -119,6 +119,7 @@ export default {
 
 <style scoped lang="scss">
 .replicate-picker-content {
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
