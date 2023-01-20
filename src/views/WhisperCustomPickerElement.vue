@@ -33,7 +33,7 @@
 		<div class="footer">
 			<NcButton
 				type="primary"
-				:disabled="loading || !model"
+				:disabled="loading || !model || audio === null"
 				@click="onInputEnter">
 				<template #icon>
 					<NcLoadingIcon v-if="loading"
