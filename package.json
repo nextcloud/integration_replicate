@@ -47,7 +47,8 @@
 		"@nextcloud/vue": "^7.0.0",
 		"@nextcloud/vue-richtext": "^2.0.4",
 		"vue": "^2.7.12",
-		"vue-material-design-icons": "^5.1.2"
+		"vue-material-design-icons": "^5.1.2",
+		"vue2-audio-recorder": "^1.0.4"
 	},
 	"devDependencies": {
 		"@nextcloud/babel-config": "^1.0.0",

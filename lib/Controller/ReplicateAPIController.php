@@ -39,14 +39,13 @@ class ReplicateAPIController extends Controller {
 
 	/**
 	 * @NoAdminRequired
-	 * @param string $prompt
+	 * @param string $audioBase64
+	 * @param bool $translate
+	 * @param string $model
 	 * @return DataResponse
 	 */
-	public function createWhisperPrediction(bool $translate = true, string $model = 'large'): DataResponse {
-		// TODO receive file, store it and generate URL
-		// $fileUrl = 'https://replicate.delivery/mgxm/8d32eac0-0a30-47e8-819e-673a751f4b52/OSR_cn_000_0072_8k.wav';
-		$fileUrl = 'https://replicate.delivery/mgxm/716614fb-530c-4f66-b0f9-1b6c562716c4/Untitled.wav';
-		$response = $this->replicateAPIService->createWhisperPrediction($fileUrl, $translate, $model);
+	public function createWhisperPrediction(string $audioBase64, bool $translate = true, string $model = 'large'): DataResponse {
+		$response = $this->replicateAPIService->createWhisperPrediction($audioBase64, $translate, $model);
 		if (isset($response['error'])) {
 			return new DataResponse($response, Http::STATUS_BAD_REQUEST);
 		}

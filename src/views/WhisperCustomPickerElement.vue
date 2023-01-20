@@ -23,6 +23,12 @@
 				{{ t('integration_replicate', 'Translate') }}
 			</NcCheckboxRadioSwitch>
 		</div>
+		<audio-recorder
+			:attempts="1"
+			:time="120"
+			:show-download-button="true"
+			:show-upload-button="false"
+			:after-recording="onRecordEnd" />
 		<div class="footer">
 			<NcButton
 				type="primary"
@@ -44,6 +50,7 @@ import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
 import NcSelect from '@nextcloud/vue/dist/Components/NcSelect.js'
+import VueAudioRecorder from 'vue2-audio-recorder'
 
 import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
@@ -51,6 +58,7 @@ import { generateUrl } from '@nextcloud/router'
 import Tooltip from '@nextcloud/vue/dist/Directives/Tooltip.js'
 import Vue from 'vue'
 Vue.directive('tooltip', Tooltip)
+Vue.use(VueAudioRecorder)
 
 export default {
 	name: 'WhisperCustomPickerElement',
@@ -86,6 +94,7 @@ export default {
 				{ label: t('integration_replicate', 'large'), value: 'large' },
 			],
 			model: 'large',
+			audio: null,
 		}
 	},
 
@@ -99,6 +108,23 @@ export default {
 	},
 
 	methods: {
+		async onRecordEnd(e) {
+			const readBlob = (blob) => {
+				const reader = new FileReader()
+				return new Promise((resolve) => {
+					reader.addEventListener('load', () => {
+						resolve(reader.result)
+					})
+					reader.readAsDataURL(blob)
+				})
+			}
+
+			try {
+				this.audio = await readBlob(e.blob)
+			} catch (e) {
+				console.warn(e.message)
+			}
+		},
 		onCancel() {
 			this.$emit('cancel')
 		},
@@ -110,6 +136,7 @@ export default {
 			const params = {
 				translate: this.translate,
 				model: this.model.value,
+				audioBase64: this.audio,
 			}
 			const url = generateUrl('/apps/integration_replicate/predictions/whisper')
 			return axios.post(url, params)
@@ -153,7 +180,6 @@ export default {
 	}
 
 	.form-wrapper {
-		padding-bottom: 100px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
