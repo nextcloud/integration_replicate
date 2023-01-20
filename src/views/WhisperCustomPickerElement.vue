@@ -2,17 +2,37 @@
 	<div class="replicate-picker-content">
 		<h2>
 			{{ t('integration_replicate', 'Transcribe or translate text') }}
-			<a class="attribution"
-				target="_blank"
-				href="https://replicate.com">
-				{{ poweredByTitle }}
-			</a>
 		</h2>
-		<div class="input-wrapper">
-			<NcLoadingIcon v-if="loading"
-				:size="20"
-				:title="t('integration_replicate', 'Loading')" />
-			<NcButton v-else @click="onInputEnter">
+		<a class="attribution"
+			target="_blank"
+			href="https://replicate.com">
+			{{ poweredByTitle }}
+		</a>
+		<div class="form-wrapper">
+			<div class="line">
+				<label for="models">
+					{{ t('integration_replicate', 'Model') }}
+				</label>
+				<NcSelect
+					v-model="model"
+					:options="modelOptions"
+					input-id="models" />
+			</div>
+			<NcCheckboxRadioSwitch
+				:checked.sync="translate">
+				{{ t('integration_replicate', 'Translate') }}
+			</NcCheckboxRadioSwitch>
+		</div>
+		<div class="footer">
+			<NcButton
+				type="primary"
+				:disabled="loading || !model"
+				@click="onInputEnter">
+				<template #icon>
+					<NcLoadingIcon v-if="loading"
+						:size="20"
+						:title="t('integration_replicate', 'Loading')" />
+				</template>
 				{{ t('integration_replicate', 'Submit') }}
 			</NcButton>
 		</div>
@@ -22,6 +42,8 @@
 <script>
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
+import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
+import NcSelect from '@nextcloud/vue/dist/Components/NcSelect.js'
 
 import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
@@ -36,6 +58,8 @@ export default {
 	components: {
 		NcButton,
 		NcLoadingIcon,
+		NcCheckboxRadioSwitch,
+		NcSelect,
 	},
 
 	props: {
@@ -53,6 +77,15 @@ export default {
 		return {
 			loading: false,
 			poweredByTitle: t('integration_replicate', 'Powered by Replicate'),
+			translate: false,
+			modelOptions: [
+				{ label: t('integration_replicate', 'tiny'), value: 'tiny' },
+				{ label: t('integration_replicate', 'base'), value: 'base' },
+				{ label: t('integration_replicate', 'small'), value: 'small' },
+				{ label: t('integration_replicate', 'medium'), value: 'medium' },
+				{ label: t('integration_replicate', 'large'), value: 'large' },
+			],
+			model: 'large',
 		}
 	},
 
@@ -75,8 +108,8 @@ export default {
 		onInputEnter() {
 			this.loading = true
 			const params = {
-				translate: true,
-				model: 'large',
+				translate: this.translate,
+				model: this.model.value,
 			}
 			const url = generateUrl('/apps/integration_replicate/predictions/whisper')
 			return axios.post(url, params)
@@ -113,18 +146,33 @@ export default {
 	h2 {
 		display: flex;
 		align-items: center;
-		.attribution {
-			margin-left: 16px;
+	}
+
+	.attribution {
+		padding-bottom: 8px;
+	}
+
+	.form-wrapper {
+		padding-bottom: 100px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.line {
+		display: flex;
+		align-items: center;
+		label {
+			margin-right: 8px;
 		}
 	}
 
-	.input-wrapper {
+	.footer {
 		display: flex;
 		align-items: center;
+		justify-content: end;
 		width: 100%;
-		input {
-			flex-grow: 1;
-		}
 	}
 }
 </style>
