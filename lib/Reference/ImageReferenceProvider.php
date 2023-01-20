@@ -35,9 +35,9 @@ use OCP\IL10N;
 
 use OCP\IURLGenerator;
 
-class ReplicateReferenceProvider extends ADiscoverableReferenceProvider  {
+class ImageReferenceProvider extends ADiscoverableReferenceProvider  {
 
-	private const RICH_OBJECT_TYPE = Application::APP_ID . '_internal_link';
+	private const RICH_OBJECT_TYPE = Application::APP_ID . '_image';
 
 	private ReplicateAPIService $replicateAPIService;
 	private ?string $userId;

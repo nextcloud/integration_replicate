@@ -28,15 +28,10 @@
 			<ReplicateIcon :size="20" class="icon" />
 			<span>
 				{{ t('integration_replicate', 'Replicate prediction') + ':' }}
-				&nbsp;
-				<strong>
-					{{ prediction?.input?.prompt }}
-				</strong>
 			</span>
 		</h3>
 		<div v-if="predictionIsProcessing" class="processing-prediction">
-			<p>{{ t('integration_replicate', 'Prediction is processing...') }}</p>
-			<p>{{ formattedLogs }}</p>
+			<p>{{ t('integration_replicate', 'Transcription is processing...') }}</p>
 		</div>
 		<div v-else-if="predictionWasCanceled" class="canceled-prediction">
 			{{ t('integration_replicate', 'Prediction was canceled') }}
@@ -44,36 +39,27 @@
 		<div v-else-if="predictionHasFailed" class="failed-prediction">
 			{{ t('integration_replicate', 'Prediction has failed') }}
 		</div>
-		<a v-else-if="predictionSuccess"
-			:href="realImageUrl"
-			target="_blank"
-			class="image-wrapper">
-			<div v-if="!isImageLoaded" class="loading-icon">
-				<NcLoadingIcon
-					:size="44"
-					:title="t('integration_replicate', 'Loading image')" />
-			</div>
-			<img v-show="isImageLoaded"
-				class="image"
-				:src="proxiedImageUrl"
-				@load="isImageLoaded = true">
-		</a>
+		<div v-else-if="predictionSuccess">
+			<p v-if="prediction.output?.translation">
+				{{ prediction.output.translation }}
+			</p>
+			<p v-else>
+				{{ prediction.output?.transcription }}
+			</p>
+		</div>
 	</div>
 </template>
 
 <script>
-import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
-
 import { generateUrl } from '@nextcloud/router'
 import axios from '@nextcloud/axios'
 import ReplicateIcon from '../components/icons/ReplicateIcon.vue'
 
 export default {
-	name: 'Prediction',
+	name: 'WhisperPrediction',
 
 	components: {
 		ReplicateIcon,
-		NcLoadingIcon,
 	},
 
 	props: {
@@ -102,29 +88,6 @@ export default {
 		},
 		predictionSuccess() {
 			return this.prediction?.status === 'succeeded'
-		},
-		realImageUrl() {
-			if (this.predictionSuccess) {
-				return this.prediction?.output[0]
-			}
-			return ''
-		},
-		proxiedImageUrl() {
-			if (this.predictionSuccess) {
-				return generateUrl(
-					'/apps/integration_replicate/predictions/{predictionId}/image?url={url}',
-					{ predictionId: this.predictionId, url: this.realImageUrl }
-				)
-			}
-			return ''
-		},
-		formattedLogs() {
-			if (this.prediction.logs) {
-				const logLines = this.prediction.logs.split('\n')
-				const lastLine = logLines[logLines.length - 1]
-				return lastLine
-			}
-			return ''
 		},
 	},
 
@@ -161,20 +124,6 @@ export default {
 		.icon {
 			align-self: start;
 			margin: 2px 8px 0 0;
-		}
-	}
-
-	.image-wrapper {
-		width: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		position: relative;
-
-		.image {
-			max-height: 300px;
-			max-width: 100%;
-			border-radius: var(--border-radius-large);
 		}
 	}
 }

@@ -43,10 +43,27 @@ class ReplicateAPIService {
 	}
 
 	/**
+	 * @param string $audioFileUrl
+	 * @param bool $translate
+	 * @return array|string[]
+	 */
+	public function createWhisperPrediction(string $audioFileUrl, bool $translate = false, string $model = 'large'): array {
+		$params = [
+			'version' => Application::WHISPER_VERSION,
+			'input' => [
+				'audio' => $audioFileUrl,
+				'translate' => $translate,
+				'model' => $model,
+			],
+		];
+		return $this->request('predictions', $params, 'POST');
+	}
+
+	/**
 	 * @param string $prompt
 	 * @return array|string[]
 	 */
-	public function createPrediction(string $prompt): array {
+	public function createImagePrediction(string $prompt): array {
 		$params = [
 			'version' => Application::STABLE_DIFFUSION_VERSION,
 			'input' => [

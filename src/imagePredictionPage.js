@@ -11,7 +11,7 @@
 
 import Vue from 'vue'
 import './bootstrap.js'
-import PredictionPage from './views/PredictionPage.vue'
+import ImagePredictionPage from './views/ImagePredictionPage.vue'
 
-const View = Vue.extend(PredictionPage)
+const View = Vue.extend(ImagePredictionPage)
 new View().$mount('#content')

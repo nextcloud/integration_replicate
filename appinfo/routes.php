@@ -12,9 +12,11 @@
 return [
 	'routes' => [
 		['name' => 'config#setAdminConfig', 'url' => '/admin-config', 'verb' => 'PUT'],
-		['name' => 'replicateAPI#createPrediction', 'url' => '/predictions', 'verb' => 'POST'],
-		['name' => 'replicateAPI#getPredictionPage', 'url' => '/p/{predictionId}', 'verb' => 'GET'],
+		['name' => 'replicateAPI#createImagePrediction', 'url' => '/predictions/image', 'verb' => 'POST'],
+		['name' => 'replicateAPI#createWhisperPrediction', 'url' => '/predictions/whisper', 'verb' => 'POST'],
+		['name' => 'replicateAPI#getImagePredictionPage', 'url' => '/i/{predictionId}', 'verb' => 'GET'],
+		['name' => 'replicateAPI#getWhisperPredictionPage', 'url' => '/w/{predictionId}', 'verb' => 'GET'],
 		['name' => 'replicateAPI#getPrediction', 'url' => '/predictions/{predictionId}', 'verb' => 'GET'],
-		['name' => 'replicateAPI#getPredictionImage', 'url' => '/predictions/{predictionId}/image', 'verb' => 'GET'],
+		['name' => 'replicateAPI#getImagePredictionContent', 'url' => '/predictions/{predictionId}/image', 'verb' => 'GET'],
 	],
 ];

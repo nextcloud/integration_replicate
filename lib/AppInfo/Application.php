@@ -10,7 +10,9 @@
 namespace OCA\Replicate\AppInfo;
 
 use OCA\Replicate\Listener\ReplicateReferenceListener;
+use OCA\Replicate\Reference\ImageReferenceProvider;
 use OCA\Replicate\Reference\ReplicateReferenceProvider;
+use OCA\Replicate\Reference\WhisperReferenceProvider;
 use OCP\Collaboration\Reference\RenderReferenceEvent;
 use OCP\IConfig;
 
@@ -23,6 +25,7 @@ class Application extends App implements IBootstrap {
 
 	public const APP_ID = 'integration_replicate';
 	public const STABLE_DIFFUSION_VERSION = 'f178fa7a1ae43a9a9af01b833b9d2ecf97b1bcb0acfd2dc5dd04895e042863f1';
+	public const WHISPER_VERSION = '30414ee7c4fffc37e260fcab7842b5be470b9b840f2b608f5baa9bbef9a259ed';
 
 	/**
 	 * @var IConfig
@@ -40,7 +43,8 @@ class Application extends App implements IBootstrap {
 	public function register(IRegistrationContext $context): void {
 		$apiKey = $this->config->getAppValue(self::APP_ID, 'api_key');
 		if ($apiKey !== '') {
-			$context->registerReferenceProvider(ReplicateReferenceProvider::class);
+			$context->registerReferenceProvider(ImageReferenceProvider::class);
+			$context->registerReferenceProvider(WhisperReferenceProvider::class);
 			$context->registerEventListener(RenderReferenceEvent::class, ReplicateReferenceListener::class);
 		}
 	}

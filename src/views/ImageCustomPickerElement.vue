@@ -37,7 +37,7 @@ import Vue from 'vue'
 Vue.directive('tooltip', Tooltip)
 
 export default {
-	name: 'ReplicateCustomPickerElement',
+	name: 'ImageCustomPickerElement',
 
 	components: {
 		NcButton,
@@ -94,13 +94,13 @@ export default {
 			const params = {
 				prompt: this.query,
 			}
-			const url = generateUrl('/apps/integration_replicate/predictions')
+			const url = generateUrl('/apps/integration_replicate/predictions/image')
 			return axios.post(url, params)
 				.then((response) => {
 					console.debug('predictions response', response.data)
 					if (!['failed', 'canceled'].includes(response.data.status)) {
 						const internalUrl = window.location.protocol + '//' + window.location.host
-							+ generateUrl('/apps/integration_replicate/p/{id}', { id: response.data.id })
+							+ generateUrl('/apps/integration_replicate/i/{id}', { id: response.data.id })
 						this.onSubmit(internalUrl)
 					} else {
 						this.error = response.data.error

@@ -26,11 +26,13 @@ import {
 } from '@nextcloud/vue-richtext'
 import './bootstrap.js'
 import Vue from 'vue'
-import ReplicateReferenceWidget from './views/ReplicateReferenceWidget.vue'
-import ReplicateCustomPickerElement from './views/ReplicateCustomPickerElement.vue'
+import ImageReferenceWidget from './views/ImageReferenceWidget.vue'
+import ImageCustomPickerElement from './views/ImageCustomPickerElement.vue'
+import WhisperReferenceWidget from './views/WhisperReferenceWidget.vue'
+import WhisperCustomPickerElement from './views/WhisperCustomPickerElement.vue'
 
-registerWidget('integration_replicate_internal_link', (el, { richObjectType, richObject, accessible }) => {
-	const Widget = Vue.extend(ReplicateReferenceWidget)
+registerWidget('integration_replicate_image', (el, { richObjectType, richObject, accessible }) => {
+	const Widget = Vue.extend(ImageReferenceWidget)
 	new Widget({
 		propsData: {
 			richObjectType,
@@ -41,7 +43,7 @@ registerWidget('integration_replicate_internal_link', (el, { richObjectType, ric
 })
 
 registerCustomPickerElement('replicate-image', (el, { providerId, accessible }) => {
-	const Element = Vue.extend(ReplicateCustomPickerElement)
+	const Element = Vue.extend(ImageCustomPickerElement)
 	const vueElement = new Element({
 		propsData: {
 			providerId,
@@ -50,6 +52,31 @@ registerCustomPickerElement('replicate-image', (el, { providerId, accessible }) 
 	}).$mount(el)
 	return new CustomPickerRenderResult(vueElement.$el, vueElement)
 }, (el, renderResult) => {
-	console.debug('replicate custom destroy callback. el', el, 'renderResult:', renderResult)
+	console.debug('replicate image custom destroy callback. el', el, 'renderResult:', renderResult)
+	renderResult.object.$destroy()
+})
+
+registerWidget('integration_replicate_whisper', (el, { richObjectType, richObject, accessible }) => {
+	const Widget = Vue.extend(WhisperReferenceWidget)
+	new Widget({
+		propsData: {
+			richObjectType,
+			richObject,
+			accessible,
+		},
+	}).$mount(el)
+})
+
+registerCustomPickerElement('replicate-whisper', (el, { providerId, accessible }) => {
+	const Element = Vue.extend(WhisperCustomPickerElement)
+	const vueElement = new Element({
+		propsData: {
+			providerId,
+			accessible,
+		},
+	}).$mount(el)
+	return new CustomPickerRenderResult(vueElement.$el, vueElement)
+}, (el, renderResult) => {
+	console.debug('whisper custom destroy callback. el', el, 'renderResult:', renderResult)
 	renderResult.object.$destroy()
 })

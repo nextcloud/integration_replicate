@@ -20,17 +20,17 @@
   -->
 
 <template>
-	<Prediction :prediction-id="richObject.predictionId" />
+	<ImagePrediction :prediction-id="richObject.predictionId" />
 </template>
 
 <script>
-import Prediction from '../components/Prediction.vue'
+import ImagePrediction from '../components/ImagePrediction.vue'
 
 export default {
-	name: 'ReplicateReferenceWidget',
+	name: 'ImageReferenceWidget',
 
 	components: {
-		Prediction,
+		ImagePrediction,
 	},
 
 	props: {
