@@ -24,6 +24,7 @@
 			</NcCheckboxRadioSwitch>
 		</div>
 		<audio-recorder
+			class="recorder"
 			:attempts="1"
 			:time="120"
 			:show-download-button="true"
@@ -199,6 +200,18 @@ export default {
 		align-items: center;
 		justify-content: end;
 		width: 100%;
+	}
+
+	::v-deep .recorder {
+		.ar-recorder__time-limit {
+			position: unset !important;
+		}
+		.ar-player__time {
+			font-size: 14px;
+		}
+		.ar-records {
+			height: unset !important;
+		}
 	}
 }
 </style>

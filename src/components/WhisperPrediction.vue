@@ -22,22 +22,22 @@
 <template>
 	<div class="prediction">
 		<div v-if="prediction === null" class="loading-prediction">
-			{{ t('integration_replicate', 'Loading prediction...') }}
+			{{ t('integration_replicate', 'Loading transcription/translation...') }}
 		</div>
 		<h3 v-else>
 			<ReplicateIcon :size="20" class="icon" />
 			<span>
-				{{ t('integration_replicate', 'Replicate prediction') + ':' }}
+				{{ t('integration_replicate', 'Replicate whisper transcription/translation') + ':' }}
 			</span>
 		</h3>
 		<div v-if="predictionIsProcessing" class="processing-prediction">
-			<p>{{ t('integration_replicate', 'Transcription is processing...') }}</p>
+			<p>{{ t('integration_replicate', 'Transcription/translation is processing...') }}</p>
 		</div>
 		<div v-else-if="predictionWasCanceled" class="canceled-prediction">
-			{{ t('integration_replicate', 'Prediction was canceled') }}
+			{{ t('integration_replicate', 'Transcription/translation was canceled') }}
 		</div>
 		<div v-else-if="predictionHasFailed" class="failed-prediction">
-			{{ t('integration_replicate', 'Prediction has failed') }}
+			{{ t('integration_replicate', 'Transcription/translation has failed') }}
 		</div>
 		<div v-else-if="predictionSuccess">
 			<p v-if="prediction.output?.translation">
