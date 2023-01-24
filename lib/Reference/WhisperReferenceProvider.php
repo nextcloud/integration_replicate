@@ -74,7 +74,7 @@ class WhisperReferenceProvider extends ADiscoverableReferenceProvider  {
 	 * @inheritDoc
 	 */
 	public function getTitle(): string {
-		return $this->l10n->t('Replicate speech-to-text');
+		return $this->l10n->t('AI speech-to-text (Whisper via Replicate)');
 	}
 
 	/**

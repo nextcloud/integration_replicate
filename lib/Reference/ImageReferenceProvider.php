@@ -74,7 +74,7 @@ class ImageReferenceProvider extends ADiscoverableReferenceProvider  {
 	 * @inheritDoc
 	 */
 	public function getTitle(): string {
-		return $this->l10n->t('Replicate stable diffusion');
+		return $this->l10n->t('AI image generator (stable diffusion via Replicate)');
 	}
 
 	/**

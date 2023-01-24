@@ -11,7 +11,7 @@ on:
       - tests/**
   push:
     branches:
-      - master
+      - main
       - stable*
       - test
     paths:
