@@ -126,9 +126,6 @@ export default {
 				console.warn(e.message)
 			}
 		},
-		onCancel() {
-			this.$emit('cancel')
-		},
 		onSubmit(url) {
 			this.$emit('submit', url)
 		},

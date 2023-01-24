@@ -13,8 +13,7 @@
 				v-model="query"
 				type="text"
 				:placeholder="inputPlaceholder"
-				@keydown.enter="onInputEnter"
-				@keyup.esc="onCancel">
+				@keydown.enter="onInputEnter">
 			<NcLoadingIcon v-if="loading"
 				:size="20"
 				:title="t('integration_replicate', 'Loading')" />
@@ -79,9 +78,6 @@ export default {
 			setTimeout(() => {
 				this.$refs['replicate-search-input']?.focus()
 			}, 300)
-		},
-		onCancel() {
-			this.$emit('cancel')
 		},
 		onSubmit(url) {
 			this.$emit('submit', url)
