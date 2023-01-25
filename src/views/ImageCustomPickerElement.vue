@@ -2,12 +2,12 @@
 	<div class="replicate-picker-content">
 		<h2>
 			{{ t('integration_replicate', 'Generate stable-diffusion image') }}
-			<a class="attribution"
-				target="_blank"
-				href="https://replicate.com">
-				{{ poweredByTitle }}
-			</a>
 		</h2>
+		<a class="attribution"
+			target="_blank"
+			href="https://replicate.com">
+			{{ poweredByTitle }}
+		</a>
 		<div class="input-wrapper">
 			<input ref="replicate-search-input"
 				v-model="query"
@@ -17,7 +17,9 @@
 			<NcLoadingIcon v-if="loading"
 				:size="20"
 				:title="t('integration_replicate', 'Loading')" />
-			<NcButton v-else @click="onInputEnter">
+			<NcButton v-else
+				type="primary"
+				@click="onInputEnter">
 				{{ t('integration_replicate', 'Submit') }}
 			</NcButton>
 		</div>
@@ -125,9 +127,10 @@ export default {
 	h2 {
 		display: flex;
 		align-items: center;
-		.attribution {
-			margin-left: 16px;
-		}
+	}
+
+	.attribution {
+		padding-bottom: 8px;
 	}
 
 	.input-wrapper {
