@@ -8,21 +8,28 @@
 			<div class="line">
 				<label for="replicate-api-key">
 					<KeyIcon :size="20" class="icon" />
-					{{ t('integration_replicate', 'Replicate API key') }}
+					{{ t('integration_replicate', 'Replicate API token') }}
 				</label>
 				<input id="replicate-api-key"
 					v-model="state.api_key"
 					type="password"
 					:readonly="readonly"
-					:placeholder="t('integration_replicate', 'your API key')"
+					:placeholder="t('integration_replicate', 'your API token')"
 					@input="onInput"
 					@focus="readonly = false">
 			</div>
+			<p class="settings-hint">
+				<InformationOutlineIcon :size="20" class="icon" />
+				<a href="https://replicate.com" target="_blank">
+					{{ t('integration_replicate', 'You can create a free API token on https://replicate.com') }}
+				</a>
+			</p>
 		</div>
 	</div>
 </template>
 
 <script>
+import InformationOutlineIcon from 'vue-material-design-icons/InformationOutline.vue'
 import KeyIcon from 'vue-material-design-icons/Key.vue'
 
 import ReplicateIcon from './icons/ReplicateIcon.vue'
@@ -39,6 +46,7 @@ export default {
 	components: {
 		ReplicateIcon,
 		KeyIcon,
+		InformationOutlineIcon,
 	},
 
 	props: [],
@@ -115,6 +123,10 @@ export default {
 		> input {
 			width: 300px;
 		}
+	}
+
+	.settings-hint {
+		margin-top: 12px;
 	}
 }
 </style>
