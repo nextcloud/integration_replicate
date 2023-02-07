@@ -3,7 +3,8 @@
     <id>integration_replicate</id>
     <name>Replicate integration</name>
     <summary>Integration of Replicate stable-diffusion</summary>
-    <description><![CDATA[Replicate integration provides a link reference provider.]]></description>
+    <description><![CDATA[Replicate integration provides a link reference provider for
+    Whisper translation/transcription and stable diffusion image prediction.]]></description>
     <version>1.0.0</version>
     <licence>agpl</licence>
     <author>Julien Veyssier</author>
@@ -15,7 +16,9 @@
     <category>dashboard</category>
     <website>https://github.com/julien-nc/integration_replicate</website>
     <bugs>https://github.com/julien-nc/integration_replicate/issues</bugs>
-    <screenshot>https://github.com/julien-nc/integration_replicate/raw/master/img/screenshot1.jpg</screenshot>
+    <screenshot>https://github.com/julien-nc/integration_replicate/raw/main/img/screenshot1.jpg</screenshot>
+    <screenshot>https://github.com/julien-nc/integration_replicate/raw/main/img/screenshot2.jpg</screenshot>
+    <screenshot>https://github.com/julien-nc/integration_replicate/raw/main/img/screenshot3.jpg</screenshot>
     <dependencies>
         <nextcloud min-version="26" max-version="26"/>
     </dependencies>

@@ -21,17 +21,20 @@
 
 <template>
 	<div class="prediction">
-		<div v-if="prediction === null" class="loading-prediction">
+		<div v-if="prediction === null" class="title">
 			{{ t('integration_replicate', 'Loading transcription/translation...') }}
 		</div>
-		<h3 v-else>
+		<span v-else class="title">
 			<ReplicateIcon :size="20" class="icon" />
-			<span>
-				{{ t('integration_replicate', 'Replicate whisper transcription/translation') + ':' }}
-			</span>
-		</h3>
+			<strong v-if="prediction.output?.translation">
+				{{ t('integration_replicate', 'Replicate Whisper translation') }}
+			</strong>
+			<strong v-else>
+				{{ t('integration_replicate', 'Replicate Whisper transcription') }}
+			</strong>
+		</span>
 		<div v-if="predictionIsProcessing" class="processing-prediction">
-			<p>{{ t('integration_replicate', 'Transcription/translation is processing...') }}</p>
+			{{ t('integration_replicate', 'Transcription/translation is processing...') }}
 		</div>
 		<div v-else-if="predictionWasCanceled" class="canceled-prediction">
 			{{ t('integration_replicate', 'Transcription/translation was canceled') }}
@@ -40,12 +43,12 @@
 			{{ t('integration_replicate', 'Transcription/translation has failed') }}
 		</div>
 		<div v-else-if="predictionSuccess">
-			<p v-if="prediction.output?.translation">
+			<span v-if="prediction.output?.translation">
 				{{ prediction.output.translation }}
-			</p>
-			<p v-else>
+			</span>
+			<span v-else>
 				{{ prediction.output?.transcription }}
-			</p>
+			</span>
 		</div>
 	</div>
 </template>
@@ -118,7 +121,7 @@ export default {
 	padding: 12px;
 	white-space: normal;
 
-	h3 {
+	.title {
 		display: flex;
 		margin-top: 0;
 		.icon {

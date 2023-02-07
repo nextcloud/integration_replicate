@@ -9,16 +9,17 @@
 			{{ poweredByTitle }}
 		</a>
 		<div class="input-wrapper">
-			<input ref="replicate-search-input"
-				v-model="query"
-				type="text"
-				:placeholder="inputPlaceholder"
+			<NcTextField
+				ref="replicate-search-input"
+				:value.sync="query"
+				:label="inputPlaceholder"
 				@keydown.enter="onInputEnter">
-			<NcLoadingIcon v-if="loading"
-				:size="20"
-				:title="t('integration_replicate', 'Loading')" />
-			<NcButton v-else
+				<NcLoadingIcon v-if="loading" :size="16" />
+				<ReplicateIcon v-else :size="16" />
+			</NcTextField>
+			<NcButton
 				type="primary"
+				:disabled="loading"
 				@click="onInputEnter">
 				{{ t('integration_replicate', 'Submit') }}
 			</NcButton>
@@ -27,8 +28,11 @@
 </template>
 
 <script>
+import ReplicateIcon from '../components/icons/ReplicateIcon.vue'
+
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
+import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
 
 import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
@@ -41,7 +45,9 @@ export default {
 	name: 'ImageCustomPickerElement',
 
 	components: {
+		ReplicateIcon,
 		NcButton,
+		NcTextField,
 		NcLoadingIcon,
 	},
 
@@ -78,7 +84,7 @@ export default {
 	methods: {
 		focusOnInput() {
 			setTimeout(() => {
-				this.$refs['replicate-search-input']?.focus()
+				this.$refs['replicate-search-input'].$el.getElementsByTagName('input')[0]?.focus()
 			}, 300)
 		},
 		onSubmit(url) {

@@ -21,19 +21,22 @@
 
 <template>
 	<div class="prediction">
-		<div v-if="prediction === null" class="loading-prediction">
-			{{ t('integration_replicate', 'Loading prediction...') }}
-		</div>
-		<h3 v-else>
+		<div v-if="prediction === null" class="title">
 			<ReplicateIcon :size="20" class="icon" />
-			<span>
+			<strong>
+				{{ t('integration_replicate', 'Loading prediction...') }}
+			</strong>
+		</div>
+		<span v-else class="title">
+			<ReplicateIcon :size="20" class="icon" />
+			<strong>
 				{{ t('integration_replicate', 'Replicate prediction') + ':' }}
-				&nbsp;
-				<strong>
-					{{ prediction?.input?.prompt }}
-				</strong>
+			</strong>
+			&nbsp;
+			<span>
+				{{ prediction?.input?.prompt }}
 			</span>
-		</h3>
+		</span>
 		<div v-if="predictionIsProcessing" class="processing-prediction">
 			<p>{{ t('integration_replicate', 'Prediction is processing...') }}</p>
 			<p>{{ formattedLogs }}</p>
@@ -155,7 +158,7 @@ export default {
 	padding: 12px;
 	white-space: normal;
 
-	h3 {
+	.title {
 		display: flex;
 		margin-top: 0;
 		.icon {
