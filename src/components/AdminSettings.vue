@@ -105,6 +105,7 @@ export default {
 	.settings-hint {
 		display: flex;
 		align-items: center;
+		margin-top: 12px;
 		.icon {
 			margin-right: 4px;
 		}
@@ -123,10 +124,6 @@ export default {
 		> input {
 			width: 300px;
 		}
-	}
-
-	.settings-hint {
-		margin-top: 12px;
 	}
 }
 </style>
