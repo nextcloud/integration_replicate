@@ -18,6 +18,15 @@
 					:options="modelOptions"
 					input-id="models" />
 			</div>
+			<div class="line">
+				<label for="result-types">
+					{{ t('integration_replicate', 'Result format') }}
+				</label>
+				<NcSelect
+					v-model="type"
+					:options="typeOptions"
+					input-id="result-types" />
+			</div>
 			<NcCheckboxRadioSwitch
 				:checked.sync="translate">
 				{{ t('integration_replicate', 'Translate') }}
@@ -31,14 +40,16 @@
 			:show-upload-button="false"
 			:after-recording="onRecordEnd" />
 		<div class="footer">
+			<span v-if="error" class="error">
+				{{ error }}
+			</span>
 			<NcButton
 				type="primary"
-				:disabled="loading || !model || audio === null"
+				:disabled="loading || looping || !model || audio === null || !type"
 				@click="onInputEnter">
 				<template #icon>
-					<NcLoadingIcon v-if="loading"
-						:size="20"
-						:title="t('integration_replicate', 'Loading')" />
+					<NcLoadingIcon v-if="loading || looping"
+						:size="20" />
 				</template>
 				{{ t('integration_replicate', 'Submit') }}
 			</NcButton>
@@ -85,6 +96,7 @@ export default {
 	data() {
 		return {
 			loading: false,
+			looping: false,
 			poweredByTitle: t('integration_replicate', 'Powered by Replicate'),
 			translate: false,
 			modelOptions: [
@@ -94,8 +106,14 @@ export default {
 				{ label: t('integration_replicate', 'medium'), value: 'medium' },
 				{ label: t('integration_replicate', 'large'), value: 'large' },
 			],
+			typeOptions: [
+				{ label: t('integration_replicate', 'Text'), value: 'text' },
+				{ label: t('integration_replicate', 'Internal link/widget'), value: 'link' },
+			],
 			model: 'large',
+			type: 'text',
 			audio: null,
+			error: null,
 		}
 	},
 
@@ -131,6 +149,7 @@ export default {
 		},
 		onInputEnter() {
 			this.loading = true
+			this.error = null
 			const params = {
 				translate: this.translate,
 				model: this.model.value,
@@ -141,9 +160,14 @@ export default {
 				.then((response) => {
 					console.debug('predictions response', response.data)
 					if (!['failed', 'canceled'].includes(response.data.status)) {
-						const internalUrl = window.location.protocol + '//' + window.location.host
-							+ generateUrl('/apps/integration_replicate/w/{id}', { id: response.data.id })
-						this.onSubmit(internalUrl)
+						if (this.type === 'link') {
+							const internalUrl = window.location.protocol + '//' + window.location.host
+								+ generateUrl('/apps/integration_replicate/w/{id}', { id: response.data.id })
+							this.onSubmit(internalUrl)
+						} else {
+							this.looping = true
+							this.checkPredictionLoop(response.data.id)
+						}
 					} else {
 						this.error = response.data.error
 					}
@@ -153,6 +177,29 @@ export default {
 				})
 				.then(() => {
 					this.loading = false
+				})
+		},
+		checkPredictionLoop(predictionId) {
+			const url = generateUrl('/apps/integration_replicate/predictions/{predictionId}', { predictionId })
+			axios.get(url)
+				.then((response) => {
+					const prediction = response.data
+					if (['starting', 'processing'].includes(prediction?.status)) {
+						setTimeout(() => {
+							this.checkPredictionLoop(predictionId)
+						}, 2000)
+					} else {
+						this.looping = false
+						if (prediction?.status === 'failed') {
+							this.error = response.data.error
+						} else if (prediction?.status === 'canceled') {
+							this.error = t('integration_replicate', 'Prediction was cancelled')
+						} else if (prediction?.status === 'succeeded') {
+							this.onSubmit(prediction?.output?.translation ?? prediction?.output?.transcription)
+						} else {
+							this.error = t('integration_replicate', 'Unknown error')
+						}
+					}
 				})
 		},
 	},
@@ -197,6 +244,10 @@ export default {
 		align-items: center;
 		justify-content: end;
 		width: 100%;
+
+		.error {
+			margin-right: 12px;
+		}
 	}
 
 	::v-deep .recorder {
