@@ -34,6 +34,6 @@ class ReplicateReferenceListener implements IEventListener {
 			return;
 		}
 
-		Util::addScript(Application::APP_ID, Application::APP_ID . '-referenceReplicate');
+		Util::addScript(Application::APP_ID, Application::APP_ID . '-reference');
 	}
 }

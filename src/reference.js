@@ -24,14 +24,14 @@ import {
 	registerCustomPickerElement,
 	CustomPickerRenderResult,
 } from '@nextcloud/vue-richtext'
-import './bootstrap.js'
-import Vue from 'vue'
-import ImageReferenceWidget from './views/ImageReferenceWidget.vue'
-import ImageCustomPickerElement from './views/ImageCustomPickerElement.vue'
-import WhisperReferenceWidget from './views/WhisperReferenceWidget.vue'
-import WhisperCustomPickerElement from './views/WhisperCustomPickerElement.vue'
 
-registerWidget('integration_replicate_image', (el, { richObjectType, richObject, accessible }) => {
+__webpack_nonce__ = btoa(OC.requestToken) // eslint-disable-line
+__webpack_public_path__ = OC.linkTo('integration_replicate', 'js/') // eslint-disable-line
+
+registerWidget('integration_replicate_image', async (el, { richObjectType, richObject, accessible }) => {
+	const { default: Vue } = await import(/* webpackChunkName: "vue-lazy" */'vue')
+	Vue.mixin({ methods: { t, n } })
+	const { default: ImageReferenceWidget } = await import(/* webpackChunkName: "reference-image-lazy" */'./views/ImageReferenceWidget.vue')
 	const Widget = Vue.extend(ImageReferenceWidget)
 	new Widget({
 		propsData: {
@@ -42,7 +42,10 @@ registerWidget('integration_replicate_image', (el, { richObjectType, richObject,
 	}).$mount(el)
 })
 
-registerCustomPickerElement('replicate-image', (el, { providerId, accessible }) => {
+registerCustomPickerElement('replicate-image', async (el, { providerId, accessible }) => {
+	const { default: Vue } = await import(/* webpackChunkName: "vue-lazy" */'vue')
+	Vue.mixin({ methods: { t, n } })
+	const { default: ImageCustomPickerElement } = await import(/* webpackChunkName: "picker-image-lazy" */'./views/ImageCustomPickerElement.vue')
 	const Element = Vue.extend(ImageCustomPickerElement)
 	const vueElement = new Element({
 		propsData: {
@@ -56,7 +59,10 @@ registerCustomPickerElement('replicate-image', (el, { providerId, accessible }) 
 	renderResult.object.$destroy()
 })
 
-registerWidget('integration_replicate_whisper', (el, { richObjectType, richObject, accessible }) => {
+registerWidget('integration_replicate_whisper', async (el, { richObjectType, richObject, accessible }) => {
+	const { default: Vue } = await import(/* webpackChunkName: "vue-lazy" */'vue')
+	Vue.mixin({ methods: { t, n } })
+	const { default: WhisperReferenceWidget } = await import(/* webpackChunkName: "reference-whisper-lazy" */'./views/WhisperReferenceWidget.vue')
 	const Widget = Vue.extend(WhisperReferenceWidget)
 	new Widget({
 		propsData: {
@@ -67,7 +73,10 @@ registerWidget('integration_replicate_whisper', (el, { richObjectType, richObjec
 	}).$mount(el)
 })
 
-registerCustomPickerElement('replicate-whisper', (el, { providerId, accessible }) => {
+registerCustomPickerElement('replicate-whisper', async (el, { providerId, accessible }) => {
+	const { default: Vue } = await import(/* webpackChunkName: "vue-lazy" */'vue')
+	Vue.mixin({ methods: { t, n } })
+	const { default: WhisperCustomPickerElement } = await import(/* webpackChunkName: "picker-whisper-lazy" */'./views/WhisperCustomPickerElement.vue')
 	const Element = Vue.extend(WhisperCustomPickerElement)
 	const vueElement = new Element({
 		propsData: {
