@@ -110,8 +110,8 @@ export default {
 				{ label: t('integration_replicate', 'Text'), value: 'text' },
 				{ label: t('integration_replicate', 'Internal link/widget'), value: 'link' },
 			],
-			model: 'large',
-			type: 'text',
+			model: { label: t('integration_replicate', 'large'), value: 'large' },
+			type: { label: t('integration_replicate', 'Text'), value: 'text' },
 			audio: null,
 			error: null,
 		}

@@ -13,13 +13,15 @@
 				ref="replicate-search-input"
 				:value.sync="query"
 				:label="inputPlaceholder"
-				@keydown.enter="onInputEnter">
+				:show-trailing-button="!!query"
+				@keydown.enter="onInputEnter"
+				@trailing-button-click="query = ''">
 				<NcLoadingIcon v-if="loading" :size="16" />
 				<ReplicateIcon v-else :size="16" />
 			</NcTextField>
 			<NcButton
 				type="primary"
-				:disabled="loading"
+				:disabled="loading || !query"
 				@click="onInputEnter">
 				{{ t('integration_replicate', 'Submit') }}
 			</NcButton>
