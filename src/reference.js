@@ -57,7 +57,7 @@ registerCustomPickerElement('replicate-image', async (el, { providerId, accessib
 }, (el, renderResult) => {
 	console.debug('replicate image custom destroy callback. el', el, 'renderResult:', renderResult)
 	renderResult.object.$destroy()
-})
+}, 'medium')
 
 registerWidget('integration_replicate_whisper', async (el, { richObjectType, richObject, accessible }) => {
 	const { default: Vue } = await import(/* webpackChunkName: "vue-lazy" */'vue')
@@ -88,4 +88,4 @@ registerCustomPickerElement('replicate-whisper', async (el, { providerId, access
 }, (el, renderResult) => {
 	console.debug('whisper custom destroy callback. el', el, 'renderResult:', renderResult)
 	renderResult.object.$destroy()
-})
+}, 'medium')
