@@ -1,7 +1,7 @@
 <template>
 	<div class="replicate-picker-content">
 		<h2>
-			{{ t('integration_replicate', 'Generate stable-diffusion image') }}
+			{{ t('integration_replicate', 'AI image generation') }}
 		</h2>
 		<a class="attribution"
 			target="_blank"
@@ -15,22 +15,24 @@
 				:label="inputPlaceholder"
 				:show-trailing-button="!!query"
 				@keydown.enter="onInputEnter"
-				@trailing-button-click="query = ''">
-				<NcLoadingIcon v-if="loading" :size="16" />
-				<ReplicateIcon v-else :size="16" />
-			</NcTextField>
-			<NcButton
-				type="primary"
-				:disabled="loading || !query"
-				@click="onInputEnter">
-				{{ t('integration_replicate', 'Submit') }}
-			</NcButton>
+				@trailing-button-click="query = ''" />
 		</div>
+		<NcButton
+			class="submit-button"
+			type="primary"
+			:disabled="loading || !query"
+			@click="onInputEnter">
+			{{ t('integration_replicate', 'Submit') }}
+			<template #icon>
+				<NcLoadingIcon v-if="loading" />
+				<ArrowRightIcon v-else />
+			</template>
+		</NcButton>
 	</div>
 </template>
 
 <script>
-import ReplicateIcon from '../components/icons/ReplicateIcon.vue'
+import ArrowRightIcon from 'vue-material-design-icons/ArrowRight.vue'
 
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
@@ -47,10 +49,10 @@ export default {
 	name: 'ImageCustomPickerElement',
 
 	components: {
-		ReplicateIcon,
 		NcButton,
 		NcTextField,
 		NcLoadingIcon,
+		ArrowRightIcon,
 	},
 
 	props: {
@@ -69,7 +71,7 @@ export default {
 			query: '',
 			loading: false,
 			inputPlaceholder: t('integration_replicate', 'cyberpunk nextcloud logo with chrismas hats'),
-			poweredByTitle: t('integration_replicate', 'Powered by Replicate'),
+			poweredByTitle: t('integration_replicate', 'by Replicate with stable diffusion'),
 		}
 	},
 
@@ -148,6 +150,11 @@ export default {
 		input {
 			flex-grow: 1;
 		}
+	}
+
+	.submit-button {
+		align-self: end;
+		margin-top: 8px;
 	}
 }
 </style>

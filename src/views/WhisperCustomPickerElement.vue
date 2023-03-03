@@ -1,18 +1,54 @@
 <template>
 	<div class="replicate-picker-content">
 		<h2>
-			{{ t('integration_replicate', 'Transcribe or translate text') }}
+			{{ t('integration_replicate', 'AI speech-to-text') }}
 		</h2>
 		<a class="attribution"
 			target="_blank"
 			href="https://replicate.com">
 			{{ poweredByTitle }}
 		</a>
+		<audio-recorder
+			class="recorder"
+			:attempts="1"
+			:time="120"
+			:show-download-button="true"
+			:show-upload-button="false"
+			:after-recording="onRecordEnd" />
 		<div class="form-wrapper">
+			<div class="line">
+				<label for="models">
+					{{ t('integration_replicate', 'Action') }}
+				</label>
+				<div class="spacer" />
+				<div class="radios">
+					<NcCheckboxRadioSwitch
+						:checked.sync="mode"
+						type="radio"
+						value="transcribe"
+						name="mode">
+						{{ t('integration_replicate', 'Transcribe') }}
+					</NcCheckboxRadioSwitch>
+					<NcCheckboxRadioSwitch
+						:checked.sync="mode"
+						type="radio"
+						value="translate"
+						name="mode">
+						{{ t('integration_replicate', 'Translate (only to English)') }}
+					</NcCheckboxRadioSwitch>
+				</div>
+			</div>
 			<div class="line">
 				<label for="models">
 					{{ t('integration_replicate', 'Model') }}
 				</label>
+				<NcButton type="tertiary"
+					:title="t('integration_replicate', 'Larger model size gives better results but uses more credit')">
+					<template #icon>
+						<HelpCircleIcon />
+					</template>
+				</NcButton>
+				<div class="spacer" />
 				<NcSelect
 					v-model="model"
 					:options="modelOptions"
@@ -22,23 +58,13 @@
 				<label for="result-types">
 					{{ t('integration_replicate', 'Result format') }}
 				</label>
+				<div class="spacer" />
 				<NcSelect
 					v-model="type"
 					:options="typeOptions"
 					input-id="result-types" />
 			</div>
-			<NcCheckboxRadioSwitch
-				:checked.sync="translate">
-				{{ t('integration_replicate', 'Translate') }}
-			</NcCheckboxRadioSwitch>
 		</div>
-		<audio-recorder
-			class="recorder"
-			:attempts="1"
-			:time="120"
-			:show-download-button="true"
-			:show-upload-button="false"
-			:after-recording="onRecordEnd" />
 		<div class="footer">
 			<span v-if="error" class="error">
 				{{ error }}
@@ -50,6 +76,7 @@
 				<template #icon>
 					<NcLoadingIcon v-if="loading || looping"
 						:size="20" />
+					<ArrowRightIcon v-else />
 				</template>
 				{{ t('integration_replicate', 'Submit') }}
 			</NcButton>
@@ -58,6 +85,9 @@
 </template>
 
 <script>
+import ArrowRightIcon from 'vue-material-design-icons/ArrowRight.vue'
+import HelpCircleIcon from 'vue-material-design-icons/HelpCircle.vue'
+
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
@@ -80,6 +110,8 @@ export default {
 		NcLoadingIcon,
 		NcCheckboxRadioSwitch,
 		NcSelect,
+		ArrowRightIcon,
+		HelpCircleIcon,
 	},
 
 	props: {
@@ -97,20 +129,20 @@ export default {
 		return {
 			loading: false,
 			looping: false,
-			poweredByTitle: t('integration_replicate', 'Powered by Replicate'),
-			translate: false,
+			poweredByTitle: t('integration_replicate', 'by Replicate with Whisper'),
+			mode: 'transcribe',
 			modelOptions: [
-				{ label: t('integration_replicate', 'tiny'), value: 'tiny' },
-				{ label: t('integration_replicate', 'base'), value: 'base' },
-				{ label: t('integration_replicate', 'small'), value: 'small' },
-				{ label: t('integration_replicate', 'medium'), value: 'medium' },
-				{ label: t('integration_replicate', 'large'), value: 'large' },
+				{ label: t('integration_replicate', 'Tiny'), value: 'tiny' },
+				{ label: t('integration_replicate', 'Base'), value: 'base' },
+				{ label: t('integration_replicate', 'Small'), value: 'small' },
+				{ label: t('integration_replicate', 'Medium'), value: 'medium' },
+				{ label: t('integration_replicate', 'Large'), value: 'large' },
 			],
 			typeOptions: [
 				{ label: t('integration_replicate', 'Text'), value: 'text' },
 				{ label: t('integration_replicate', 'Internal link/widget'), value: 'link' },
 			],
-			model: { label: t('integration_replicate', 'large'), value: 'large' },
+			model: { label: t('integration_replicate', 'Large'), value: 'large' },
 			type: { label: t('integration_replicate', 'Text'), value: 'text' },
 			audio: null,
 			error: null,
@@ -151,7 +183,7 @@ export default {
 			this.loading = true
 			this.error = null
 			const params = {
-				translate: this.translate,
+				translate: this.mode === 'translate',
 				model: this.model.value,
 				audioBase64: this.audio,
 			}
@@ -213,30 +245,39 @@ export default {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	//padding: 16px;
 
 	h2 {
 		display: flex;
 		align-items: center;
 	}
 
+	.spacer {
+		flex-grow: 1;
+	}
+
 	.attribution {
-		padding-bottom: 8px;
+		padding-bottom: 12px;
 	}
 
 	.form-wrapper {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
+		width: 100%;
+		margin: 8px 0;
+		.radios {
+			display: flex;
+			> * {
+				margin: 0 16px;
+			}
+		}
 	}
 
 	.line {
 		display: flex;
 		align-items: center;
-		label {
-			margin-right: 8px;
-		}
+		margin-top: 8px;
+		width: 100%;
 	}
 
 	.footer {
