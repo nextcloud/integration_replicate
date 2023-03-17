@@ -40,6 +40,7 @@ import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
 
 import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
+import { showError } from '@nextcloud/dialogs'
 
 import Tooltip from '@nextcloud/vue/dist/Directives/Tooltip.js'
 import Vue from 'vue'
@@ -116,6 +117,10 @@ export default {
 				})
 				.catch((error) => {
 					console.debug('replicate request error', error)
+					showError(
+						t('integration_replicate', 'Failed launch image generation')
+						+ ': ' + (error.response?.data?.body?.detail ?? error.response?.data?.error)
+					)
 				})
 				.then(() => {
 					this.loading = false
