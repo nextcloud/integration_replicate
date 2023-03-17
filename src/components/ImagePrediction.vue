@@ -39,7 +39,7 @@
 		</span>
 		<div v-if="predictionIsProcessing" class="processing-prediction">
 			<p>{{ t('integration_replicate', 'Prediction is processing...') }}</p>
-			<p>{{ formattedLogs }}</p>
+			<pre>{{ formattedLogs }}</pre>
 		</div>
 		<div v-else-if="predictionWasCanceled" class="canceled-prediction">
 			{{ t('integration_replicate', 'Prediction was canceled') }}
