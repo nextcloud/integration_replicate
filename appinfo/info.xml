@@ -5,7 +5,7 @@
     <summary>Integration of Replicate stable-diffusion</summary>
     <description><![CDATA[Replicate integration provides a link reference provider for
     Whisper translation/transcription and stable diffusion image prediction.]]></description>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <licence>agpl</licence>
     <author>Julien Veyssier</author>
     <namespace>Replicate</namespace>
