@@ -159,11 +159,12 @@ export default {
 	white-space: normal;
 
 	.title {
-		display: flex;
 		margin-top: 0;
 		.icon {
-			align-self: start;
-			margin: 2px 8px 0 0;
+			display: inline;
+			position: relative;
+			top: 4px;
+			// margin: 2px 8px 0 0;
 		}
 	}
 
@@ -173,6 +174,7 @@ export default {
 		align-items: center;
 		justify-content: center;
 		position: relative;
+		margin-top: 8px;
 
 		.image {
 			max-height: 300px;
