@@ -68,7 +68,6 @@ export default {
 ::v-deep .prediction {
 	display: flex;
 	flex-direction: column;
-	height: 100%;
 	align-items: center;
 	justify-content: center;
 }
