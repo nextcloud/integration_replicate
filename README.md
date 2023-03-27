@@ -1,4 +1,4 @@
-# Replicate integration in Nextcloud
+# [Replicate](https://replicate.com/) integration in Nextcloud
 
 This app adds:
 * A link reference provider to render stable-diffusion images in Talk and Text
