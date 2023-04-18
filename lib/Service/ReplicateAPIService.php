@@ -22,29 +22,25 @@ use Psr\Log\LoggerInterface;
 use OCP\Http\Client\IClientService;
 use Throwable;
 
+/**
+ * Service to make requests to Replicate REST API
+ */
 class ReplicateAPIService {
-	private LoggerInterface $logger;
-	private IL10N $l10n;
-	private IConfig $config;
+
 	private IClient $client;
 
-	/**
-	 * Service to make requests to Replicate REST API
-	 */
 	public function __construct (string $appName,
-								LoggerInterface $logger,
-								IL10N $l10n,
-								IConfig $config,
+								private LoggerInterface $logger,
+								private IL10N $l10n,
+								private IConfig $config,
 								IClientService $clientService) {
 		$this->client = $clientService->newClient();
-		$this->logger = $logger;
-		$this->l10n = $l10n;
-		$this->config = $config;
 	}
 
 	/**
 	 * @param string $audioFileUrl
 	 * @param bool $translate
+	 * @param string $model
 	 * @return array|string[]
 	 */
 	public function createWhisperPrediction(string $audioFileUrl, bool $translate = false, string $model = 'large'): array {

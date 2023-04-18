@@ -3,7 +3,7 @@
  * Nextcloud - Replicate
  *
  *
- * @author Julien Veyssier <eneiluj@posteo.net>
+ * @author Julien Veyssier <julien-nc@posteo.net>
  * @copyright Julien Veyssier 2022
  */
 
@@ -27,16 +27,12 @@ class Application extends App implements IBootstrap {
 	public const STABLE_DIFFUSION_VERSION = 'f178fa7a1ae43a9a9af01b833b9d2ecf97b1bcb0acfd2dc5dd04895e042863f1';
 	public const WHISPER_VERSION = '30414ee7c4fffc37e260fcab7842b5be470b9b840f2b608f5baa9bbef9a259ed';
 
-	/**
-	 * @var IConfig
-	 */
-	private $config;
+	private IConfig $config;
 
 	public function __construct(array $urlParams = []) {
 		parent::__construct(self::APP_ID, $urlParams);
 
 		$container = $this->getContainer();
-		/** @var IConfig config */
 		$this->config = $container->query(IConfig::class);
 	}
 

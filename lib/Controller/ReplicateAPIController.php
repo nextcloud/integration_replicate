@@ -5,7 +5,7 @@
  * This file is licensed under the Affero General Public License version 3 or
  * later. See the COPYING file.
  *
- * @author Julien Veyssier <eneiluj@posteo.net>
+ * @author Julien Veyssier <julien-nc@posteo.net>
  * @copyright Julien Veyssier 2022
  */
 
@@ -24,17 +24,12 @@ use OCA\Replicate\Service\ReplicateAPIService;
 
 class ReplicateAPIController extends Controller {
 
-	private ReplicateAPIService $replicateAPIService;
-	private IInitialState $initialStateService;
-
 	public function __construct(string              $appName,
 								IRequest            $request,
-								ReplicateAPIService $replicateAPIService,
-								IInitialState       $initialStateService,
+								private ReplicateAPIService $replicateAPIService,
+								private IInitialState       $initialStateService,
 								?string             $userId) {
 		parent::__construct($appName, $request);
-		$this->replicateAPIService = $replicateAPIService;
-		$this->initialStateService = $initialStateService;
 	}
 
 	/**

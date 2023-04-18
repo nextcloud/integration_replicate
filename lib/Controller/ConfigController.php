@@ -5,7 +5,7 @@
  * This file is licensed under the Affero General Public License version 3 or
  * later. See the COPYING file.
  *
- * @author Julien Veyssier <eneiluj@posteo.net>
+ * @author Julien Veyssier <julien-nc@posteo.net>
  * @copyright Julien Veyssier 2022
  */
 
@@ -20,14 +20,11 @@ use OCA\Replicate\AppInfo\Application;
 
 class ConfigController extends Controller {
 
-	private IConfig $config;
-
 	public function __construct(string   $appName,
 								IRequest $request,
-								IConfig  $config,
+								private IConfig  $config,
 								?string  $userId) {
 		parent::__construct($appName, $request);
-		$this->config = $config;
 	}
 
 	/**

@@ -1,8 +1,8 @@
 <?php
 /**
- * @copyright Copyright (c) 2022 Julien Veyssier <eneiluj@posteo.net>
+ * @copyright Copyright (c) 2022 Julien Veyssier <julien-nc@posteo.net>
  *
- * @author Julien Veyssier <eneiluj@posteo.net>
+ * @author Julien Veyssier <julien-nc@posteo.net>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -22,15 +22,11 @@
 
 namespace OCA\Replicate\Reference;
 
-use OC\Collaboration\Reference\LinkReferenceProvider;
 use OCP\Collaboration\Reference\ADiscoverableReferenceProvider;
-use OCP\Collaboration\Reference\ISearchableReferenceProvider;
 use OCP\Collaboration\Reference\Reference;
 use OC\Collaboration\Reference\ReferenceManager;
 use OCA\Replicate\AppInfo\Application;
-use OCA\Replicate\Service\ReplicateAPIService;
 use OCP\Collaboration\Reference\IReference;
-use OCP\IConfig;
 use OCP\IL10N;
 
 use OCP\IURLGenerator;
@@ -39,28 +35,10 @@ class ImageReferenceProvider extends ADiscoverableReferenceProvider  {
 
 	private const RICH_OBJECT_TYPE = Application::APP_ID . '_image';
 
-	private ReplicateAPIService $replicateAPIService;
-	private ?string $userId;
-	private IConfig $config;
-	private ReferenceManager $referenceManager;
-	private IL10N $l10n;
-	private IURLGenerator $urlGenerator;
-	private LinkReferenceProvider $linkReferenceProvider;
-
-	public function __construct(ReplicateAPIService $replicateAPIService,
-								IConfig $config,
-								IL10N $l10n,
-								IURLGenerator $urlGenerator,
-								ReferenceManager $referenceManager,
-								LinkReferenceProvider $linkReferenceProvider,
-								?string $userId) {
-		$this->replicateAPIService = $replicateAPIService;
-		$this->userId = $userId;
-		$this->config = $config;
-		$this->referenceManager = $referenceManager;
-		$this->l10n = $l10n;
-		$this->urlGenerator = $urlGenerator;
-		$this->linkReferenceProvider = $linkReferenceProvider;
+	public function __construct(private IL10N $l10n,
+								private IURLGenerator $urlGenerator,
+								private ReferenceManager $referenceManager,
+								private ?string $userId) {
 	}
 
 	/**

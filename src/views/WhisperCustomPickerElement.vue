@@ -17,7 +17,7 @@
 			:after-recording="onRecordEnd" />
 		<div class="form-wrapper">
 			<div class="line">
-				<label for="models">
+				<label>
 					{{ t('integration_replicate', 'Action') }}
 				</label>
 				<div class="spacer" />
