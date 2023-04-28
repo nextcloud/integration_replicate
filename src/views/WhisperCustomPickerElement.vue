@@ -230,7 +230,7 @@ export default {
 						if (prediction?.status === 'failed') {
 							this.error = response.data.error
 						} else if (prediction?.status === 'canceled') {
-							this.error = t('integration_replicate', 'Prediction was cancelled')
+							this.error = t('integration_replicate', 'Prediction was canceled')
 						} else if (prediction?.status === 'succeeded') {
 							this.onSubmit(prediction?.output?.translation ?? prediction?.output?.transcription)
 						} else {

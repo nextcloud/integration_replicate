@@ -15,9 +15,12 @@ use Exception;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
 use OCA\Replicate\AppInfo\Application;
+use OCP\Files\File;
+use OCP\Files\NotPermittedException;
 use OCP\Http\Client\IClient;
 use OCP\IConfig;
 use OCP\IL10N;
+use OCP\Lock\LockedException;
 use Psr\Log\LoggerInterface;
 use OCP\Http\Client\IClientService;
 use Throwable;
@@ -53,6 +56,40 @@ class ReplicateAPIService {
 			],
 		];
 		return $this->request('predictions', $params, 'POST');
+	}
+
+	/**
+	 * Create a prediction and wait for it to complete to return the text result
+	 *
+	 * @param File $file
+	 * @param bool $translate
+	 * @param string $model
+	 * @return string
+	 * @throws LockedException
+	 * @throws NotPermittedException
+	 */
+	public function transcribeFile(File $file, bool $translate = false, string $model = 'large'): string {
+		$prediction = $this->createWhisperPrediction($file->getContent(), $translate, $model);
+		if (isset($prediction['id'])) {
+			$predictionId = $prediction['id'];
+
+			while (isset($prediction['status'])) {
+				if ($prediction['status'] === 'succeeded') {
+					return $translate
+						? $prediction['output']['translation']
+						: $prediction['output']['transcription'];
+				} elseif ($prediction['status'] === 'failed') {
+					throw new Exception('Error transcribing file "' . $file->getName() . '": remote job failed');
+				} elseif ($prediction['status'] === 'canceled') {
+					throw new Exception('Error transcribing file "' . $file->getName() . '": remote job was canceled');
+				} elseif ($prediction['status'] !== 'starting' && $prediction['status'] !== 'processing') {
+					throw new Exception('Error transcribing file "' . $file->getName() . '": unknown prediction status');
+				}
+				sleep(2);
+				$prediction = $this->getPrediction($predictionId);
+			}
+		}
+		throw new Exception('Error transcribing file "' . $file->getName() . '"');
 	}
 
 	/**
