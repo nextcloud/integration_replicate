@@ -18,9 +18,11 @@ class Admin implements ISettings {
 	 */
 	public function getForm(): TemplateResponse {
 		$apiKey = $this->config->getAppValue(Application::APP_ID, 'api_key');
+		$model = $this->config->getAppValue(Application::APP_ID, 'model', 'large');
 
 		$adminConfig = [
 			'api_key' => $apiKey,
+			'model' => $model,
 		];
 		$this->initialStateService->provideInitialState('admin-config', $adminConfig);
 

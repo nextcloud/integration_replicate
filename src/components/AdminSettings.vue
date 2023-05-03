@@ -24,6 +24,23 @@
 					{{ t('integration_replicate', 'You can create a free API token on https://replicate.com') }}
 				</a>
 			</p>
+			<div class="line">
+				<label for="models">
+					{{ t('integration_replicate', 'Model') }}
+				</label>
+				<NcButton type="tertiary"
+					:title="t('integration_replicate', 'Larger model size gives better results but uses more credit')">
+					<template #icon>
+						<HelpCircleIcon />
+					</template>
+				</NcButton>
+				<div class="spacer" />
+				<NcSelect
+					v-model="model"
+					:options="modelOptions"
+					input-id="models"
+					@option:selected="onModelChanged" />
+			</div>
 		</div>
 	</div>
 </template>
@@ -31,14 +48,26 @@
 <script>
 import InformationOutlineIcon from 'vue-material-design-icons/InformationOutline.vue'
 import KeyIcon from 'vue-material-design-icons/Key.vue'
+import HelpCircleIcon from 'vue-material-design-icons/HelpCircle.vue'
 
 import ReplicateIcon from './icons/ReplicateIcon.vue'
+
+import NcSelect from '@nextcloud/vue/dist/Components/NcSelect.js'
+import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 
 import { loadState } from '@nextcloud/initial-state'
 import { generateUrl } from '@nextcloud/router'
 import axios from '@nextcloud/axios'
 import { delay } from '../utils.js'
 import { showSuccess, showError } from '@nextcloud/dialogs'
+
+const models = {
+	tiny: { label: t('integration_replicate', 'Tiny'), value: 'tiny' },
+	base: { label: t('integration_replicate', 'Base'), value: 'base' },
+	small: { label: t('integration_replicate', 'Small'), value: 'small' },
+	medium: { label: t('integration_replicate', 'Medium'), value: 'medium' },
+	large: { label: t('integration_replicate', 'Large'), value: 'large' },
+}
 
 export default {
 	name: 'AdminSettings',
@@ -47,6 +76,9 @@ export default {
 		ReplicateIcon,
 		KeyIcon,
 		InformationOutlineIcon,
+		HelpCircleIcon,
+		NcSelect,
+		NcButton,
 	},
 
 	props: [],
@@ -56,6 +88,8 @@ export default {
 			state: loadState('integration_replicate', 'admin-config'),
 			// to prevent some browsers to fill fields with remembered passwords
 			readonly: true,
+			modelOptions: Object.values(models),
+			model: models[loadState('integration_replicate', 'admin-config').model] ?? models.large,
 		}
 	},
 
@@ -90,6 +124,12 @@ export default {
 				})
 				.then(() => {
 				})
+		},
+		onModelChanged(newValue) {
+			this.state.model = newValue.value
+			this.saveOptions({
+				model: this.state.model,
+			})
 		},
 	},
 }

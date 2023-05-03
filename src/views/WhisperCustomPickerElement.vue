@@ -39,22 +39,6 @@
 				</div>
 			</div>
 			<div class="line">
-				<label for="models">
-					{{ t('integration_replicate', 'Model') }}
-				</label>
-				<NcButton type="tertiary"
-					:title="t('integration_replicate', 'Larger model size gives better results but uses more credit')">
-					<template #icon>
-						<HelpCircleIcon />
-					</template>
-				</NcButton>
-				<div class="spacer" />
-				<NcSelect
-					v-model="model"
-					:options="modelOptions"
-					input-id="models" />
-			</div>
-			<div class="line">
 				<label for="result-types">
 					{{ t('integration_replicate', 'Result format') }}
 				</label>
@@ -71,7 +55,7 @@
 			</span>
 			<NcButton
 				type="primary"
-				:disabled="loading || looping || !model || audio === null || !type"
+				:disabled="loading || looping || audio === null || !type"
 				@click="onInputEnter">
 				<template #icon>
 					<NcLoadingIcon v-if="loading || looping"
@@ -86,7 +70,6 @@
 
 <script>
 import ArrowRightIcon from 'vue-material-design-icons/ArrowRight.vue'
-import HelpCircleIcon from 'vue-material-design-icons/HelpCircle.vue'
 
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
@@ -112,7 +95,6 @@ export default {
 		NcCheckboxRadioSwitch,
 		NcSelect,
 		ArrowRightIcon,
-		HelpCircleIcon,
 	},
 
 	props: {
@@ -132,18 +114,10 @@ export default {
 			looping: false,
 			poweredByTitle: t('integration_replicate', 'by Replicate with Whisper'),
 			mode: 'transcribe',
-			modelOptions: [
-				{ label: t('integration_replicate', 'Tiny'), value: 'tiny' },
-				{ label: t('integration_replicate', 'Base'), value: 'base' },
-				{ label: t('integration_replicate', 'Small'), value: 'small' },
-				{ label: t('integration_replicate', 'Medium'), value: 'medium' },
-				{ label: t('integration_replicate', 'Large'), value: 'large' },
-			],
 			typeOptions: [
 				{ label: t('integration_replicate', 'Text'), value: 'text' },
 				{ label: t('integration_replicate', 'Internal link/widget'), value: 'link' },
 			],
-			model: { label: t('integration_replicate', 'Large'), value: 'large' },
 			type: { label: t('integration_replicate', 'Text'), value: 'text' },
 			audio: null,
 			error: null,
@@ -185,7 +159,6 @@ export default {
 			this.error = null
 			const params = {
 				translate: this.mode === 'translate',
-				model: this.model.value,
 				audioBase64: this.audio,
 			}
 			const url = generateUrl('/apps/integration_replicate/predictions/whisper')

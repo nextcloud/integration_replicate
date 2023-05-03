@@ -36,11 +36,10 @@ class ReplicateAPIController extends Controller {
 	 * @NoAdminRequired
 	 * @param string $audioBase64
 	 * @param bool $translate
-	 * @param string $model
 	 * @return DataResponse
 	 */
-	public function createWhisperPrediction(string $audioBase64, bool $translate = true, string $model = 'large'): DataResponse {
-		$response = $this->replicateAPIService->createWhisperPrediction($audioBase64, $translate, $model);
+	public function createWhisperPrediction(string $audioBase64, bool $translate = true): DataResponse {
+		$response = $this->replicateAPIService->createWhisperPrediction($audioBase64, $translate);
 		if (isset($response['error'])) {
 			return new DataResponse($response, Http::STATUS_BAD_REQUEST);
 		}

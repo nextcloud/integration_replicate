@@ -43,10 +43,10 @@ class ReplicateAPIService {
 	/**
 	 * @param string $audioFileUrl
 	 * @param bool $translate
-	 * @param string $model
 	 * @return array|string[]
 	 */
-	public function createWhisperPrediction(string $audioFileUrl, bool $translate = false, string $model = 'large'): array {
+	public function createWhisperPrediction(string $audioFileUrl, bool $translate = false): array {
+		$model = $this->config->getAppValue(Application::APP_ID, 'model', 'large');
 		$params = [
 			'version' => Application::WHISPER_VERSION,
 			'input' => [
