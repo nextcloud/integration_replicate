@@ -62,7 +62,7 @@
 						:size="20" />
 					<ArrowRightIcon v-else />
 				</template>
-				{{ t('integration_replicate', 'Submit') }}
+				{{ submitText }}
 			</NcButton>
 		</div>
 	</div>
@@ -123,6 +123,11 @@ export default {
 	},
 
 	computed: {
+		submitText() {
+			return this.mode === 'transcribe'
+				? t('integration_replicate', 'Transcribe')
+				: t('integration_replicate', 'Translate')
+		},
 	},
 
 	watch: {
