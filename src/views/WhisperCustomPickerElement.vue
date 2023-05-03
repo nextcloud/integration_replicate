@@ -16,23 +16,23 @@
 			:show-upload-button="false"
 			:after-recording="onRecordEnd" />
 		<div class="form-wrapper">
-			<div class="line">
-				<label>
-					{{ t('integration_replicate', 'Action') }}
-				</label>
-				<div class="spacer" />
+			<div class="line justified">
 				<div class="radios">
 					<NcCheckboxRadioSwitch
+						:button-variant="true"
 						:checked.sync="mode"
 						type="radio"
 						value="transcribe"
+						button-variant-grouped="horizontal"
 						name="mode">
 						{{ t('integration_replicate', 'Transcribe') }}
 					</NcCheckboxRadioSwitch>
 					<NcCheckboxRadioSwitch
+						:button-variant="true"
 						:checked.sync="mode"
 						type="radio"
 						value="translate"
+						button-variant-grouped="horizontal"
 						name="mode">
 						{{ t('integration_replicate', 'Translate (only to English)') }}
 					</NcCheckboxRadioSwitch>
@@ -273,9 +273,6 @@ export default {
 		margin: 8px 0;
 		.radios {
 			display: flex;
-			> * {
-				margin: 0 16px;
-			}
 		}
 	}
 
@@ -284,6 +281,9 @@ export default {
 		align-items: center;
 		margin-top: 8px;
 		width: 100%;
+		&.justified {
+			justify-content: center;
+		}
 	}
 
 	.footer {
@@ -298,6 +298,14 @@ export default {
 	}
 
 	::v-deep .recorder {
+		background-color: var(--color-main-background) !important;
+		.ar-content * {
+			color: var(--color-main-text) !important;
+		}
+		.ar-icon {
+			background-color: var(--color-main-background) !important;
+			fill: var(--color-main-text) !important;
+		}
 		.ar-recorder__time-limit {
 			position: unset !important;
 		}
@@ -306,6 +314,12 @@ export default {
 		}
 		.ar-records {
 			height: unset !important;
+			&__record--selected {
+				background-color: var(--color-background-dark) !important;
+				.ar-icon {
+					background-color: var(--color-background-dark) !important;
+				}
+			}
 		}
 	}
 }
