@@ -38,7 +38,7 @@
 					</NcCheckboxRadioSwitch>
 				</div>
 			</div>
-			<div class="line">
+			<!--div class="line">
 				<label for="result-types">
 					{{ t('integration_replicate', 'Result format') }}
 				</label>
@@ -47,7 +47,7 @@
 					v-model="type"
 					:options="typeOptions"
 					input-id="result-types" />
-			</div>
+			</div-->
 		</div>
 		<div class="footer">
 			<span v-if="error" class="error">
@@ -74,7 +74,6 @@ import ArrowRightIcon from 'vue-material-design-icons/ArrowRight.vue'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
 import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
-import NcSelect from '@nextcloud/vue/dist/Components/NcSelect.js'
 import VueAudioRecorder from 'vue2-audio-recorder'
 
 import axios from '@nextcloud/axios'
@@ -93,7 +92,6 @@ export default {
 		NcButton,
 		NcLoadingIcon,
 		NcCheckboxRadioSwitch,
-		NcSelect,
 		ArrowRightIcon,
 	},
 
