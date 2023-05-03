@@ -137,7 +137,7 @@ export default {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	//padding: 16px;
+	padding: 12px 16px 16px 16px;
 
 	h2 {
 		display: flex;
