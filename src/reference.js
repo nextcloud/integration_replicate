@@ -19,11 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import {
-	registerWidget,
-	registerCustomPickerElement,
-	CustomPickerRenderResult,
-} from '@nextcloud/vue-richtext'
+import { registerWidget, registerCustomPickerElement, NcCustomPickerRenderResult } from '@nextcloud/vue/dist/Components/NcRichText.js'
 
 __webpack_nonce__ = btoa(OC.requestToken) // eslint-disable-line
 __webpack_public_path__ = OC.linkTo('integration_replicate', 'js/') // eslint-disable-line
@@ -53,7 +49,7 @@ registerCustomPickerElement('replicate-image', async (el, { providerId, accessib
 			accessible,
 		},
 	}).$mount(el)
-	return new CustomPickerRenderResult(vueElement.$el, vueElement)
+	return new NcCustomPickerRenderResult(vueElement.$el, vueElement)
 }, (el, renderResult) => {
 	console.debug('replicate image custom destroy callback. el', el, 'renderResult:', renderResult)
 	renderResult.object.$destroy()
@@ -84,7 +80,7 @@ registerCustomPickerElement('replicate-whisper', async (el, { providerId, access
 			accessible,
 		},
 	}).$mount(el)
-	return new CustomPickerRenderResult(vueElement.$el, vueElement)
+	return new NcCustomPickerRenderResult(vueElement.$el, vueElement)
 }, (el, renderResult) => {
 	console.debug('whisper custom destroy callback. el', el, 'renderResult:', renderResult)
 	renderResult.object.$destroy()
