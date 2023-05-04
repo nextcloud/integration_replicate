@@ -12,6 +12,7 @@
 return [
 	'routes' => [
 		['name' => 'config#setAdminConfig', 'url' => '/admin-config', 'verb' => 'PUT'],
+		['name' => 'replicateAPI#getPromptHistory', 'url' => '/prompts', 'verb' => 'GET'],
 		['name' => 'replicateAPI#createImagePrediction', 'url' => '/predictions/image', 'verb' => 'POST'],
 		['name' => 'replicateAPI#createWhisperPrediction', 'url' => '/predictions/whisper', 'verb' => 'POST'],
 		['name' => 'replicateAPI#getImagePredictionPage', 'url' => '/i/{predictionId}', 'verb' => 'GET'],

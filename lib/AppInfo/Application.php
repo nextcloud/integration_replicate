@@ -27,6 +27,9 @@ class Application extends App implements IBootstrap {
 	public const STABLE_DIFFUSION_VERSION = 'f178fa7a1ae43a9a9af01b833b9d2ecf97b1bcb0acfd2dc5dd04895e042863f1';
 	public const WHISPER_VERSION = '30414ee7c4fffc37e260fcab7842b5be470b9b840f2b608f5baa9bbef9a259ed';
 
+	public const PROMPT_TYPE_IMAGE = 0;
+	public const MAX_PROMPT_PER_TYPE_PER_USER = 5;
+
 	private IConfig $config;
 
 	public function __construct(array $urlParams = []) {

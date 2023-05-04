@@ -15,6 +15,7 @@ use Exception;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
 use OCA\Replicate\AppInfo\Application;
+use OCA\Replicate\Db\PromptMapper;
 use OCP\Files\File;
 use OCP\Files\NotPermittedException;
 use OCP\Http\Client\IClient;
@@ -36,8 +37,19 @@ class ReplicateAPIService {
 								private LoggerInterface $logger,
 								private IL10N $l10n,
 								private IConfig $config,
+								private PromptMapper $promptMapper,
 								IClientService $clientService) {
 		$this->client = $clientService->newClient();
+	}
+
+	/**
+	 * @param string $userId
+	 * @param int $type
+	 * @return array
+	 * @throws \OCP\DB\Exception
+	 */
+	public function getPromptHistory(string $userId, int $type): array {
+		return $this->promptMapper->getPromptsOfUser($userId, $type);
 	}
 
 	/**
@@ -94,9 +106,10 @@ class ReplicateAPIService {
 
 	/**
 	 * @param string $prompt
+	 * @param string $userId
 	 * @return array|string[]
 	 */
-	public function createImagePrediction(string $prompt): array {
+	public function createImagePrediction(string $prompt, string $userId): array {
 		$params = [
 			'version' => Application::STABLE_DIFFUSION_VERSION,
 			'input' => [
@@ -104,6 +117,7 @@ class ReplicateAPIService {
 			],
 			'num_outputs' => 1,
 		];
+		$this->promptMapper->createPrompt(Application::PROMPT_TYPE_IMAGE, $userId, $prompt);
 		return $this->request('predictions', $params, 'POST');
 	}
 
