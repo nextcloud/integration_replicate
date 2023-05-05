@@ -17,7 +17,7 @@
 				@keydown.enter="generate"
 				@trailing-button-click="query = ''" />
 		</div>
-		<div v-if="reference === null"
+		<div v-if="reference === null || query === ''"
 			class="prompts">
 			<NcUserBubble v-for="p in prompts"
 				:key="p.id"
@@ -26,10 +26,19 @@
 				:display-name="p.value"
 				@click="query = p.value" />
 		</div>
-		<ImageReferenceWidget v-else
+		<ImageReferenceWidget v-if="reference !== null"
 			:rich-object="reference.richObject"
 			orientation="horizontal" />
 		<div class="footer">
+			<NcButton class="advanced-button"
+				type="tertiary"
+				:aria-label="t('integration_replicate', 'Show/hide advanced options')"
+				@click="showAdvanced = !showAdvanced">
+				<template #icon>
+					<component :is="showAdvancedIcon" />
+				</template>
+				{{ t('integration_replicate', 'Advanced options') }}
+			</NcButton>
 			<NcButton
 				type="secondary"
 				:aria-label="t('integration_replicate', 'Preview images with Replicate')"
@@ -53,6 +62,37 @@
 				</template>
 			</NcButton>
 		</div>
+		<div v-show="showAdvanced" class="advanced">
+			<div class="line">
+				<label for="number">
+					{{ t('integration_replicate', 'Number of images to generate (1-4)') }}
+				</label>
+				<div class="spacer" />
+				<input
+					id="number"
+					v-model="imageNumber"
+					type="number"
+					min="1"
+					max="4"
+					step="1">
+			</div>
+			<div class="line">
+				<label for="size">
+					{{ t('integration_replicate', 'Size of the generated images') }}
+				</label>
+				<div class="spacer" />
+				<select
+					id="size"
+					v-model="imageSize">
+					<option value="512x512">
+						512x512 px
+					</option>
+					<option value="768x768">
+						768x768 px
+					</option>
+				</select>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -60,6 +100,8 @@
 import EyeIcon from 'vue-material-design-icons/Eye.vue'
 import EyeRefreshIcon from 'vue-material-design-icons/EyeRefresh.vue'
 import ArrowRightIcon from 'vue-material-design-icons/ArrowRight.vue'
+import ChevronRightIcon from 'vue-material-design-icons/ChevronRight.vue'
+import ChevronDownIcon from 'vue-material-design-icons/ChevronDown.vue'
 
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
 import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
@@ -88,6 +130,8 @@ export default {
 		EyeIcon,
 		EyeRefreshIcon,
 		NcUserBubble,
+		ChevronRightIcon,
+		ChevronDownIcon,
 	},
 
 	props: {
@@ -110,10 +154,18 @@ export default {
 			inputPlaceholder: t('integration_replicate', 'cyberpunk nextcloud logo with chrismas hats'),
 			poweredByTitle: t('integration_replicate', 'by Replicate with stable diffusion'),
 			prompts: null,
+			showAdvanced: false,
+			imageNumber: 1,
+			imageSize: '768x768',
 		}
 	},
 
 	computed: {
+		showAdvancedIcon() {
+			return this.showAdvanced
+				? ChevronDownIcon
+				: ChevronRightIcon
+		},
 		previewButtonLabel() {
 			return this.resultUrl !== null
 				? t('integration_replicate', 'Regenerate')
@@ -161,6 +213,8 @@ export default {
 			this.reference = null
 			const params = {
 				prompt: this.query,
+				num_outputs: parseInt(this.imageNumber),
+				size: this.imageSize,
 			}
 			const url = generateUrl('/apps/integration_replicate/predictions/image')
 			return axios.post(url, params)
@@ -219,6 +273,10 @@ export default {
 		align-items: center;
 	}
 
+	.spacer {
+		flex-grow: 1;
+	}
+
 	.prompts {
 		margin-top: 8px;
 		display: flex;
@@ -250,6 +308,28 @@ export default {
 		margin-top: 12px;
 		> * {
 			margin-left: 4px;
+		}
+	}
+
+	.advanced {
+		width: 100%;
+		padding: 12px 0;
+		.line {
+			display: flex;
+			align-items: center;
+			margin-top: 8px;
+
+			input,
+			select {
+				width: 200px;
+			}
+		}
+
+		input[type=number] {
+			width: 80px;
+			appearance: initial !important;
+			-moz-appearance: initial !important;
+			-webkit-appearance: initial !important;
 		}
 	}
 }

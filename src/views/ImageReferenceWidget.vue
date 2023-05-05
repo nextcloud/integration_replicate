@@ -20,7 +20,8 @@
   -->
 
 <template>
-	<ImagePrediction :prediction-id="richObject.predictionId" />
+	<ImagePrediction :prediction-id="richObject.predictionId"
+		:orientation="orientation" />
 </template>
 
 <script>
@@ -45,6 +46,11 @@ export default {
 		accessible: {
 			type: Boolean,
 			default: true,
+		},
+		orientation: {
+			type: String,
+			default: 'vertical',
+			validator: val => ['horizontal', 'vertical'].includes(val),
 		},
 	},
 

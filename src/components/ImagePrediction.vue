@@ -47,42 +47,44 @@
 		<div v-else-if="predictionHasFailed" class="failed-prediction">
 			{{ t('integration_replicate', 'Prediction has failed') }}
 		</div>
-		<a v-else-if="predictionSuccess"
-			:href="realImageUrl"
-			target="_blank"
-			class="image-wrapper">
-			<div v-if="!isImageLoaded" class="loading-icon">
-				<NcLoadingIcon
-					:size="44"
-					:title="t('integration_replicate', 'Loading image')" />
-			</div>
-			<img v-show="isImageLoaded"
-				class="image"
-				:src="proxiedImageUrl"
-				@load="isImageLoaded = true">
-		</a>
+		<div v-else-if="predictionSuccess"
+			:class="{ images: true, vertical: orientation === 'vertical' }">
+			<a v-for="realImageUrl in prediction.output"
+				:key="realImageUrl"
+				:href="realImageUrl"
+				target="_blank"
+				class="image-wrapper">
+				<ReplicateImage :direct-link="realImageUrl"
+					:src="getProxiedImageUrl(realImageUrl)" />
+			</a>
+		</div>
 	</div>
 </template>
 
 <script>
-import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
+import ReplicateIcon from '../components/icons/ReplicateIcon.vue'
+import ReplicateImage from './ReplicateImage.vue'
 
 import { generateUrl } from '@nextcloud/router'
 import axios from '@nextcloud/axios'
-import ReplicateIcon from '../components/icons/ReplicateIcon.vue'
 
 export default {
 	name: 'ImagePrediction',
 
 	components: {
+		ReplicateImage,
 		ReplicateIcon,
-		NcLoadingIcon,
 	},
 
 	props: {
 		predictionId: {
 			type: String,
 			required: true,
+		},
+		orientation: {
+			type: String,
+			default: 'vertical',
+			validator: val => ['horizontal', 'vertical'].includes(val),
 		},
 	},
 
@@ -105,21 +107,6 @@ export default {
 		},
 		predictionSuccess() {
 			return this.prediction?.status === 'succeeded'
-		},
-		realImageUrl() {
-			if (this.predictionSuccess) {
-				return this.prediction?.output[0]
-			}
-			return ''
-		},
-		proxiedImageUrl() {
-			if (this.predictionSuccess) {
-				return generateUrl(
-					'/apps/integration_replicate/predictions/{predictionId}/image?url={url}',
-					{ predictionId: this.predictionId, url: this.realImageUrl }
-				)
-			}
-			return ''
 		},
 		formattedLogs() {
 			if (this.prediction.logs) {
@@ -148,6 +135,12 @@ export default {
 					}
 				})
 		},
+		getProxiedImageUrl(realImageUrl) {
+			return generateUrl(
+				'/apps/integration_replicate/predictions/{predictionId}/image?url={url}',
+				{ predictionId: this.predictionId, url: realImageUrl }
+			)
+		},
 	},
 }
 </script>
@@ -168,18 +161,25 @@ export default {
 		}
 	}
 
-	.image-wrapper {
-		width: 100%;
+	.images {
+		margin-top: 12px;
 		display: flex;
-		align-items: center;
-		justify-content: center;
-		position: relative;
-		margin-top: 8px;
 
-		.image {
-			max-height: 300px;
-			max-width: 100%;
-			border-radius: var(--border-radius-large);
+		.image-wrapper {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+			margin: 8px 4px 0 4px;
+		}
+
+		&.vertical {
+			flex-direction: column;
+			.image-wrapper {
+				margin-left: 0px;
+				margin-right: 0px;
+			}
 		}
 	}
 }

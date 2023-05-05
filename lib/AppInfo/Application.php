@@ -24,8 +24,8 @@ use OCP\AppFramework\Bootstrap\IBootstrap;
 class Application extends App implements IBootstrap {
 
 	public const APP_ID = 'integration_replicate';
-	public const STABLE_DIFFUSION_VERSION = 'f178fa7a1ae43a9a9af01b833b9d2ecf97b1bcb0acfd2dc5dd04895e042863f1';
-	public const WHISPER_VERSION = '30414ee7c4fffc37e260fcab7842b5be470b9b840f2b608f5baa9bbef9a259ed';
+	public const STABLE_DIFFUSION_VERSION = 'db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf';
+	public const WHISPER_VERSION = 'e39e354773466b955265e969568deb7da217804d8e771ea8c9cd0cef6591f8bc';
 
 	public const PROMPT_TYPE_IMAGE = 0;
 	public const MAX_PROMPT_PER_TYPE_PER_USER = 5;

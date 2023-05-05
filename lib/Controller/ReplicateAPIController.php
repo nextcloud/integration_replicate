@@ -67,10 +67,13 @@ class ReplicateAPIController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 * @param string $prompt
+	 * @param int $num_outputs
+	 * @param string $size
 	 * @return DataResponse
+	 * @throws Exception
 	 */
-	public function createImagePrediction(string $prompt): DataResponse {
-		$response = $this->replicateAPIService->createImagePrediction($prompt, $this->userId);
+	public function createImagePrediction(string $prompt, int $num_outputs, string $size): DataResponse {
+		$response = $this->replicateAPIService->createImagePrediction($prompt, $this->userId, $num_outputs, $size);
 		if (isset($response['error'])) {
 			return new DataResponse($response, Http::STATUS_BAD_REQUEST);
 		}

@@ -107,15 +107,19 @@ class ReplicateAPIService {
 	/**
 	 * @param string $prompt
 	 * @param string $userId
+	 * @param int $numOutputs
+	 * @param string $size
 	 * @return array|string[]
+	 * @throws \OCP\DB\Exception
 	 */
-	public function createImagePrediction(string $prompt, string $userId): array {
+	public function createImagePrediction(string $prompt, string $userId, int $numOutputs, string $size): array {
 		$params = [
 			'version' => Application::STABLE_DIFFUSION_VERSION,
 			'input' => [
 				'prompt' => $prompt,
+				'num_outputs' => $numOutputs,
+				'image_dimensions' => $size,
 			],
-			'num_outputs' => 1,
 		];
 		$this->promptMapper->createPrompt(Application::PROMPT_TYPE_IMAGE, $userId, $prompt);
 		return $this->request('predictions', $params, 'POST');
