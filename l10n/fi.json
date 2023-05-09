@@ -1,0 +1,9 @@
+{ "translations": {
+    "Bad credentials" : "Virheelliset kirjautumistiedot",
+    "Connected accounts" : "Yhdistetyt tilit",
+    "Small" : "Pieni",
+    "Medium" : "Keskitasoinen",
+    "Preview" : "Esikatselu",
+    "Unknown error" : "Tuntematon virhe"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

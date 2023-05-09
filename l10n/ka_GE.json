@@ -1,0 +1,8 @@
+{ "translations": {
+    "Advanced options" : "დამატებითი ოპციონები",
+    "Send" : "გაგზავნა",
+    "Preview" : "წინასწარი ჩვენება",
+    "Text" : "ტექსტი",
+    "Unknown error" : "უცნობი შეცდომა"
+},"pluralForm" :"nplurals=2; plural=(n!=1);"
+}

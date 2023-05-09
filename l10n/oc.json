@@ -1,0 +1,10 @@
+{ "translations": {
+    "Bad credentials" : "Marrits identificants",
+    "Connected accounts" : "Comptes connectats",
+    "Advanced options" : "Opcions avançadas",
+    "Send" : "Enviar",
+    "Preview" : "Apercebut",
+    "Text" : "Tèxt",
+    "Unknown error" : "Error desconeguda"
+},"pluralForm" :"nplurals=2; plural=(n > 1);"
+}
