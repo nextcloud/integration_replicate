@@ -231,7 +231,7 @@ export default {
 				.catch((error) => {
 					console.debug('replicate request error', error)
 					showError(
-						t('integration_replicate', 'Failed launch image generation')
+						t('integration_replicate', 'Failed to launch image generation')
 						+ ': ' + (error.response?.data?.body?.detail ?? error.response?.data?.error)
 					)
 				})
