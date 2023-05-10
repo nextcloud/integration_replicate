@@ -1,0 +1,13 @@
+{ "translations": {
+    "Connected accounts" : "حساب‌های متصل",
+    "Small" : "کوچک",
+    "Medium" : "متوسط",
+    "Large" : "بزرگ",
+    "Advanced options" : "گزینه‌های پیش‌رفته",
+    "Send" : "ارسال",
+    "Preview" : "پیش‌نمایش",
+    "Text" : "متن",
+    "Translate" : "ترجمه",
+    "Unknown error" : "خطای ناشناخته"
+},"pluralForm" :"nplurals=2; plural=(n > 1);"
+}

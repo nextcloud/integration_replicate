@@ -1,6 +1,8 @@
 { "translations": {
+    "Advanced options" : "Täpsemad valikud",
     "Send" : "Saada",
     "Preview" : "Eelvaade",
+    "Translate" : "Tõlgi",
     "Unknown error" : "Tundmatu viga"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
