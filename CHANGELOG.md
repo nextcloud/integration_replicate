@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 - implement OCP\SpeechToText\ISpeechToTextProvider @julien-nc
-- prompt history
+- prompt history @julien-nc
 
 ### Changed
 
