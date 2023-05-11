@@ -13,6 +13,7 @@
 				ref="replicate-search-input"
 				:value.sync="query"
 				:label="inputPlaceholder"
+				:disabled="loading"
 				:show-trailing-button="!!query"
 				@keydown.enter="generate"
 				@trailing-button-click="query = ''" />
