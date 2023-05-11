@@ -6,6 +6,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 1.0.6 – 2023-05-11
+
+### Changed
+
+- change regenerate icon @julien-nc
+- disable inputs during generation/regeneration @julien-nc
+- set prompt history bubble max width, add title with full text @julien-nc
+
+### Fixed
+
+- error text grammar fixes
+
 ## 1.0.5 – 2023-05-09
 
 ### Added
