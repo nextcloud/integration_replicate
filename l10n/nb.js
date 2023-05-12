@@ -5,6 +5,7 @@ OC.L10N.register(
     "Bad credentials" : "Påloggingsdetaljene er feil",
     "Small" : "Liten",
     "Medium" : "Medium",
+    "Large" : "Stor",
     "Advanced options" : "Avanserte innstillinger",
     "Send" : "Send",
     "Preview" : "Forhåndsvis",

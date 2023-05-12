@@ -1,6 +1,8 @@
 OC.L10N.register(
     "integration_replicate",
     {
+    "AI image generation (stable diffusion via Replicate)" : "AI图像生成（由Replicate提供， Stable Diffusion模型）",
+    "AI speech-to-text (Whisper via Replicate)" : "AI语音转文本（由Replicate提供，Whisper模型）",
     "Bad HTTP method" : "错误的HTTP方法",
     "Bad credentials" : "错误的凭据",
     "Connected accounts" : "关联账号",
