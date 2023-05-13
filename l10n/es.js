@@ -49,6 +49,7 @@ OC.L10N.register(
     "by Replicate with stable diffusion" : "por Replicate con difusión estable",
     "Regenerate" : "Regenerar",
     "Preview" : "Vista previa",
+    "Failed to launch image generation" : "Fallo al lanzar la generación de imágenes",
     "AI speech-to-text" : "Dictado a texto IA",
     "Transcribe" : "Transcribir",
     "Translate (only to English)" : "Traducir (sólo a Inglés)",

@@ -49,6 +49,7 @@ OC.L10N.register(
     "by Replicate with stable diffusion" : "помоћу Replicate са стабилном дифузијом",
     "Regenerate" : "Регенериши",
     "Preview" : "Преглед",
+    "Failed to launch image generation" : "Није успело покретање генерисања слике",
     "AI speech-to-text" : "AI говор-у-текст",
     "Transcribe" : "Транскрибуј",
     "Translate (only to English)" : "Преведи (само на енглески)",
