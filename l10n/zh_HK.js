@@ -48,6 +48,7 @@ OC.L10N.register(
     "by Replicate with stable diffusion" : "由具有穩定擴散的 Replicate 提供",
     "Regenerate" : "重新生成",
     "Preview" : "預覽",
+    "Failed to launch image generation" : "無法啟動圖像生成",
     "AI speech-to-text" : "AI 語音轉文字",
     "Transcribe" : "抄錄",
     "Translate (only to English)" : "翻譯（僅限英文）",
