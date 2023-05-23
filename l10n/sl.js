@@ -10,6 +10,7 @@ OC.L10N.register(
     "Advanced options" : "Napredne možnosti",
     "Send" : "Pošlji",
     "Preview" : "Predogled",
+    "Transcribe" : "Prepiši govor",
     "Text" : "Besedilo",
     "Translate" : "Prevodi",
     "Unknown error" : "Neznana napaka"
