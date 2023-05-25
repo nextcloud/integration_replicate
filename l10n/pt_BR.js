@@ -13,6 +13,7 @@ OC.L10N.register(
     "Show/hide advanced options" : "Exibir/Esconder opçòes avançadas",
     "Advanced options" : "Opções avançadas",
     "Send" : "Enviar",
+    "Regenerate" : "Regenerado",
     "Preview" : "Visualizar",
     "Text" : "Texto",
     "Translate" : "Traduzir",
