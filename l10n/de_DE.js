@@ -2,7 +2,7 @@ OC.L10N.register(
     "integration_replicate",
     {
     "AI image generation (stable diffusion via Replicate)" : "KI-Bildgenerierung (stabile Diffusion über Replicate)",
-    "AI speech-to-text (Whisper via Replicate)" : "KI-Sprache-zu-Text (Whisper mittels Replicate)",
+    "AI speech-to-text (Whisper via Replicate)" : "KI Sprache-zu-Text (Whisper mittels Replicate)",
     "Bad HTTP method" : "Ungültige HTTP-Methode",
     "Bad credentials" : "Falsche Anmeldeinformationen",
     "Connected accounts" : "Verbundene Konten",
@@ -57,7 +57,7 @@ OC.L10N.register(
     "by Replicate with Whisper" : "von Replicate mit Whisper",
     "Text" : "Text",
     "Internal link/widget" : "Interner Link/Widget",
-    "Translate" : "beim Übersetzen",
+    "Translate" : "Übersetzen",
     "Unknown error" : "Unbekannter Fehler"
 },
 "nplurals=2; plural=(n != 1);");
