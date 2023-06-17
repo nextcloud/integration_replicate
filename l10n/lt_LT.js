@@ -7,8 +7,10 @@ OC.L10N.register(
     "Small" : "Mažas",
     "Medium" : "Vidutinis",
     "Large" : "Didelis",
+    "Show/hide advanced options" : "Rodyti/slėpti išplėstines parinktis",
     "Advanced options" : "Išplėstinės parinktys",
     "Send" : "Siųsti",
+    "Preview" : "Peržiūra",
     "Text" : "Tekstas",
     "Translate" : "Verskite",
     "Unknown error" : "Nežinoma klaida"
