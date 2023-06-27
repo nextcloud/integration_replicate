@@ -9,6 +9,7 @@ OC.L10N.register(
     "Large" : "كبير",
     "Advanced options" : "الخيارات المتقدمة",
     "Send" : "إرسال",
+    "Preview" : "مُعاينة",
     "Text" : "نص",
     "Translate" : "ترجم",
     "Unknown error" : "خطأ غير معروف"
