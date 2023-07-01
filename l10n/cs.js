@@ -9,7 +9,6 @@ OC.L10N.register(
     "Replicate's Whisper Speech-To-Text" : "Whisper - převod řeči na text (od Whisper)",
     "Replicate integration" : "Napojení na Replicate",
     "Integration of Replicate stable-diffusion" : "Napojení na Replicate stable-diffusion",
-    "Replicate integration provides a link reference provider for\n    Whisper translation/transcription and stable diffusion image prediction." : "Napojení na Replicate obsahuje poskytovatele pro referování na odkazy pro překlady / přepisy do textu pomocí Whisper a navrhování obrázků pomocí stable diffusion. ",
     "Replicate API token" : "Token k API Replicate",
     "your API token" : "váš token k API",
     "You can create a free API token on https://replicate.com" : "Klíč k API rozhraní zdarma je možné získat na https://replicate.com",

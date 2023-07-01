@@ -9,7 +9,6 @@ OC.L10N.register(
     "Replicate's Whisper Speech-To-Text" : "Whisper говор-у-текст од Replicate",
     "Replicate integration" : "Replicate интеграција",
     "Integration of Replicate stable-diffusion" : "Интеграција Replicate стабилне дифузије",
-    "Replicate integration provides a link reference provider for\n    Whisper translation/transcription and stable diffusion image prediction." : "Replicate интеграција обезбеђује пружаоца услуге линк референце за\n    Whisper превод/транскрипцију и предвиђање слике стабилном дифузијом.",
     "Replicate API token" : "Replicate API жетон",
     "your API token" : "ваш API жетон",
     "You can create a free API token on https://replicate.com" : "Бесплатан API жетон можете да креирате на https://replicate.com",

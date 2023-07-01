@@ -7,7 +7,6 @@
     "Replicate's Whisper Speech-To-Text" : "Dictado a texto Whisper de Replicate",
     "Replicate integration" : "Integración con Replicate",
     "Integration of Replicate stable-diffusion" : "Integración de la difusión estable de Replicate",
-    "Replicate integration provides a link reference provider for\n    Whisper translation/transcription and stable diffusion image prediction." : "La integración con Replicate proporciona un proveedor de referencia de enlace para\n    la traducción/transcripción usando Whisper y la predicción de imágenes con difusión estable.",
     "Replicate API token" : "Token API de Replicate",
     "your API token" : "su token API",
     "You can create a free API token on https://replicate.com" : "Puede crear un token API gratuito en https://replicate.com",

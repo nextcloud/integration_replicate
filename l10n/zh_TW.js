@@ -9,7 +9,6 @@ OC.L10N.register(
     "Replicate's Whisper Speech-To-Text" : "Replicate 的 Whisper 語音轉文字",
     "Replicate integration" : "Replicate 整合",
     "Integration of Replicate stable-diffusion" : "Replicate 的 Stable Diffusion 整合",
-    "Replicate integration provides a link reference provider for\n    Whisper translation/transcription and stable diffusion image prediction." : "Replicate 整合提供了 Whisper 翻譯/轉錄與 Stable Diffusion 影像預測的連結參照提供者。",
     "Replicate API token" : "Replicate API 權杖",
     "your API token" : "您的 API 權杖",
     "You can create a free API token on https://replicate.com" : "您可以在 https://replicate.com 上建立免費的 API 權杖",
