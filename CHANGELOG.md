@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 1.0.7 – 2023-07-12
+
+### Added
+
+- ethical AI rating [#8](https://github.com/nextcloud/integration_replicate/issues/8) @marcelklehr
+
+### Changed
+
+- improve style of audio recorder @julien-nc
+
 ## 1.0.6 – 2023-05-11
 
 ### Changed
