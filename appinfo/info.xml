@@ -7,7 +7,7 @@
 Replicate integration provides a smart picker provider for Whisper translation/transcription and stable diffusion image prediction.
 
 ## Ethical AI Rating
-### Rating: 🔴🟠🟡🟢
+### Rating: 🟡
 
 Positive:
 * the software for training and inferencing of this model is open source
@@ -21,7 +21,7 @@ Negative:
 
 Learn more about the Nextcloud Ethical AI Rating [in our blog](https://nextcloud.com/blog/nextcloud-ethical-ai-rating/).
     ]]></description>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <licence>agpl</licence>
     <author>Julien Veyssier</author>
     <namespace>Replicate</namespace>
