@@ -16,6 +16,7 @@ OC.L10N.register(
     "Model" : "型號",
     "Larger model size gives better results but uses more credit" : "較大的模型會提供更好的結果，但會使用更多的帳面餘額",
     "Tiny" : "微小",
+    "Base" : "基本",
     "Small" : "小",
     "Medium" : "中等的",
     "Large" : "大",
