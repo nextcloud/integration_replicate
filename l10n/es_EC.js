@@ -1,6 +1,11 @@
 OC.L10N.register(
     "integration_replicate",
     {
+    "Bad HTTP method" : "Método HTTP incorrecto",
+    "Bad credentials" : "Credenciales incorrectas",
+    "Small" : "Pequeño",
+    "Medium" : "Medio",
+    "Large" : "Grande",
     "Advanced options" : "Opciones avanzadas",
     "Send" : "Enviar",
     "Preview" : "Previsualizar",
