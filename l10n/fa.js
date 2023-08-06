@@ -1,6 +1,8 @@
 OC.L10N.register(
     "integration_replicate",
     {
+    "Bad HTTP method" : "روش HTTP بد",
+    "Bad credentials" : "اعتبارنامه بد",
     "Connected accounts" : "حساب‌های متصل",
     "Small" : "کوچک",
     "Medium" : "متوسط",
