@@ -1,13 +1,25 @@
 { "translations": {
     "Bad HTTP method" : "HTTP-metode er feil",
     "Bad credentials" : "Påloggingsdetaljene er feil",
+    "Connected accounts" : "Tilknyttede kontoer",
     "Small" : "Liten",
     "Medium" : "Medium",
     "Large" : "Stor",
+    "Loading image" : "Laster inn bilde",
+    "Generated image" : "Generert bilde",
+    "Direct image link" : "Direkte bildelink",
+    "AI image generation" : "Generering av AI-bilder",
+    "Show/hide advanced options" : "Vis/skjul avanserte alternativer",
     "Advanced options" : "Avanserte innstillinger",
     "Send" : "Send",
+    "Size of the generated images" : "Størrelsen på de genererte bildene",
+    "Regenerate" : "Regenerer",
     "Preview" : "Forhåndsvis",
+    "AI speech-to-text" : "AI tale-til-tekst",
+    "Transcribe" : "Transkribere",
+    "Translate (only to English)" : "Oversett (bare til engelsk)",
     "Text" : "Tekst",
+    "Translate" : "Oversette",
     "Unknown error" : "Ukjent feil"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
