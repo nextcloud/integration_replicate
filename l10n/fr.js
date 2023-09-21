@@ -1,6 +1,7 @@
 OC.L10N.register(
     "integration_replicate",
     {
+    "AI speech-to-text (Whisper via Replicate)" : "Synthèse vocale par IA (Whisper via Replicate)",
     "Bad HTTP method" : "Mauvaise méthode HTTP",
     "Bad credentials" : "Identifiants incorrects",
     "Connected accounts" : "Comptes connectés",
