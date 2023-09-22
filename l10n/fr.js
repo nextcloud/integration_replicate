@@ -19,7 +19,7 @@ OC.L10N.register(
     "Size of the generated images" : "Taille des images générées",
     "Regenerate" : "Régénérer",
     "Preview" : "Prévisualiser",
-    "AI speech-to-text" : "Reconnaissance vocale par IA",
+    "AI speech-to-text" : "Synthèse vocale par IA",
     "Transcribe" : "Transcrire",
     "Translate (only to English)" : "Traduction (uniquement vers l'anglais)",
     "Result format" : "Format du résultat",
