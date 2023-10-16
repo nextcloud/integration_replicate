@@ -11,6 +11,7 @@ OC.L10N.register(
     "Send" : "Verzenden",
     "Preview" : "Voorbeeld",
     "Text" : "Tekst",
+    "Translate" : "Vertaal",
     "Unknown error" : "Onbekende fout"
 },
 "nplurals=2; plural=(n != 1);");
