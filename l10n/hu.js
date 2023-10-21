@@ -13,6 +13,7 @@ OC.L10N.register(
     "your API token" : "saját API kulcs",
     "You can create a free API token on https://replicate.com" : "Ingyenes API kulcs igényelhető a https://replicate.com címen",
     "Model" : "Modell",
+    "Larger model size gives better results but uses more credit" : "A nagyobb modellek pontosabb eredményeket adnak, de több kreditet használnak",
     "Tiny" : "Apró",
     "Base" : "Alap",
     "Small" : "Kicsi",

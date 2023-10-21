@@ -9,6 +9,7 @@ OC.L10N.register(
     "Large" : "Великий",
     "Advanced options" : "Розширені налаштування",
     "Send" : "Надіслати",
+    "Preview" : "Попередній перегляд",
     "Text" : "Текст",
     "Translate" : "Перекласти",
     "Unknown error" : "Невідома помилка"
