@@ -1,6 +1,6 @@
 {
 	"name": "integration_replicate",
-	"version": "0.0.1",
+	"version": "1.0.7",
 	"description": "Replicate integration",
 	"main": "index.js",
 	"directories": {

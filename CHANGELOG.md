@@ -6,15 +6,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-## 1.0.7 – 2023-07-12
-
-### Added
-
-- ethical AI rating [#8](https://github.com/nextcloud/integration_replicate/issues/8) @marcelklehr
+## [1.0.7] – 2023-10-126
 
 ### Changed
 
-- improve style of audio recorder @julien-nc
+- Add support for Nextcloud 28
+- README & info.xml: Add ethical AI rating
+- Fix(l10n): Update translations from Transifex
+- update nc/vue, picker modal size is now used
+- improve style of audio recorder
+
 
 ## 1.0.6 – 2023-05-11
 
