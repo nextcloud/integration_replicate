@@ -1,7 +1,7 @@
 OC.L10N.register(
     "integration_replicate",
     {
-    "AI image generation (stable diffusion via Replicate)" : "Yapay Zeka görsel oluşturma (Replicate ile stable diffusion)",
+    "AI image generation (stable diffusion via Replicate)" : "Yapay Zeka görsel üretme (Replicate ile stable diffusion)",
     "AI speech-to-text (Whisper via Replicate)" : "Yapay Zeka konuşmadan metne (Replicate ile Whisper)",
     "Bad HTTP method" : "HTTP yöntemi hatalı",
     "Bad credentials" : "Kimlik doğrulama bilgileri hatalı",
@@ -37,7 +37,7 @@ OC.L10N.register(
     "Transcription/translation is processing..." : "Dönüşüm/çeviri işleniyor...",
     "Transcription/translation was canceled" : "Dönüşüm/çeviri iptal edildi",
     "Transcription/translation has failed" : "Dönüşüm/çeviri yapılamadı",
-    "AI image generation" : "Yapay Zeka görsel oluşturma",
+    "AI image generation" : "Yapay Zeka görsel üretme",
     "Show/hide advanced options" : "Gelişmiş ayarları görüntüle/gizle",
     "Advanced options" : "Gelişmiş ayarlar",
     "Preview images with Replicate" : "Görselleri Replicate ile ön izle",
@@ -49,7 +49,7 @@ OC.L10N.register(
     "by Replicate with stable diffusion" : "Replicate tarafından stable diffusion ile",
     "Regenerate" : "Yeniden oluştur",
     "Preview" : "Ön izleme",
-    "Failed to launch image generation" : "Görsel oluşturma başlatılamadı",
+    "Failed to launch image generation" : "Görsel üretme başlatılamadı",
     "AI speech-to-text" : "Yapay Zeka konuşmadan metne",
     "Transcribe" : "Dönüştür",
     "Translate (only to English)" : "Dönüştür (yalnızca İngilizce'ye)",
