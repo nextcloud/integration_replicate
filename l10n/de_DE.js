@@ -1,7 +1,7 @@
 OC.L10N.register(
     "integration_replicate",
     {
-    "AI image generation (stable diffusion via Replicate)" : "KI-Bildgenerierung (stabile Diffusion über Replicate)",
+    "AI image generation (stable diffusion via Replicate)" : "KI-Bilderstellung (stabile Diffusion über Replicate)",
     "AI speech-to-text (Whisper via Replicate)" : "KI Sprache-zu-Text (Whisper mittels Replicate)",
     "Bad HTTP method" : "Ungültige HTTP-Methode",
     "Bad credentials" : "Falsche Anmeldeinformationen",
