@@ -7,6 +7,7 @@ OC.L10N.register(
     "Send" : "Enviar",
     "Preview" : "Apercebut",
     "Text" : "Tèxt",
+    "Translate" : "Tradurre",
     "Unknown error" : "Error desconeguda"
 },
 "nplurals=2; plural=(n > 1);");
