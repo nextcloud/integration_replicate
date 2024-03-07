@@ -9,6 +9,7 @@ OC.L10N.register(
     "Preview" : "Previsualizar",
     "Transcribe" : "Trescribir",
     "Text" : "Testu",
+    "Translate" : "Traducir",
     "Unknown error" : "Error desconocíu"
 },
 "nplurals=2; plural=(n != 1);");
