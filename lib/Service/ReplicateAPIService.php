@@ -19,11 +19,11 @@ use OCA\Replicate\Db\PromptMapper;
 use OCP\Files\File;
 use OCP\Files\NotPermittedException;
 use OCP\Http\Client\IClient;
+use OCP\Http\Client\IClientService;
 use OCP\IConfig;
 use OCP\IL10N;
 use OCP\Lock\LockedException;
 use Psr\Log\LoggerInterface;
-use OCP\Http\Client\IClientService;
 use Throwable;
 
 class ReplicateAPIService {
@@ -103,7 +103,7 @@ class ReplicateAPIService {
 		throw new Exception('Error transcribing file "' . $file->getName() . '"');
 	}
 
-	public function createTextGenerationPrediction(string $prompt, ): array {
+	public function createTextGenerationPrediction(string $prompt): array {
 		$params = [
 			'version' => Application::TEXT_GEN_MODEL_VERSION,
 			'input' => [
@@ -199,11 +199,11 @@ class ReplicateAPIService {
 
 			if ($method === 'GET') {
 				$response = $this->client->get($url, $options);
-			} else if ($method === 'POST') {
+			} elseif ($method === 'POST') {
 				$response = $this->client->post($url, $options);
-			} else if ($method === 'PUT') {
+			} elseif ($method === 'PUT') {
 				$response = $this->client->put($url, $options);
-			} else if ($method === 'DELETE') {
+			} elseif ($method === 'DELETE') {
 				$response = $this->client->delete($url, $options);
 			} else {
 				return ['error' => $this->l10n->t('Bad HTTP method')];

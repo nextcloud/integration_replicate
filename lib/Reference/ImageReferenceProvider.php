@@ -22,29 +22,29 @@
 
 namespace OCA\Replicate\Reference;
 
-use OCP\Collaboration\Reference\ADiscoverableReferenceProvider;
-use OCP\Collaboration\Reference\Reference;
 use OC\Collaboration\Reference\ReferenceManager;
 use OCA\Replicate\AppInfo\Application;
+use OCP\Collaboration\Reference\ADiscoverableReferenceProvider;
 use OCP\Collaboration\Reference\IReference;
+use OCP\Collaboration\Reference\Reference;
 use OCP\IL10N;
 
 use OCP\IURLGenerator;
 
-class ImageReferenceProvider extends ADiscoverableReferenceProvider  {
+class ImageReferenceProvider extends ADiscoverableReferenceProvider {
 
 	private const RICH_OBJECT_TYPE = Application::APP_ID . '_image';
 
 	public function __construct(private IL10N $l10n,
-								private IURLGenerator $urlGenerator,
-								private ReferenceManager $referenceManager,
-								private ?string $userId) {
+		private IURLGenerator $urlGenerator,
+		private ReferenceManager $referenceManager,
+		private ?string $userId) {
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function getId(): string	{
+	public function getId(): string {
 		return 'replicate-image';
 	}
 
@@ -58,7 +58,7 @@ class ImageReferenceProvider extends ADiscoverableReferenceProvider  {
 	/**
 	 * @inheritDoc
 	 */
-	public function getOrder(): int	{
+	public function getOrder(): int {
 		return 10;
 	}
 

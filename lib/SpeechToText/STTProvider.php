@@ -14,8 +14,8 @@ use Psr\Log\LoggerInterface;
 class STTProvider implements ISpeechToTextProvider {
 
 	public function __construct(private ReplicateAPIService $replicateAPIService,
-								private LoggerInterface $logger,
-								private IL10N $l) {
+		private LoggerInterface $logger,
+		private IL10N $l) {
 	}
 
 	/**

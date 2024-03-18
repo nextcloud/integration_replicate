@@ -12,6 +12,7 @@
 namespace OCA\Replicate\Controller;
 
 use OCA\Replicate\AppInfo\Application;
+use OCA\Replicate\Service\ReplicateAPIService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataDisplayResponse;
@@ -19,9 +20,8 @@ use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Services\IInitialState;
 use OCP\DB\Exception;
-use OCP\IRequest;
 
-use OCA\Replicate\Service\ReplicateAPIService;
+use OCP\IRequest;
 
 class ReplicateAPIController extends Controller {
 

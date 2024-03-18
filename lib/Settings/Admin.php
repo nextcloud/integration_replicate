@@ -1,16 +1,17 @@
 <?php
+
 namespace OCA\Replicate\Settings;
 
+use OCA\Replicate\AppInfo\Application;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Services\IInitialState;
 use OCP\IConfig;
 use OCP\Settings\ISettings;
-use OCA\Replicate\AppInfo\Application;
 
 class Admin implements ISettings {
 
 	public function __construct(private IConfig $config,
-								private IInitialState $initialStateService) {
+		private IInitialState $initialStateService) {
 	}
 
 	/**

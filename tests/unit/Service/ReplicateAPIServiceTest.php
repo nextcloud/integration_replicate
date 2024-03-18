@@ -2,7 +2,6 @@
 
 namespace OCA\Replicate\Tests;
 
-
 use OCA\Replicate\AppInfo\Application;
 
 class ReplicateAPIServiceTest extends \PHPUnit\Framework\TestCase {

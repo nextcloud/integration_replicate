@@ -11,19 +11,19 @@
 
 namespace OCA\Replicate\Controller;
 
-use OCP\IConfig;
-use OCP\IRequest;
-use OCP\AppFramework\Http\DataResponse;
-use OCP\AppFramework\Controller;
-
 use OCA\Replicate\AppInfo\Application;
+use OCP\AppFramework\Controller;
+use OCP\AppFramework\Http\DataResponse;
+use OCP\IConfig;
+
+use OCP\IRequest;
 
 class ConfigController extends Controller {
 
 	public function __construct(string   $appName,
-								IRequest $request,
-								private IConfig  $config,
-								?string  $userId) {
+		IRequest $request,
+		private IConfig  $config,
+		?string  $userId) {
 		parent::__construct($appName, $request);
 	}
 
