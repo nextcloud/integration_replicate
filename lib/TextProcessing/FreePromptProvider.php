@@ -11,6 +11,10 @@ use OCP\TextProcessing\IProviderWithExpectedRuntime;
 use OCP\TextProcessing\IProviderWithUserId;
 use Psr\Log\LoggerInterface;
 
+/**
+ * @implements IProviderWithExpectedRuntime<FreePromptTaskType>
+ * @implements IProviderWithUserId<FreePromptTaskType>
+ */
 class FreePromptProvider implements IProviderWithExpectedRuntime, IProviderWithUserId {
 
 	public function __construct(

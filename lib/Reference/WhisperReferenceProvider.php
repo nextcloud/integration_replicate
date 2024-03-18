@@ -22,10 +22,10 @@
 
 namespace OCA\Replicate\Reference;
 
-use OC\Collaboration\Reference\ReferenceManager;
 use OCA\Replicate\AppInfo\Application;
 use OCP\Collaboration\Reference\ADiscoverableReferenceProvider;
 use OCP\Collaboration\Reference\IReference;
+use OCP\Collaboration\Reference\IReferenceManager;
 use OCP\Collaboration\Reference\Reference;
 use OCP\IL10N;
 
@@ -37,7 +37,7 @@ class WhisperReferenceProvider extends ADiscoverableReferenceProvider {
 
 	public function __construct(private IL10N $l10n,
 		private IURLGenerator $urlGenerator,
-		private ReferenceManager $referenceManager,
+		private IReferenceManager $referenceManager,
 		private ?string $userId) {
 	}
 
@@ -107,7 +107,7 @@ class WhisperReferenceProvider extends ADiscoverableReferenceProvider {
 
 	/**
 	 * @param string $url
-	 * @return array|null
+	 * @return string|null
 	 */
 	private function getPredictionId(string $url): ?string {
 		preg_match('/\/w\/([0-9a-z]+)$/i', $url, $matches);

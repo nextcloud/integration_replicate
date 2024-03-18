@@ -74,13 +74,12 @@ class ReplicateAPIService {
 	 *
 	 * @param File $file
 	 * @param bool $translate
-	 * @param string $model
 	 * @return string
 	 * @throws LockedException
 	 * @throws NotPermittedException
 	 */
-	public function transcribeFile(File $file, bool $translate = false, string $model = 'large'): string {
-		$prediction = $this->createWhisperPrediction($file->getContent(), $translate, $model);
+	public function transcribeFile(File $file, bool $translate = false): string {
+		$prediction = $this->createWhisperPrediction($file->getContent(), $translate);
 		if (isset($prediction['id'])) {
 			$predictionId = $prediction['id'];
 
