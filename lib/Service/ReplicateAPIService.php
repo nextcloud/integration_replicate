@@ -103,6 +103,16 @@ class ReplicateAPIService {
 		throw new Exception('Error transcribing file "' . $file->getName() . '"');
 	}
 
+	public function createTextGenerationPrediction(string $prompt, ): array {
+		$params = [
+			'version' => Application::TEXT_GEN_MODEL_VERSION,
+			'input' => [
+				'prompt' => $prompt,
+			],
+		];
+		return $this->request('predictions', $params, 'POST');
+	}
+
 	/**
 	 * @param string $prompt
 	 * @param string|null $userId
