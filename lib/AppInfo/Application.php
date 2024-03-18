@@ -13,6 +13,7 @@ use OCA\Replicate\Listener\ReplicateReferenceListener;
 use OCA\Replicate\Reference\ImageReferenceProvider;
 use OCA\Replicate\Reference\WhisperReferenceProvider;
 use OCA\Replicate\SpeechToText\STTProvider;
+use OCA\Replicate\TextToImage\TextToImageProvider;
 use OCP\Collaboration\Reference\RenderReferenceEvent;
 use OCP\IConfig;
 
@@ -46,9 +47,8 @@ class Application extends App implements IBootstrap {
 			$context->registerReferenceProvider(WhisperReferenceProvider::class);
 			$context->registerEventListener(RenderReferenceEvent::class, ReplicateReferenceListener::class);
 
-			if (version_compare($this->config->getSystemValueString('version', '0.0.0'), '27.0.0', '>=')) {
-				$context->registerSpeechToTextProvider(STTProvider::class);
-			}
+			$context->registerSpeechToTextProvider(STTProvider::class);
+			$context->registerTextToImageProvider(TextToImageProvider::class);
 		}
 	}
 

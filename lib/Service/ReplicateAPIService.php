@@ -26,19 +26,18 @@ use Psr\Log\LoggerInterface;
 use OCP\Http\Client\IClientService;
 use Throwable;
 
-/**
- * Service to make requests to Replicate REST API
- */
 class ReplicateAPIService {
 
 	private IClient $client;
 
-	public function __construct (string $appName,
-								private LoggerInterface $logger,
-								private IL10N $l10n,
-								private IConfig $config,
-								private PromptMapper $promptMapper,
-								IClientService $clientService) {
+	public function __construct(
+		string $appName,
+		private LoggerInterface $logger,
+		private IL10N $l10n,
+		private IConfig $config,
+		private PromptMapper $promptMapper,
+		IClientService $clientService
+	) {
 		$this->client = $clientService->newClient();
 	}
 
@@ -106,13 +105,13 @@ class ReplicateAPIService {
 
 	/**
 	 * @param string $prompt
-	 * @param string $userId
+	 * @param string|null $userId
 	 * @param int $numOutputs
 	 * @param string $size
 	 * @return array|string[]
 	 * @throws \OCP\DB\Exception
 	 */
-	public function createImagePrediction(string $prompt, string $userId, int $numOutputs, string $size): array {
+	public function createImagePrediction(string $prompt, ?string $userId, int $numOutputs, string $size): array {
 		$params = [
 			'version' => Application::STABLE_DIFFUSION_VERSION,
 			'input' => [
@@ -121,7 +120,9 @@ class ReplicateAPIService {
 				'image_dimensions' => $size,
 			],
 		];
-		$this->promptMapper->createPrompt(Application::PROMPT_TYPE_IMAGE, $userId, $prompt);
+		if ($userId !== null) {
+			$this->promptMapper->createPrompt(Application::PROMPT_TYPE_IMAGE, $userId, $prompt);
+		}
 		return $this->request('predictions', $params, 'POST');
 	}
 
