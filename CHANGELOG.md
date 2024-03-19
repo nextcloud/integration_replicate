@@ -6,6 +6,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.1.1] – 2024-03-19
+
+### Added
+
+- Image generation provider
+- Text generation provider
+- Admin settings to choose text/image generation model and set extra model parameters
+- Psalm and php-cs checks
+
+### Changed
+
+- Bump min NC version to 28
+- Update npm pkgs
+- Use @nextcloud/vue 8
+
 ## [1.1.0] – 2024-02-28
 
 ### Changed
