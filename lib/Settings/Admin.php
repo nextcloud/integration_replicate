@@ -5,13 +5,13 @@ namespace OCA\Replicate\Settings;
 use OCA\Replicate\AppInfo\Application;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Services\IInitialState;
-use OCP\IAppConfig;
+use OCP\IConfig;
 use OCP\Settings\ISettings;
 
 class Admin implements ISettings {
 
 	public function __construct(
-		private IAppConfig $appConfig,
+		private IConfig $config,
 		private IInitialState $initialStateService,
 	) {
 	}
@@ -20,14 +20,14 @@ class Admin implements ISettings {
 	 * @return TemplateResponse
 	 */
 	public function getForm(): TemplateResponse {
-		$apiKey = $this->appConfig->getValueString(Application::APP_ID, 'api_key');
-		$model = $this->appConfig->getValueString(Application::APP_ID, 'model', 'large');
-		$llmModelName = $this->appConfig->getValueString(Application::APP_ID, 'llm_model_name', Application::DEFAULT_LLM_NAME);
-		$llmModelVersion = $this->appConfig->getValueString(Application::APP_ID, 'llm_model_version', Application::DEFAULT_LLM_VERSION);
-		$llmExtraParams = $this->appConfig->getValueString(Application::APP_ID, 'llm_extra_params');
-		$imageGenModelName = $this->appConfig->getValueString(Application::APP_ID, 'igen_model_name');
-		$imageGenModelVersion = $this->appConfig->getValueString(Application::APP_ID, 'igen_model_version', Application::DEFAULT_IMAGE_GEN_VERSION);
-		$imageGenExtraParams = $this->appConfig->getValueString(Application::APP_ID, 'igen_extra_params');
+		$apiKey = $this->config->getAppValue(Application::APP_ID, 'api_key');
+		$model = $this->config->getAppValue(Application::APP_ID, 'model', 'large');
+		$llmModelName = $this->config->getAppValue(Application::APP_ID, 'llm_model_name', Application::DEFAULT_LLM_NAME);
+		$llmModelVersion = $this->config->getAppValue(Application::APP_ID, 'llm_model_version', Application::DEFAULT_LLM_VERSION);
+		$llmExtraParams = $this->config->getAppValue(Application::APP_ID, 'llm_extra_params');
+		$imageGenModelName = $this->config->getAppValue(Application::APP_ID, 'igen_model_name');
+		$imageGenModelVersion = $this->config->getAppValue(Application::APP_ID, 'igen_model_version', Application::DEFAULT_IMAGE_GEN_VERSION);
+		$imageGenExtraParams = $this->config->getAppValue(Application::APP_ID, 'igen_extra_params');
 
 		$adminConfig = [
 			'api_key' => $apiKey,

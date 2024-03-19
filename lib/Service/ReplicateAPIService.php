@@ -22,7 +22,7 @@ use OCP\Files\GenericFileException;
 use OCP\Files\NotPermittedException;
 use OCP\Http\Client\IClient;
 use OCP\Http\Client\IClientService;
-use OCP\IAppConfig;
+use OCP\IConfig;
 use OCP\IL10N;
 use OCP\Lock\LockedException;
 use Psr\Log\LoggerInterface;
@@ -36,7 +36,7 @@ class ReplicateAPIService {
 		string $appName,
 		private LoggerInterface $logger,
 		private IL10N $l10n,
-		private IAppConfig $appConfig,
+		private IConfig $config,
 		private PromptMapper $promptMapper,
 		IClientService $clientService
 	) {
@@ -57,10 +57,9 @@ class ReplicateAPIService {
 	 * @param string $audioFileUrl
 	 * @param bool $translate
 	 * @return array|string[]
-	 * @throws AppConfigTypeConflictException
 	 */
 	public function createWhisperPrediction(string $audioFileUrl, bool $translate = false): array {
-		$model = $this->appConfig->getValueString(Application::APP_ID, 'model', 'large');
+		$model = $this->config->getAppValue(Application::APP_ID, 'model', 'large');
 		$params = [
 			'version' => Application::WHISPER_VERSION,
 			'input' => [
@@ -123,8 +122,8 @@ class ReplicateAPIService {
 			$params['input'] = array_merge($modelExtraParams, $params['input']);
 		}
 
-		$modelName = $this->appConfig->getValueString(Application::APP_ID, 'llm_model_name', Application::DEFAULT_LLM_NAME);
-		$modelVersion = $this->appConfig->getValueString(Application::APP_ID, 'llm_model_version', Application::DEFAULT_LLM_VERSION);
+		$modelName = $this->config->getAppValue(Application::APP_ID, 'llm_model_name', Application::DEFAULT_LLM_NAME);
+		$modelVersion = $this->config->getAppValue(Application::APP_ID, 'llm_model_version', Application::DEFAULT_LLM_VERSION);
 		if ($modelName !== '' || $modelVersion === '') {
 			if ($modelName === '') {
 				$modelName = Application::DEFAULT_LLM_NAME;
@@ -142,7 +141,6 @@ class ReplicateAPIService {
 	 * @param string|null $userId
 	 * @param int $numOutputs
 	 * @return array|string[]
-	 * @throws AppConfigTypeConflictException
 	 * @throws \OCP\DB\Exception
 	 */
 	public function createImagePrediction(string $prompt, ?string $userId, int $numOutputs): array {
@@ -157,8 +155,8 @@ class ReplicateAPIService {
 			$params['input'] = array_merge($modelExtraParams, $params['input']);
 		}
 
-		$modelName = $this->appConfig->getValueString(Application::APP_ID, 'igen_model_name', Application::DEFAULT_IMAGE_GEN_NAME);
-		$modelVersion = $this->appConfig->getValueString(Application::APP_ID, 'igen_model_version', Application::DEFAULT_IMAGE_GEN_VERSION);
+		$modelName = $this->config->getAppValue(Application::APP_ID, 'igen_model_name', Application::DEFAULT_IMAGE_GEN_NAME);
+		$modelVersion = $this->config->getAppValue(Application::APP_ID, 'igen_model_version', Application::DEFAULT_IMAGE_GEN_VERSION);
 		if ($modelVersion !== '' || $modelName === '') {
 			if ($modelVersion === '') {
 				$modelVersion = Application::DEFAULT_IMAGE_GEN_VERSION;
@@ -178,10 +176,9 @@ class ReplicateAPIService {
 	/**
 	 * @param string $configKey
 	 * @return array|null
-	 * @throws AppConfigTypeConflictException
 	 */
 	private function getExtraParams(string $configKey): ?array {
-		$stringValue = $this->appConfig->getValueString(Application::APP_ID, $configKey);
+		$stringValue = $this->config->getAppValue(Application::APP_ID, $configKey);
 		if ($stringValue === '') {
 			return null;
 		}
@@ -231,7 +228,7 @@ class ReplicateAPIService {
 	 */
 	public function request(string $endPoint, array $params = [], string $method = 'GET'): array {
 		try {
-			$apiKey = $this->appConfig->getValueString(Application::APP_ID, 'api_key');
+			$apiKey = $this->config->getAppValue(Application::APP_ID, 'api_key');
 			if ($apiKey === '') {
 				return ['error' => 'No API key'];
 			}
