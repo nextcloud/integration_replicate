@@ -16,7 +16,9 @@ use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
 use OCA\Replicate\AppInfo\Application;
 use OCA\Replicate\Db\PromptMapper;
+use OCP\Exceptions\AppConfigTypeConflictException;
 use OCP\Files\File;
+use OCP\Files\GenericFileException;
 use OCP\Files\NotPermittedException;
 use OCP\Http\Client\IClient;
 use OCP\Http\Client\IClientService;
@@ -55,6 +57,7 @@ class ReplicateAPIService {
 	 * @param string $audioFileUrl
 	 * @param bool $translate
 	 * @return array|string[]
+	 * @throws AppConfigTypeConflictException
 	 */
 	public function createWhisperPrediction(string $audioFileUrl, bool $translate = false): array {
 		$model = $this->appConfig->getValueString(Application::APP_ID, 'model', 'large');
@@ -75,8 +78,10 @@ class ReplicateAPIService {
 	 * @param File $file
 	 * @param bool $translate
 	 * @return string
+	 * @throws AppConfigTypeConflictException
 	 * @throws LockedException
 	 * @throws NotPermittedException
+	 * @throws GenericFileException
 	 */
 	public function transcribeFile(File $file, bool $translate = false): string {
 		$prediction = $this->createWhisperPrediction($file->getContent(), $translate);
@@ -102,12 +107,22 @@ class ReplicateAPIService {
 		throw new Exception('Error transcribing file "' . $file->getName() . '"');
 	}
 
+	/**
+	 * @param string $prompt
+	 * @return array|string[]
+	 * @throws AppConfigTypeConflictException
+	 */
 	public function createTextGenerationPrediction(string $prompt): array {
 		$params = [
 			'input' => [
 				'prompt' => $prompt,
 			],
 		];
+		$modelExtraParams = $this->getExtraParams('llm_extra_params');
+		if ($modelExtraParams !== null) {
+			$params['input'] = array_merge($modelExtraParams, $params['input']);
+		}
+
 		$modelName = $this->appConfig->getValueString(Application::APP_ID, 'llm_model_name', Application::DEFAULT_LLM_NAME);
 		$modelVersion = $this->appConfig->getValueString(Application::APP_ID, 'llm_model_version', Application::DEFAULT_LLM_VERSION);
 		if ($modelName !== '' || $modelVersion === '') {
@@ -127,6 +142,7 @@ class ReplicateAPIService {
 	 * @param string|null $userId
 	 * @param int $numOutputs
 	 * @return array|string[]
+	 * @throws AppConfigTypeConflictException
 	 * @throws \OCP\DB\Exception
 	 */
 	public function createImagePrediction(string $prompt, ?string $userId, int $numOutputs): array {
@@ -136,6 +152,11 @@ class ReplicateAPIService {
 				'num_outputs' => $numOutputs,
 			],
 		];
+		$modelExtraParams = $this->getExtraParams('igen_extra_params');
+		if ($modelExtraParams !== null) {
+			$params['input'] = array_merge($modelExtraParams, $params['input']);
+		}
+
 		$modelName = $this->appConfig->getValueString(Application::APP_ID, 'igen_model_name', Application::DEFAULT_IMAGE_GEN_NAME);
 		$modelVersion = $this->appConfig->getValueString(Application::APP_ID, 'igen_model_version', Application::DEFAULT_IMAGE_GEN_VERSION);
 		if ($modelVersion !== '' || $modelName === '') {
@@ -152,6 +173,23 @@ class ReplicateAPIService {
 			$this->promptMapper->createPrompt(Application::PROMPT_TYPE_IMAGE, $userId, $prompt);
 		}
 		return $this->request($endpoint, $params, 'POST');
+	}
+
+	/**
+	 * @param string $configKey
+	 * @return array|null
+	 * @throws AppConfigTypeConflictException
+	 */
+	private function getExtraParams(string $configKey): ?array {
+		$stringValue = $this->appConfig->getValueString(Application::APP_ID, $configKey);
+		if ($stringValue === '') {
+			return null;
+		}
+		$arrayValue = json_decode($stringValue, true);
+		if ($arrayValue === null) {
+			return null;
+		}
+		return $arrayValue;
 	}
 
 	/**

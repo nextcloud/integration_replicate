@@ -29,7 +29,6 @@
 					class="input"
 					:value.sync="state.llm_model_name"
 					:label="t('integration_replicate', 'Text generation model name')"
-					:disabled="loading"
 					:show-trailing-button="!!state.llm_model_name"
 					@update:value="onInput"
 					@trailing-button-click="state.llm_model_name = '' ; onInput()" />
@@ -45,12 +44,26 @@
 					class="input"
 					:value.sync="state.llm_model_version"
 					:label="t('integration_replicate', 'Text generation model version (only used if model name is empty)')"
-					:disabled="loading"
 					:show-trailing-button="!!state.llm_model_version"
 					@update:value="onInput"
 					@trailing-button-click="state.llm_model_version = '' ; onInput()" />
 				<NcButton type="tertiary"
 					:title="t('integration_replicate', 'For example: \'83b6a56e7c828e667f21fd596c338fd4f0039b46bcfa18d973e8e70e455fda70\'')">
+					<template #icon>
+						<HelpCircleIcon />
+					</template>
+				</NcButton>
+			</div>
+			<div class="line">
+				<NcTextField
+					class="input"
+					:value.sync="state.llm_extra_params"
+					:label="t('integration_replicate', 'Extra model parameters')"
+					:show-trailing-button="!!state.llm_extra_params"
+					@update:value="onInput"
+					@trailing-button-click="state.llm_extra_params = '' ; onInput()" />
+				<NcButton type="tertiary"
+					:title="llmExtraParamHint">
 					<template #icon>
 						<HelpCircleIcon />
 					</template>
@@ -64,7 +77,6 @@
 					class="input"
 					:value.sync="state.igen_model_name"
 					:label="t('integration_replicate', 'Image generation model name (only used if model version is empty)')"
-					:disabled="loading"
 					:show-trailing-button="!!state.igen_model_name"
 					@update:value="onInput"
 					@trailing-button-click="state.igen_model_name = '' ; onInput()" />
@@ -80,12 +92,26 @@
 					class="input"
 					:value.sync="state.igen_model_version"
 					:label="t('integration_replicate', 'Image generation model version')"
-					:disabled="loading"
 					:show-trailing-button="!!state.igen_model_version"
 					@update:value="onInput"
 					@trailing-button-click="state.igen_model_version = '' ; onInput()" />
 				<NcButton type="tertiary"
 					:title="t('integration_replicate', 'For example: \'ac732df83cea7fff18b8472768c88ad041fa750ff7682a21affe81863cbe77e4\'')">
+					<template #icon>
+						<HelpCircleIcon />
+					</template>
+				</NcButton>
+			</div>
+			<div class="line">
+				<NcTextField
+					class="input"
+					:value.sync="state.igen_extra_params"
+					:label="t('integration_replicate', 'Extra model parameters')"
+					:show-trailing-button="!!state.igen_extra_params"
+					@update:value="onInput"
+					@trailing-button-click="state.igen_extra_params = '' ; onInput()" />
+				<NcButton type="tertiary"
+					:title="igenExtraParamHint">
 					<template #icon>
 						<HelpCircleIcon />
 					</template>
@@ -101,6 +127,7 @@
 				<NcSelect
 					v-model="model"
 					:options="modelOptions"
+					:aria-label-combobox="t('integration_replicate', 'Whisper model size')"
 					input-id="models"
 					@option:selected="onModelChanged" />
 				<NcButton type="tertiary"
@@ -157,6 +184,8 @@ export default {
 			state: loadState('integration_replicate', 'admin-config'),
 			modelOptions: Object.values(models),
 			model: models[loadState('integration_replicate', 'admin-config').model] ?? models.large,
+			igenExtraParamHint: t('integration_replicate', 'Extra parameters are model-specific. For example: {"width":1920,"height":1080}'),
+			llmExtraParamHint: t('integration_replicate', 'Extra parameters are model-specific. For example: {"max_new_tokens":128,"temperature":0.7}'),
 		}
 	},
 
@@ -173,6 +202,10 @@ export default {
 					api_key: this.state.api_key,
 					llm_model_name: this.state.llm_model_name,
 					llm_model_version: this.state.llm_model_version,
+					llm_extra_params: this.state.llm_extra_params,
+					igen_model_name: this.state.igen_model_name,
+					igen_model_version: this.state.igen_model_version,
+					igen_extra_params: this.state.igen_extra_params,
 				})
 			}, 2000)()
 		},
