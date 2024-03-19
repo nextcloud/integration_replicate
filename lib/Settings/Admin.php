@@ -25,12 +25,16 @@ class Admin implements ISettings {
 		$model = $this->appConfig->getValueString(Application::APP_ID, 'model', 'large');
 		$llmModelName = $this->appConfig->getValueString(Application::APP_ID, 'llm_model_name', Application::DEFAULT_LLM_NAME);
 		$llmModelVersion = $this->appConfig->getValueString(Application::APP_ID, 'llm_model_version', Application::DEFAULT_LLM_VERSION);
+		$imageGenModelName = $this->appConfig->getValueString(Application::APP_ID, 'igen_model_name');
+		$imageGenModelVersion = $this->appConfig->getValueString(Application::APP_ID, 'igen_model_version', Application::DEFAULT_IMAGE_GEN_VERSION);
 
 		$adminConfig = [
 			'api_key' => $apiKey,
 			'model' => $model,
 			'llm_model_name' => $llmModelName,
 			'llm_model_version' => $llmModelVersion,
+			'igen_model_name' => $imageGenModelName,
+			'igen_model_version' => $imageGenModelVersion,
 		];
 		$this->initialStateService->provideInitialState('admin-config', $adminConfig);
 

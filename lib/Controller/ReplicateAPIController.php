@@ -15,6 +15,8 @@ use OCA\Replicate\AppInfo\Application;
 use OCA\Replicate\Service\ReplicateAPIService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
+use OCP\AppFramework\Http\Attribute\NoAdminRequired;
+use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
 use OCP\AppFramework\Http\DataDisplayResponse;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Http\TemplateResponse;
@@ -36,12 +38,11 @@ class ReplicateAPIController extends Controller {
 	}
 
 	/**
-	 * @NoAdminRequired
-	 *
 	 * @param int $type
 	 * @return DataResponse
 	 * @throws Exception
 	 */
+	#[NoAdminRequired]
 	public function getPromptHistory(int $type): DataResponse {
 		$response = $this->replicateAPIService->getPromptHistory($this->userId, $type);
 		if (isset($response['error'])) {
@@ -51,11 +52,11 @@ class ReplicateAPIController extends Controller {
 	}
 
 	/**
-	 * @NoAdminRequired
 	 * @param string $audioBase64
 	 * @param bool $translate
 	 * @return DataResponse
 	 */
+	#[NoAdminRequired]
 	public function createWhisperPrediction(string $audioBase64, bool $translate = true): DataResponse {
 		$response = $this->replicateAPIService->createWhisperPrediction($audioBase64, $translate);
 		if (isset($response['error'])) {
@@ -65,15 +66,14 @@ class ReplicateAPIController extends Controller {
 	}
 
 	/**
-	 * @NoAdminRequired
 	 * @param string $prompt
 	 * @param int $num_outputs
-	 * @param string $size
 	 * @return DataResponse
 	 * @throws Exception
 	 */
-	public function createImagePrediction(string $prompt, int $num_outputs, string $size): DataResponse {
-		$response = $this->replicateAPIService->createImagePrediction($prompt, $this->userId, $num_outputs, $size);
+	#[NoAdminRequired]
+	public function createImagePrediction(string $prompt, int $num_outputs): DataResponse {
+		$response = $this->replicateAPIService->createImagePrediction($prompt, $this->userId, $num_outputs);
 		if (isset($response['error'])) {
 			return new DataResponse($response, Http::STATUS_BAD_REQUEST);
 		}
@@ -81,10 +81,10 @@ class ReplicateAPIController extends Controller {
 	}
 
 	/**
-	 * @NoAdminRequired
 	 * @param string $predictionId
 	 * @return DataResponse
 	 */
+	#[NoAdminRequired]
 	public function getPrediction(string $predictionId): DataResponse {
 		$response = $this->replicateAPIService->getPrediction($predictionId);
 		if (isset($response['error'])) {
@@ -94,13 +94,12 @@ class ReplicateAPIController extends Controller {
 	}
 
 	/**
-	 * @NoAdminRequired
-	 * @NoCSRFRequired
-	 *
 	 * @param string $predictionId
 	 * @param string $url
 	 * @return DataDisplayResponse
 	 */
+	#[NoAdminRequired]
+	#[NoCSRFRequired]
 	public function getImagePredictionContent(string $predictionId, string $url): DataDisplayResponse {
 		$image = $this->replicateAPIService->getPredictionImage($predictionId, $url);
 		if ($image !== null && isset($image['body'], $image['headers'])) {
@@ -116,24 +115,22 @@ class ReplicateAPIController extends Controller {
 	}
 
 	/**
-	 * @NoAdminRequired
-	 * @NoCSRFRequired
-	 *
 	 * @param string $predictionId
 	 * @return TemplateResponse
 	 */
+	#[NoAdminRequired]
+	#[NoCSRFRequired]
 	public function getImagePredictionPage(string $predictionId): TemplateResponse {
 		$this->initialStateService->provideInitialState('predictionId', $predictionId);
 		return new TemplateResponse(Application::APP_ID, 'imagePredictionPage');
 	}
 
 	/**
-	 * @NoAdminRequired
-	 * @NoCSRFRequired
-	 *
 	 * @param string $predictionId
 	 * @return TemplateResponse
 	 */
+	#[NoAdminRequired]
+	#[NoCSRFRequired]
 	public function getWhisperPredictionPage(string $predictionId): TemplateResponse {
 		$this->initialStateService->provideInitialState('predictionId', $predictionId);
 		return new TemplateResponse(Application::APP_ID, 'whisperPredictionPage');

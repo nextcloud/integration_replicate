@@ -126,23 +126,32 @@ class ReplicateAPIService {
 	 * @param string $prompt
 	 * @param string|null $userId
 	 * @param int $numOutputs
-	 * @param string $size
 	 * @return array|string[]
 	 * @throws \OCP\DB\Exception
 	 */
-	public function createImagePrediction(string $prompt, ?string $userId, int $numOutputs, string $size): array {
+	public function createImagePrediction(string $prompt, ?string $userId, int $numOutputs): array {
 		$params = [
-			'version' => Application::STABLE_DIFFUSION_VERSION,
 			'input' => [
 				'prompt' => $prompt,
 				'num_outputs' => $numOutputs,
-				'image_dimensions' => $size,
 			],
 		];
+		$modelName = $this->appConfig->getValueString(Application::APP_ID, 'igen_model_name', Application::DEFAULT_IMAGE_GEN_NAME);
+		$modelVersion = $this->appConfig->getValueString(Application::APP_ID, 'igen_model_version', Application::DEFAULT_IMAGE_GEN_VERSION);
+		if ($modelVersion !== '' || $modelName === '') {
+			if ($modelVersion === '') {
+				$modelVersion = Application::DEFAULT_IMAGE_GEN_VERSION;
+			}
+			$endpoint = 'predictions';
+			$params['version'] = $modelVersion;
+		} else {
+			$endpoint = 'models/' . $modelName . '/predictions';
+		}
+
 		if ($userId !== null) {
 			$this->promptMapper->createPrompt(Application::PROMPT_TYPE_IMAGE, $userId, $prompt);
 		}
-		return $this->request('predictions', $params, 'POST');
+		return $this->request($endpoint, $params, 'POST');
 	}
 
 	/**

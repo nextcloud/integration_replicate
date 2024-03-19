@@ -43,7 +43,7 @@ class TextToImageProvider implements IProvider {
 		$waitingForAlready = 0;
 		$maxWaitTime = 60 * 60;
 		try {
-			$prediction = $this->replicateAPIService->createImagePrediction($prompt, $this->userId, $nbOutputs, '768x768');
+			$prediction = $this->replicateAPIService->createImagePrediction($prompt, $this->userId, $nbOutputs);
 
 			while ($waitingForAlready < $maxWaitTime && isset($prediction['status'], $prediction['id']) && in_array($prediction['status'], ['starting', 'processing'], true)) {
 				sleep(2);

@@ -21,6 +21,9 @@
 					{{ t('integration_replicate', 'You can create a free API token on https://replicate.com') }}
 				</a>
 			</p>
+			<h3>
+				{{ t('integration_replicate', 'Text generation') }}
+			</h3>
 			<div class="line">
 				<NcTextField
 					class="input"
@@ -53,22 +56,59 @@
 					</template>
 				</NcButton>
 			</div>
+			<h3>
+				{{ t('integration_replicate', 'Image generation') }}
+			</h3>
+			<div class="line">
+				<NcTextField
+					class="input"
+					:value.sync="state.igen_model_name"
+					:label="t('integration_replicate', 'Image generation model name (only used if model version is empty)')"
+					:disabled="loading"
+					:show-trailing-button="!!state.igen_model_name"
+					@update:value="onInput"
+					@trailing-button-click="state.igen_model_name = '' ; onInput()" />
+				<NcButton type="tertiary"
+					:title="t('integration_replicate', 'For example: \'stability-ai/stable-diffusion\'')">
+					<template #icon>
+						<HelpCircleIcon />
+					</template>
+				</NcButton>
+			</div>
+			<div class="line">
+				<NcTextField
+					class="input"
+					:value.sync="state.igen_model_version"
+					:label="t('integration_replicate', 'Image generation model version')"
+					:disabled="loading"
+					:show-trailing-button="!!state.igen_model_version"
+					@update:value="onInput"
+					@trailing-button-click="state.igen_model_version = '' ; onInput()" />
+				<NcButton type="tertiary"
+					:title="t('integration_replicate', 'For example: \'ac732df83cea7fff18b8472768c88ad041fa750ff7682a21affe81863cbe77e4\'')">
+					<template #icon>
+						<HelpCircleIcon />
+					</template>
+				</NcButton>
+			</div>
+			<h3>
+				{{ t('integration_replicate', 'Speech-to-text') }}
+			</h3>
 			<div class="line">
 				<label for="models">
 					{{ t('integration_replicate', 'Whisper model size') }}
 				</label>
+				<NcSelect
+					v-model="model"
+					:options="modelOptions"
+					input-id="models"
+					@option:selected="onModelChanged" />
 				<NcButton type="tertiary"
 					:title="t('integration_replicate', 'Larger model size gives better results but uses more credit')">
 					<template #icon>
 						<HelpCircleIcon />
 					</template>
 				</NcButton>
-				<div class="spacer" />
-				<NcSelect
-					v-model="model"
-					:options="modelOptions"
-					input-id="models"
-					@option:selected="onModelChanged" />
 			</div>
 		</div>
 	</div>
@@ -115,8 +155,6 @@ export default {
 	data() {
 		return {
 			state: loadState('integration_replicate', 'admin-config'),
-			// to prevent some browsers to fill fields with remembered passwords
-			readonly: true,
 			modelOptions: Object.values(models),
 			model: models[loadState('integration_replicate', 'admin-config').model] ?? models.large,
 		}
@@ -186,7 +224,13 @@ export default {
 		margin-right: 8px;
 	}
 
+	h3 {
+		font-weight: bold;
+		margin-top: 24px;
+	}
+
 	.line {
+		gap: 8px;
 		> .input {
 			width: 500px;
 		}

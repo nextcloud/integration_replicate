@@ -155,7 +155,7 @@ export default {
 			reference: null,
 			loading: false,
 			inputPlaceholder: t('integration_replicate', 'cyberpunk nextcloud logo with chrismas hats'),
-			poweredByTitle: t('integration_replicate', 'by Replicate with stable diffusion'),
+			poweredByTitle: t('integration_replicate', 'by Replicate'),
 			prompts: null,
 			showAdvanced: false,
 			imageNumber: 1,
