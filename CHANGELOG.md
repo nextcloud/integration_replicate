@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [2.0.1] – 2024-03-20
+
+### Fixed
+
+- Do not use IAppConfig that is available from 29
+
 ## [2.0.0] – 2024-03-19
 
 ### Added
