@@ -20,7 +20,7 @@ use OCP\Files\File;
 use OCP\Files\NotPermittedException;
 use OCP\Http\Client\IClient;
 use OCP\Http\Client\IClientService;
-use OCP\IConfig;
+use OCP\IAppConfig;
 use OCP\IL10N;
 use OCP\Lock\LockedException;
 use Psr\Log\LoggerInterface;
@@ -34,7 +34,7 @@ class ReplicateAPIService {
 		string $appName,
 		private LoggerInterface $logger,
 		private IL10N $l10n,
-		private IConfig $config,
+		private IAppConfig $appConfig,
 		private PromptMapper $promptMapper,
 		IClientService $clientService
 	) {
@@ -57,7 +57,7 @@ class ReplicateAPIService {
 	 * @return array|string[]
 	 */
 	public function createWhisperPrediction(string $audioFileUrl, bool $translate = false): array {
-		$model = $this->config->getAppValue(Application::APP_ID, 'model', 'large');
+		$model = $this->appConfig->getValueString(Application::APP_ID, 'model', 'large');
 		$params = [
 			'version' => Application::WHISPER_VERSION,
 			'input' => [
@@ -104,12 +104,22 @@ class ReplicateAPIService {
 
 	public function createTextGenerationPrediction(string $prompt): array {
 		$params = [
-			'version' => Application::TEXT_GEN_MODEL_VERSION,
 			'input' => [
 				'prompt' => $prompt,
 			],
 		];
-		return $this->request('predictions', $params, 'POST');
+		$modelName = $this->appConfig->getValueString(Application::APP_ID, 'llm_model_name', Application::DEFAULT_LLM_NAME);
+		$modelVersion = $this->appConfig->getValueString(Application::APP_ID, 'llm_model_version', Application::DEFAULT_LLM_VERSION);
+		if ($modelName !== '' || $modelVersion === '') {
+			if ($modelName === '') {
+				$modelName = Application::DEFAULT_LLM_NAME;
+			}
+			$endpoint = 'models/' . $modelName . '/predictions';
+		} else {
+			$endpoint = 'predictions';
+			$params['version'] = $modelVersion;
+		}
+		return $this->request($endpoint, $params, 'POST');
 	}
 
 	/**
@@ -166,6 +176,7 @@ class ReplicateAPIService {
 
 	/**
 	 * Make an HTTP request to the Replicate API
+	 *
 	 * @param string $endPoint The path to reach
 	 * @param array $params Query parameters (key/val pairs)
 	 * @param string $method HTTP query method
@@ -173,7 +184,7 @@ class ReplicateAPIService {
 	 */
 	public function request(string $endPoint, array $params = [], string $method = 'GET'): array {
 		try {
-			$apiKey = $this->config->getAppValue(Application::APP_ID, 'api_key');
+			$apiKey = $this->appConfig->getValueString(Application::APP_ID, 'api_key');
 			if ($apiKey === '') {
 				return ['error' => 'No API key'];
 			}

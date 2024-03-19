@@ -6,17 +6,14 @@
 		</h2>
 		<div id="replicate-content">
 			<div class="line">
-				<label for="replicate-api-key">
-					<KeyIcon :size="20" class="icon" />
-					{{ t('integration_replicate', 'Replicate API token') }}
-				</label>
-				<input id="replicate-api-key"
-					v-model="state.api_key"
-					type="password"
-					:readonly="readonly"
-					:placeholder="t('integration_replicate', 'your API token')"
-					@input="onInput"
-					@focus="readonly = false">
+				<NcTextField
+					class="input"
+					:value.sync="state.api_key"
+					:label="t('integration_replicate', 'Replicate API token')"
+					:placeholder="t('integration_replicate', 'Your API token')"
+					:show-trailing-button="!!state.api_key"
+					@update:value="onInput"
+					@trailing-button-click="state.api_key = '' ; onInput()" />
 			</div>
 			<p class="settings-hint">
 				<InformationOutlineIcon :size="20" class="icon" />
@@ -25,8 +22,40 @@
 				</a>
 			</p>
 			<div class="line">
+				<NcTextField
+					class="input"
+					:value.sync="state.llm_model_name"
+					:label="t('integration_replicate', 'Text generation model name')"
+					:disabled="loading"
+					:show-trailing-button="!!state.llm_model_name"
+					@update:value="onInput"
+					@trailing-button-click="state.llm_model_name = '' ; onInput()" />
+				<NcButton type="tertiary"
+					:title="t('integration_replicate', 'You can find model names on the Replicate website. For example: \'mistralai/mixtral-8x7b-instruct-v0.1\' or \'meta/llama-2-70b-chat\'')">
+					<template #icon>
+						<HelpCircleIcon />
+					</template>
+				</NcButton>
+			</div>
+			<div class="line">
+				<NcTextField
+					class="input"
+					:value.sync="state.llm_model_version"
+					:label="t('integration_replicate', 'Text generation model version (only used if model name is empty)')"
+					:disabled="loading"
+					:show-trailing-button="!!state.llm_model_version"
+					@update:value="onInput"
+					@trailing-button-click="state.llm_model_version = '' ; onInput()" />
+				<NcButton type="tertiary"
+					:title="t('integration_replicate', 'For example: \'83b6a56e7c828e667f21fd596c338fd4f0039b46bcfa18d973e8e70e455fda70\'')">
+					<template #icon>
+						<HelpCircleIcon />
+					</template>
+				</NcButton>
+			</div>
+			<div class="line">
 				<label for="models">
-					{{ t('integration_replicate', 'Model') }}
+					{{ t('integration_replicate', 'Whisper model size') }}
 				</label>
 				<NcButton type="tertiary"
 					:title="t('integration_replicate', 'Larger model size gives better results but uses more credit')">
@@ -47,13 +76,13 @@
 
 <script>
 import InformationOutlineIcon from 'vue-material-design-icons/InformationOutline.vue'
-import KeyIcon from 'vue-material-design-icons/Key.vue'
 import HelpCircleIcon from 'vue-material-design-icons/HelpCircle.vue'
 
 import ReplicateIcon from './icons/ReplicateIcon.vue'
 
 import NcSelect from '@nextcloud/vue/dist/Components/NcSelect.js'
 import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
+import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
 
 import { loadState } from '@nextcloud/initial-state'
 import { generateUrl } from '@nextcloud/router'
@@ -74,11 +103,11 @@ export default {
 
 	components: {
 		ReplicateIcon,
-		KeyIcon,
 		InformationOutlineIcon,
 		HelpCircleIcon,
 		NcSelect,
 		NcButton,
+		NcTextField,
 	},
 
 	props: [],
@@ -104,6 +133,8 @@ export default {
 			delay(() => {
 				this.saveOptions({
 					api_key: this.state.api_key,
+					llm_model_name: this.state.llm_model_name,
+					llm_model_version: this.state.llm_model_version,
 				})
 			}, 2000)()
 		},
@@ -119,7 +150,7 @@ export default {
 				.catch((error) => {
 					showError(
 						t('integration_replicate', 'Failed to save Replicate admin options')
-						+ ': ' + error.response?.request?.responseText
+						+ ': ' + error.response?.request?.responseText,
 					)
 				})
 				.then(() => {
@@ -156,13 +187,8 @@ export default {
 	}
 
 	.line {
-		> label {
-			width: 300px;
-			display: flex;
-			align-items: center;
-		}
-		> input {
-			width: 300px;
+		> .input {
+			width: 500px;
 		}
 	}
 }
