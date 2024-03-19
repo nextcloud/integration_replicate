@@ -138,7 +138,7 @@ export default {
 		getProxiedImageUrl(realImageUrl) {
 			return generateUrl(
 				'/apps/integration_replicate/predictions/{predictionId}/image?url={url}',
-				{ predictionId: this.predictionId, url: realImageUrl }
+				{ predictionId: this.predictionId, url: realImageUrl },
 			)
 		},
 	},

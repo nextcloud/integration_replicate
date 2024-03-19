@@ -16,29 +16,30 @@ use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
 use OCA\Replicate\AppInfo\Application;
 use OCA\Replicate\Db\PromptMapper;
+use OCP\Exceptions\AppConfigTypeConflictException;
 use OCP\Files\File;
+use OCP\Files\GenericFileException;
 use OCP\Files\NotPermittedException;
 use OCP\Http\Client\IClient;
-use OCP\IConfig;
+use OCP\Http\Client\IClientService;
+use OCP\IAppConfig;
 use OCP\IL10N;
 use OCP\Lock\LockedException;
 use Psr\Log\LoggerInterface;
-use OCP\Http\Client\IClientService;
 use Throwable;
 
-/**
- * Service to make requests to Replicate REST API
- */
 class ReplicateAPIService {
 
 	private IClient $client;
 
-	public function __construct (string $appName,
-								private LoggerInterface $logger,
-								private IL10N $l10n,
-								private IConfig $config,
-								private PromptMapper $promptMapper,
-								IClientService $clientService) {
+	public function __construct(
+		string $appName,
+		private LoggerInterface $logger,
+		private IL10N $l10n,
+		private IAppConfig $appConfig,
+		private PromptMapper $promptMapper,
+		IClientService $clientService
+	) {
 		$this->client = $clientService->newClient();
 	}
 
@@ -56,9 +57,10 @@ class ReplicateAPIService {
 	 * @param string $audioFileUrl
 	 * @param bool $translate
 	 * @return array|string[]
+	 * @throws AppConfigTypeConflictException
 	 */
 	public function createWhisperPrediction(string $audioFileUrl, bool $translate = false): array {
-		$model = $this->config->getAppValue(Application::APP_ID, 'model', 'large');
+		$model = $this->appConfig->getValueString(Application::APP_ID, 'model', 'large');
 		$params = [
 			'version' => Application::WHISPER_VERSION,
 			'input' => [
@@ -75,13 +77,14 @@ class ReplicateAPIService {
 	 *
 	 * @param File $file
 	 * @param bool $translate
-	 * @param string $model
 	 * @return string
+	 * @throws AppConfigTypeConflictException
 	 * @throws LockedException
 	 * @throws NotPermittedException
+	 * @throws GenericFileException
 	 */
-	public function transcribeFile(File $file, bool $translate = false, string $model = 'large'): string {
-		$prediction = $this->createWhisperPrediction($file->getContent(), $translate, $model);
+	public function transcribeFile(File $file, bool $translate = false): string {
+		$prediction = $this->createWhisperPrediction($file->getContent(), $translate);
 		if (isset($prediction['id'])) {
 			$predictionId = $prediction['id'];
 
@@ -106,23 +109,87 @@ class ReplicateAPIService {
 
 	/**
 	 * @param string $prompt
-	 * @param string $userId
-	 * @param int $numOutputs
-	 * @param string $size
 	 * @return array|string[]
+	 * @throws AppConfigTypeConflictException
+	 */
+	public function createTextGenerationPrediction(string $prompt): array {
+		$params = [
+			'input' => [
+				'prompt' => $prompt,
+			],
+		];
+		$modelExtraParams = $this->getExtraParams('llm_extra_params');
+		if ($modelExtraParams !== null) {
+			$params['input'] = array_merge($modelExtraParams, $params['input']);
+		}
+
+		$modelName = $this->appConfig->getValueString(Application::APP_ID, 'llm_model_name', Application::DEFAULT_LLM_NAME);
+		$modelVersion = $this->appConfig->getValueString(Application::APP_ID, 'llm_model_version', Application::DEFAULT_LLM_VERSION);
+		if ($modelName !== '' || $modelVersion === '') {
+			if ($modelName === '') {
+				$modelName = Application::DEFAULT_LLM_NAME;
+			}
+			$endpoint = 'models/' . $modelName . '/predictions';
+		} else {
+			$endpoint = 'predictions';
+			$params['version'] = $modelVersion;
+		}
+		return $this->request($endpoint, $params, 'POST');
+	}
+
+	/**
+	 * @param string $prompt
+	 * @param string|null $userId
+	 * @param int $numOutputs
+	 * @return array|string[]
+	 * @throws AppConfigTypeConflictException
 	 * @throws \OCP\DB\Exception
 	 */
-	public function createImagePrediction(string $prompt, string $userId, int $numOutputs, string $size): array {
+	public function createImagePrediction(string $prompt, ?string $userId, int $numOutputs): array {
 		$params = [
-			'version' => Application::STABLE_DIFFUSION_VERSION,
 			'input' => [
 				'prompt' => $prompt,
 				'num_outputs' => $numOutputs,
-				'image_dimensions' => $size,
 			],
 		];
-		$this->promptMapper->createPrompt(Application::PROMPT_TYPE_IMAGE, $userId, $prompt);
-		return $this->request('predictions', $params, 'POST');
+		$modelExtraParams = $this->getExtraParams('igen_extra_params');
+		if ($modelExtraParams !== null) {
+			$params['input'] = array_merge($modelExtraParams, $params['input']);
+		}
+
+		$modelName = $this->appConfig->getValueString(Application::APP_ID, 'igen_model_name', Application::DEFAULT_IMAGE_GEN_NAME);
+		$modelVersion = $this->appConfig->getValueString(Application::APP_ID, 'igen_model_version', Application::DEFAULT_IMAGE_GEN_VERSION);
+		if ($modelVersion !== '' || $modelName === '') {
+			if ($modelVersion === '') {
+				$modelVersion = Application::DEFAULT_IMAGE_GEN_VERSION;
+			}
+			$endpoint = 'predictions';
+			$params['version'] = $modelVersion;
+		} else {
+			$endpoint = 'models/' . $modelName . '/predictions';
+		}
+
+		if ($userId !== null) {
+			$this->promptMapper->createPrompt(Application::PROMPT_TYPE_IMAGE, $userId, $prompt);
+		}
+		return $this->request($endpoint, $params, 'POST');
+	}
+
+	/**
+	 * @param string $configKey
+	 * @return array|null
+	 * @throws AppConfigTypeConflictException
+	 */
+	private function getExtraParams(string $configKey): ?array {
+		$stringValue = $this->appConfig->getValueString(Application::APP_ID, $configKey);
+		if ($stringValue === '') {
+			return null;
+		}
+		$arrayValue = json_decode($stringValue, true);
+		if ($arrayValue === null) {
+			return null;
+		}
+		return $arrayValue;
 	}
 
 	/**
@@ -156,6 +223,7 @@ class ReplicateAPIService {
 
 	/**
 	 * Make an HTTP request to the Replicate API
+	 *
 	 * @param string $endPoint The path to reach
 	 * @param array $params Query parameters (key/val pairs)
 	 * @param string $method HTTP query method
@@ -163,7 +231,7 @@ class ReplicateAPIService {
 	 */
 	public function request(string $endPoint, array $params = [], string $method = 'GET'): array {
 		try {
-			$apiKey = $this->config->getAppValue(Application::APP_ID, 'api_key');
+			$apiKey = $this->appConfig->getValueString(Application::APP_ID, 'api_key');
 			if ($apiKey === '') {
 				return ['error' => 'No API key'];
 			}
@@ -188,11 +256,11 @@ class ReplicateAPIService {
 
 			if ($method === 'GET') {
 				$response = $this->client->get($url, $options);
-			} else if ($method === 'POST') {
+			} elseif ($method === 'POST') {
 				$response = $this->client->post($url, $options);
-			} else if ($method === 'PUT') {
+			} elseif ($method === 'PUT') {
 				$response = $this->client->put($url, $options);
-			} else if ($method === 'DELETE') {
+			} elseif ($method === 'DELETE') {
 				$response = $this->client->delete($url, $options);
 			} else {
 				return ['error' => $this->l10n->t('Bad HTTP method')];

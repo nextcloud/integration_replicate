@@ -28,6 +28,9 @@ use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventListener;
 use OCP\Util;
 
+/**
+ * @implements IEventListener<RenderReferenceEvent>
+ */
 class ReplicateReferenceListener implements IEventListener {
 	public function handle(Event $event): void {
 		if (!$event instanceof RenderReferenceEvent) {

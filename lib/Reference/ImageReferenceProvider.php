@@ -22,29 +22,29 @@
 
 namespace OCA\Replicate\Reference;
 
-use OCP\Collaboration\Reference\ADiscoverableReferenceProvider;
-use OCP\Collaboration\Reference\Reference;
-use OC\Collaboration\Reference\ReferenceManager;
 use OCA\Replicate\AppInfo\Application;
+use OCP\Collaboration\Reference\ADiscoverableReferenceProvider;
 use OCP\Collaboration\Reference\IReference;
+use OCP\Collaboration\Reference\IReferenceManager;
+use OCP\Collaboration\Reference\Reference;
 use OCP\IL10N;
 
 use OCP\IURLGenerator;
 
-class ImageReferenceProvider extends ADiscoverableReferenceProvider  {
+class ImageReferenceProvider extends ADiscoverableReferenceProvider {
 
 	private const RICH_OBJECT_TYPE = Application::APP_ID . '_image';
 
 	public function __construct(private IL10N $l10n,
-								private IURLGenerator $urlGenerator,
-								private ReferenceManager $referenceManager,
-								private ?string $userId) {
+		private IURLGenerator $urlGenerator,
+		private IReferenceManager $referenceManager,
+		private ?string $userId) {
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function getId(): string	{
+	public function getId(): string {
 		return 'replicate-image';
 	}
 
@@ -52,13 +52,13 @@ class ImageReferenceProvider extends ADiscoverableReferenceProvider  {
 	 * @inheritDoc
 	 */
 	public function getTitle(): string {
-		return $this->l10n->t('AI image generation (stable diffusion via Replicate)');
+		return $this->l10n->t('AI image generation (via Replicate)');
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function getOrder(): int	{
+	public function getOrder(): int {
 		return 10;
 	}
 
@@ -107,7 +107,7 @@ class ImageReferenceProvider extends ADiscoverableReferenceProvider  {
 
 	/**
 	 * @param string $url
-	 * @return array|null
+	 * @return string|null
 	 */
 	private function getPredictionId(string $url): ?string {
 		preg_match('/\/i\/([0-9a-z]+)$/i', $url, $matches);

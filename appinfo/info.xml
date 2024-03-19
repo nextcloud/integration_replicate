@@ -4,20 +4,21 @@
     <name>Replicate integration</name>
     <summary>Integration of Replicate stable-diffusion</summary>
     <description><![CDATA[
-Replicate integration provides a smart picker provider for Whisper translation/transcription and stable diffusion image prediction.
+The Replicate integration app provides a smart picker provider for Whisper translation/transcription and image generation.
+It also provides a SpeechToText provider, a Text processing provider and an Image generation provider.
 
 ## Ethical AI Rating
 ### Rating: 🟡
 
 Positive:
-* the software for training and inferencing of this model is open source
-* the trained model is freely available, and thus can be ran on-premises
-* the training data is freely available, making it possible to check or correct for bias or optimise the performance and CO2 usage.
+* The software for training and inferencing of this model is open source
+* The trained model is freely available, and thus can be ran on-premises
+* The training data is freely available, making it possible to check or correct for bias or optimise the performance and CO2 usage.
 
 Negative:
-* the software for training and inferencing of this model is proprietary, limiting running it locally or training by yourself
-* the trained model is not freely available, so the model can not be ran on-premises
-* the training data is not freely available, limiting the ability of external parties to check and correct for bias or optimise the model’s performance and CO2 usage.
+* The software for training and inferencing of this model is proprietary, limiting running it locally or training by yourself
+* The trained model is not freely available, so the model can not be ran on-premises
+* The training data is not freely available, limiting the ability of external parties to check and correct for bias or optimise the model’s performance and CO2 usage.
 
 Learn more about the Nextcloud Ethical AI Rating [in our blog](https://nextcloud.com/blog/nextcloud-ethical-ai-rating/).
     ]]></description>
@@ -36,7 +37,7 @@ Learn more about the Nextcloud Ethical AI Rating [in our blog](https://nextcloud
     <screenshot>https://github.com/julien-nc/integration_replicate/raw/main/img/screenshot2.jpg</screenshot>
     <screenshot>https://github.com/julien-nc/integration_replicate/raw/main/img/screenshot3.jpg</screenshot>
     <dependencies>
-        <nextcloud min-version="26" max-version="29"/>
+        <nextcloud min-version="28" max-version="29"/>
     </dependencies>
     <settings>
         <admin>OCA\Replicate\Settings\Admin</admin>

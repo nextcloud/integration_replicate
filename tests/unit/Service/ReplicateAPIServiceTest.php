@@ -2,10 +2,10 @@
 
 namespace OCA\Replicate\Tests;
 
-
 use OCA\Replicate\AppInfo\Application;
+use Test\TestCase;
 
-class ReplicateAPIServiceTest extends \PHPUnit\Framework\TestCase {
+class ReplicateAPIServiceTest extends TestCase {
 
 	public function testDummy() {
 		$app = new Application();

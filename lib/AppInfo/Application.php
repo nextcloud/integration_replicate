@@ -13,19 +13,24 @@ use OCA\Replicate\Listener\ReplicateReferenceListener;
 use OCA\Replicate\Reference\ImageReferenceProvider;
 use OCA\Replicate\Reference\WhisperReferenceProvider;
 use OCA\Replicate\SpeechToText\STTProvider;
+use OCA\Replicate\TextProcessing\FreePromptProvider;
+use OCA\Replicate\TextToImage\TextToImageProvider;
+use OCP\AppFramework\App;
+use OCP\AppFramework\Bootstrap\IBootContext;
+
+use OCP\AppFramework\Bootstrap\IBootstrap;
+use OCP\AppFramework\Bootstrap\IRegistrationContext;
 use OCP\Collaboration\Reference\RenderReferenceEvent;
 use OCP\IConfig;
-
-use OCP\AppFramework\App;
-use OCP\AppFramework\Bootstrap\IRegistrationContext;
-use OCP\AppFramework\Bootstrap\IBootContext;
-use OCP\AppFramework\Bootstrap\IBootstrap;
 
 class Application extends App implements IBootstrap {
 
 	public const APP_ID = 'integration_replicate';
-	public const STABLE_DIFFUSION_VERSION = 'db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf';
+	public const DEFAULT_IMAGE_GEN_NAME = 'stability-ai/stable-diffusion';
+	public const DEFAULT_IMAGE_GEN_VERSION = 'ac732df83cea7fff18b8472768c88ad041fa750ff7682a21affe81863cbe77e4';
 	public const WHISPER_VERSION = 'e39e354773466b955265e969568deb7da217804d8e771ea8c9cd0cef6591f8bc';
+	public const DEFAULT_LLM_NAME = 'mistralai/mistral-7b-instruct-v0.1';
+	public const DEFAULT_LLM_VERSION = '83b6a56e7c828e667f21fd596c338fd4f0039b46bcfa18d973e8e70e455fda70';
 
 	public const PROMPT_TYPE_IMAGE = 0;
 	public const MAX_PROMPT_PER_TYPE_PER_USER = 5;
@@ -46,13 +51,12 @@ class Application extends App implements IBootstrap {
 			$context->registerReferenceProvider(WhisperReferenceProvider::class);
 			$context->registerEventListener(RenderReferenceEvent::class, ReplicateReferenceListener::class);
 
-			if (version_compare($this->config->getSystemValueString('version', '0.0.0'), '27.0.0', '>=')) {
-				$context->registerSpeechToTextProvider(STTProvider::class);
-			}
+			$context->registerSpeechToTextProvider(STTProvider::class);
+			$context->registerTextToImageProvider(TextToImageProvider::class);
+			$context->registerTextProcessingProvider(FreePromptProvider::class);
 		}
 	}
 
 	public function boot(IBootContext $context): void {
 	}
 }
-
