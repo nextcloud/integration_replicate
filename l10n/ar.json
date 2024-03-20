@@ -1,5 +1,4 @@
 { "translations": {
-    "AI image generation (stable diffusion via Replicate)" : "توليد الصور بالذكاء الاصطناعي (تطبيق \"الانتشار المستقر\" Stable Diffusion عبر \"الناسخ\" Replicate)",
     "AI speech-to-text (Whisper via Replicate)" : "تحويل الكلام إلى نص بالذكاء الصناعي (تطبيق \"الهامس\" Whisper عبر \"الناسخ\" Replicate)",
     "Bad HTTP method" : "دالة HTTP  غير صحيحة",
     "Bad credentials" : "معلومات تسجيل الدخول غير صحيحة",
@@ -7,11 +6,8 @@
     "Replicate's Whisper Speech-To-Text" : "ينسخ ما يحُوِّله تطبيق \"الهامس\" Whisper من كلام إلى نص",
     "Replicate integration" : "مكاملة \"الناسخ\" Replicate",
     "Integration of Replicate stable-diffusion" : "مكاملة \"الناسخ\" Replicate مع \"الانتشار المستقر\" Stabel-diffusion",
-    "Replicate integration provides a smart picker provider for Whisper translation/transcription and stable diffusion image prediction.\n\n## Ethical AI Rating\n### Rating: 🟡\n\nPositive:\n* the software for training and inferencing of this model is open source\n* the trained model is freely available, and thus can be ran on-premises\n* the training data is freely available, making it possible to check or correct for bias or optimise the performance and CO2 usage.\n\nNegative:\n* the software for training and inferencing of this model is proprietary, limiting running it locally or training by yourself\n* the trained model is not freely available, so the model can not be ran on-premises\n* the training data is not freely available, limiting the ability of external parties to check and correct for bias or optimise the model’s performance and CO2 usage.\n\nLearn more about the Nextcloud Ethical AI Rating [in our blog](https://nextcloud.com/blog/nextcloud-ethical-ai-rating/)." : "يتيح تكامل النسخ المتماثل مزود أداة انتقاء ذكية لترجمة / استكتاب ويسبر والتنبؤ بثبات تشعث الصورة. \n\n## تقييم AI الوصفي\n### التقييم: 🟡\n\nإيجابي:\n* البرنامج للتدريب والاستدلال لهذا النموذج مفتوح المصدر \n* النموذج المجرَّب متاح مجانًا، وبالتالي يمكن تشغيل برمجية on-premises\n* بيانات التدريب متاحة مجانًا، مما يتيح التحقق من الخطأ المنهجي وتصحيحه أو تحسين أداء النموذج واستخدام CO2. \n\nسلبي:\n* برنامج التدريب والاستنتاج لهذا النموذج مملوك، مما يحد من تشغيله محليًا أو التدريب بنفسك\n* النموذج المُجرَّب غير متاح مجانًا، وبالتالي لا يمكن تشغيل برمجية أون بريمسيز\n* بيانات التدريب غير متاحة مجانًا، مما يحد من قدرة الأطراف الخارجية للتحقق من الخطأ المنهجي وتصحيحه أو تحسين أداء النموذج واستخدام CO2. \n\nتعرف على المزيد حول التقييم الوصفي لنكست كلود AI [من خلال مدونتنا] (https://nextcloud.com/blog/nextcloud-ethical-ai-rating/ ).",
     "Replicate API token" : "أَمَارَة token لـ API الخاص بتطبيق \"الناسخ\" Replicate",
-    "your API token" : "أَمَارَة token لـ API خاصّتك",
     "You can create a free API token on https://replicate.com" : "يمكنك إنشاء أَمَارَة token لـ API مجانية على https://replicate.com",
-    "Model" : "نموذج model",
     "Larger model size gives better results but uses more credit" : "يعطي حجم النموذج الأكبر نتائج أفضل ولكنه يستخدم المزيد من الائتمان",
     "Tiny" : "ضئيل",
     "Base" : "أساس",
@@ -44,7 +40,6 @@
     "Number of images to generate (1-4)" : "عدد الصور التي سيجري توليدها (1-4)",
     "Size of the generated images" : "حجم الصور المولّدة",
     "cyberpunk nextcloud logo with chrismas hats" : "شعار Cyberpunk nextcloud مع قبعات عيد الميلاد",
-    "by Replicate with stable diffusion" : "بواسطة \"الناسخ\" Replicate مع \"الانتشار المستقر\" Stabe diffusion",
     "Regenerate" : "أعِد التوليد",
     "Preview" : "مُعاينة",
     "Failed to launch image generation" : "أخفق في إطلاق الصورة المُولّدة",

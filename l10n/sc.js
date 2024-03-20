@@ -4,6 +4,7 @@ OC.L10N.register(
     "Bad HTTP method" : "Mètodu HTTP no bàlidu",
     "Bad credentials" : "Credentziales non bàlidas",
     "Connected accounts" : "Contos connètidos",
+    "Image generation" : "Generatzione de immàgines",
     "Small" : "Piticu",
     "Medium" : "Mesanu",
     "Large" : "Mannu",

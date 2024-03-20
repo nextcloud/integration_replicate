@@ -4,7 +4,6 @@ OC.L10N.register(
     "Bad HTTP method" : "HTTP metodo okerra",
     "Bad credentials" : "Kredentzial okerrak",
     "Connected accounts" : "Konektatutako kontuak",
-    "Model" : "Modeloa",
     "Small" : "Txikia",
     "Medium" : "Ertaina",
     "Large" : "Handia",

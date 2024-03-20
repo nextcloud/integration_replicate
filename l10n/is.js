@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Bad credentials" : "Gölluð auðkenni",
     "Connected accounts" : "Tengdir aðgangar",
+    "Image generation" : "Gerð mynda",
     "Small" : "Lítið",
     "Medium" : "miðlungs",
     "Large" : "Stórt",

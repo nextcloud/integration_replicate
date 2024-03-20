@@ -1,7 +1,6 @@
 OC.L10N.register(
     "integration_replicate",
     {
-    "AI image generation (stable diffusion via Replicate)" : "Vytváření obrázků pomocí AI (stable diffusion prostřednictvím Replicate)",
     "AI speech-to-text (Whisper via Replicate)" : "Řeč na text pomocí AI (Whisper prostřednictvím Replicate)",
     "Bad HTTP method" : "Nesprávná HTTP metoda",
     "Bad credentials" : "Nesprávné přihlašovací údaje",
@@ -10,9 +9,7 @@ OC.L10N.register(
     "Replicate integration" : "Napojení na Replicate",
     "Integration of Replicate stable-diffusion" : "Napojení na Replicate stable-diffusion",
     "Replicate API token" : "Token k API Replicate",
-    "your API token" : "váš token k API",
     "You can create a free API token on https://replicate.com" : "Klíč k API rozhraní zdarma je možné získat na https://replicate.com",
-    "Model" : "Model",
     "Larger model size gives better results but uses more credit" : "Rozsáhlejší model podává lepší výsledky ale spotřebovává více kreditu",
     "Tiny" : "Drobný",
     "Base" : "Základní",
@@ -45,7 +42,6 @@ OC.L10N.register(
     "Number of images to generate (1-4)" : "Počet obrázků, které vytvořit (1-4)",
     "Size of the generated images" : "Velikost vytvářených obrázků",
     "cyberpunk nextcloud logo with chrismas hats" : "kyberpunkové logo nextcloud s vánočními čepicemi",
-    "by Replicate with stable diffusion" : "od Replicate se stable diffusion",
     "Regenerate" : "Znovu vytvořit",
     "Preview" : "Náhled",
     "Failed to launch image generation" : "Nepodařilo se spustit vytváření obrázku",

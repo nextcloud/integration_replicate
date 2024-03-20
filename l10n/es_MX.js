@@ -1,6 +1,7 @@
 OC.L10N.register(
     "integration_replicate",
     {
+    "Image generation" : "Generación de imágenes",
     "Medium" : "Medio",
     "Advanced options" : "Opciones avanzadas",
     "Send" : "Enviar",

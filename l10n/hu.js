@@ -1,7 +1,6 @@
 OC.L10N.register(
     "integration_replicate",
     {
-    "AI image generation (stable diffusion via Replicate)" : "AI kép generálás (stabil diffúzió a Replicate által)",
     "AI speech-to-text (Whisper via Replicate)" : "AI beszédfelismerés (Whisper a Replicate által)",
     "Bad HTTP method" : "Hibás HTTP metódus",
     "Bad credentials" : "Hibás hitelesítő adatok",
@@ -10,9 +9,9 @@ OC.L10N.register(
     "Replicate integration" : "Replicate megismétlése",
     "Integration of Replicate stable-diffusion" : "Replicate stabil integráció",
     "Replicate API token" : "Replicate API token",
-    "your API token" : "saját API kulcs",
     "You can create a free API token on https://replicate.com" : "Ingyenes API kulcs igényelhető a https://replicate.com címen",
-    "Model" : "Modell",
+    "Text generation" : "Szöveg generálás",
+    "Image generation" : "Képelőállítás",
     "Larger model size gives better results but uses more credit" : "A nagyobb modellek pontosabb eredményeket adnak, de több kreditet használnak",
     "Tiny" : "Apró",
     "Base" : "Alap",
@@ -45,7 +44,6 @@ OC.L10N.register(
     "Number of images to generate (1-4)" : "Létrehozandó képek száma (1-4)",
     "Size of the generated images" : "A generált képek mérete",
     "cyberpunk nextcloud logo with chrismas hats" : "cyberpunk nextcloud logó karácsonyi sapkával",
-    "by Replicate with stable diffusion" : "Replicate által",
     "Regenerate" : "Újbóli előállítás",
     "Preview" : "Előnézet",
     "Failed to launch image generation" : "Nem sikerült a képgenerálás indítása",
