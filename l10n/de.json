@@ -8,6 +8,7 @@
     "Integration of Replicate stable-diffusion" : "Integration von Replicate Stabile Diffusion",
     "Replicate API token" : "Replicate API-Schlüssel",
     "You can create a free API token on https://replicate.com" : "Du kannst einen kostenlosen API-Schlüssel unter https://replicate.com erstellen",
+    "Image generation" : "Bilderstellung",
     "Larger model size gives better results but uses more credit" : "Eine größere Modellgröße führt zu besseren Ergebnissen, verbraucht aber mehr Kredit",
     "Tiny" : "Winzig",
     "Base" : "Basis",

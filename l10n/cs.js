@@ -10,6 +10,8 @@ OC.L10N.register(
     "Integration of Replicate stable-diffusion" : "Napojení na Replicate stable-diffusion",
     "Replicate API token" : "Token k API Replicate",
     "You can create a free API token on https://replicate.com" : "Klíč k API rozhraní zdarma je možné získat na https://replicate.com",
+    "Text generation" : "Vytváření textu",
+    "Image generation" : "Vytváření obrázků",
     "Larger model size gives better results but uses more credit" : "Rozsáhlejší model podává lepší výsledky ale spotřebovává více kreditu",
     "Tiny" : "Drobný",
     "Base" : "Základní",

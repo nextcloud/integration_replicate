@@ -1,6 +1,7 @@
 OC.L10N.register(
     "integration_replicate",
     {
+    "Image generation" : "Xeneración d'imáxenes",
     "Generated image" : "Imaxe xenerada",
     "AI image generation" : "Xeneración d'imáxenes per IA",
     "Show/hide advanced options" : "Amosar/anubrir les opciones avanzaes",

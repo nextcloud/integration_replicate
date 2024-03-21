@@ -1,19 +1,38 @@
 { "translations": {
+    "AI image generation (via Replicate)" : "توليد الصور بالذكاء الاصطناعي (عبر التقليد)",
     "AI speech-to-text (Whisper via Replicate)" : "تحويل الكلام إلى نص بالذكاء الصناعي (تطبيق \"الهامس\" Whisper عبر \"الناسخ\" Replicate)",
     "Bad HTTP method" : "دالة HTTP  غير صحيحة",
     "Bad credentials" : "معلومات تسجيل الدخول غير صحيحة",
     "Connected accounts" : "حسابات مترابطة",
     "Replicate's Whisper Speech-To-Text" : "ينسخ ما يحُوِّله تطبيق \"الهامس\" Whisper من كلام إلى نص",
     "Replicate integration" : "مكاملة \"الناسخ\" Replicate",
+    "Replicate's stable diffusion Text-To-Image" : "الانتشار المستقر للتقليد للنص إلى الصورة",
     "Integration of Replicate stable-diffusion" : "مكاملة \"الناسخ\" Replicate مع \"الانتشار المستقر\" Stabel-diffusion",
+    "The Replicate integration app provides a smart picker provider for Whisper translation/transcription and image generation.\nIt also provides a SpeechToText provider, a Text processing provider and an Image generation provider.\n\n## Ethical AI Rating\n### Rating: 🟡\n\nPositive:\n* The software for training and inferencing of this model is open source\n* The trained model is freely available, and thus can be ran on-premises\n* The training data is freely available, making it possible to check or correct for bias or optimise the performance and CO2 usage.\n\nNegative:\n* The software for training and inferencing of this model is proprietary, limiting running it locally or training by yourself\n* The trained model is not freely available, so the model can not be ran on-premises\n* The training data is not freely available, limiting the ability of external parties to check and correct for bias or optimise the model’s performance and CO2 usage.\n\nLearn more about the Nextcloud Ethical AI Rating [in our blog](https://nextcloud.com/blog/nextcloud-ethical-ai-rating/)." : "يوفر تطبيق تكامل \"التقليد\" Replicate مزوداً ذكياً للترجمة و الاستنساخ الصوتي لـ Whisper، و إنشاء الصور. كما يوفر أيضًا مزوداً للتحويل من كلام إلى نص SpeechToText، و مزوداً لمعالجة النصوص، و مزوداً لإنشاء الصور. \n\n## تصنيف الذكاء الاصطناعي الأخلاقي \n\n### التقييم: 🟡 \n\nالإيجابيات: \n* برنامج التدريب والاستدلال على هذا النموذج مفتوح المصدر \n* النموذج المدرب متاح مجانًا، و بالتالي يمكن تشغيله محليًا \n* بيانات التدريب متاحة مجانًا، مما يجعل من الممكن التحقق من التحيز أو تصحيحه أو تحسين الأداء واستهلاك ثاني أكسيد الكربون CO2. \n\nالسلبيات: \n* برنامج التدريب والاستدلال على هذا النموذج هو برنامج خاص، مما يحد من تشغيله محليًا أو التدريب عليه بنفسك \n* النموذج المُدرب غير متاح مجانًا، لذلك لا يمكن تشغيل النموذج محليًا \n* بيانات التدريب غير متاحة مجانًا، مما يحد من قدرة الأطراف الخارجية على التحقق من التحيز وتصحيحه أو تحسين أداء النموذج و استهلاك ثاني أكسيد الكربون CO2. \n\nتعّرف على المزيد حول تصنيف أخلاقيات الذكاء الاصطناعي [في مدونتنا] \n(https://nextcloud.com/blog/nextcloud-ethical-ai-rating/).",
     "Replicate API token" : "أَمَارَة token لـ API الخاص بتطبيق \"الناسخ\" Replicate",
+    "Your API token" : "أَمَارَة واجهة برمجة التطبيق API خاصتك",
     "You can create a free API token on https://replicate.com" : "يمكنك إنشاء أَمَارَة token لـ API مجانية على https://replicate.com",
+    "Text generation" : "توليد النص",
+    "Text generation model name" : "إسم نموذج توليد النصوص",
+    "You can find model names on the Replicate website. For example: 'mistralai/mixtral-8x7b-instruct-v0.1' or 'meta/llama-2-70b-chat'" : "يمكنك العثور على أسماء النماذج على موقع \"التقليد\" Replicate. على سبيل المثال: \"mistralai/mixtral-8x7b-instruct-v0.1\" أو \"meta/llama-2-70b-chat\"",
+    "Text generation model version (only used if model name is empty)" : "رقم إصدار نموذج توليد النصوص (يُستخدم فقط إذا كان اسم النموذج فارغًا)",
+    "For example: '83b6a56e7c828e667f21fd596c338fd4f0039b46bcfa18d973e8e70e455fda70'" : "مثلاً: '83b6a56e7c828e667f21fd596c338fd4f0039b46bcfa18d973e8e70e455fda70'",
+    "Extra model parameters" : "بارامترات إضافية للنموذج",
+    "Image generation" : "توليد الصورة",
+    "Image generation model name (only used if model version is empty)" : "اسم نموذج توليد الصِّوَر (يُستعمل فقط إذا كان رقم إصدار النموذج فارغًا)",
+    "For example: 'stability-ai/stable-diffusion'" : "مثلاً: 'stability-ai/stable-diffusion'",
+    "Image generation model version" : "رقم إصدار نموذج توليد الصور",
+    "For example: 'ac732df83cea7fff18b8472768c88ad041fa750ff7682a21affe81863cbe77e4'" : "مثلاً: 'ac732df83cea7fff18b8472768c88ad041fa750ff7682a21affe81863cbe77e4'",
+    "Speech-to-text" : "كلام إلى نص",
+    "Whisper model size" : "حجم نموذج \"الهامس\" Whisper",
     "Larger model size gives better results but uses more credit" : "يعطي حجم النموذج الأكبر نتائج أفضل ولكنه يستخدم المزيد من الائتمان",
     "Tiny" : "ضئيل",
     "Base" : "أساس",
     "Small" : "صغير",
     "Medium" : "متوسط",
     "Large" : "كبير",
+    "Extra parameters are model-specific. For example: {\"width\":1920,\"height\":1080}" : "بارامترات إضافية تخص النموذج. مثلاً: {\"width\":1920,\"height\":1080}f",
+    "Extra parameters are model-specific. For example: {\"max_new_tokens\":128,\"temperature\":0.7}" : "البارامترات الإضافية تخص النموذج. مثلاً: {\"max_new_tokens\":128,\"temperature\":0.7}",
     "Replicate admin options saved" : "تمّ حفظ خيارات مشرف \"الناسخ\" Replicate",
     "Failed to save Replicate admin options" : "تعذّر حفظ خيارات مشرف \"الناسخ\" Replicate",
     "Loading prediction..." : "تحميل التوقُّع prediction ...",
@@ -40,6 +59,7 @@
     "Number of images to generate (1-4)" : "عدد الصور التي سيجري توليدها (1-4)",
     "Size of the generated images" : "حجم الصور المولّدة",
     "cyberpunk nextcloud logo with chrismas hats" : "شعار Cyberpunk nextcloud مع قبعات عيد الميلاد",
+    "by Replicate" : "بواسطة \"التقليد\" Replicate",
     "Regenerate" : "أعِد التوليد",
     "Preview" : "مُعاينة",
     "Failed to launch image generation" : "أخفق في إطلاق الصورة المُولّدة",

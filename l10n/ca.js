@@ -4,6 +4,7 @@ OC.L10N.register(
     "Bad HTTP method" : "Mètode HTTP incorrecte",
     "Bad credentials" : "Credencials dolentes",
     "Connected accounts" : "Comptes connectats",
+    "Image generation" : "Generació d'imatges",
     "Small" : "Petita",
     "Medium" : "Mitjana",
     "Large" : "Gran",
