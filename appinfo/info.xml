@@ -4,8 +4,7 @@
     <name>Replicate integration</name>
     <summary>Integration of Replicate stable-diffusion</summary>
     <description><![CDATA[
-The Replicate integration app provides a smart picker provider for Whisper translation/transcription and image generation.
-It also provides a SpeechToText provider, a Text processing provider and an Image generation provider.
+The Replicate integration app provides a SpeechToText provider, a Text processing provider and an Image generation provider.
 
 ## Ethical AI Rating
 ### Rating: 🟡
@@ -22,7 +21,7 @@ Negative:
 
 Learn more about the Nextcloud Ethical AI Rating [in our blog](https://nextcloud.com/blog/nextcloud-ethical-ai-rating/).
     ]]></description>
-    <version>2.0.1</version>
+    <version>3.0.0</version>
     <licence>agpl</licence>
     <author>Julien Veyssier</author>
     <namespace>Replicate</namespace>
