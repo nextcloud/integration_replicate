@@ -1,11 +1,12 @@
 # [Replicate](https://replicate.com/) integration in Nextcloud
 
 This app adds:
-* A smart picker provider to render generated images in Talk and Text
-* A smart picker provider for dictating text with Whisper
 * A SpeechToText provider using Whisper
 * A Text processing provider
 * An Image generation provider
+
+:warning: The smart pickers have been removed from this app
+as they are now included in the [Assistant app](https://apps.nextcloud.com/apps/assistant).
 
 ## Ethical AI Rating
 ### Rating: 🟡

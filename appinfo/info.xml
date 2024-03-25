@@ -6,6 +6,9 @@
     <description><![CDATA[
 The Replicate integration app provides a SpeechToText provider, a Text processing provider and an Image generation provider.
 
+⚠️ The smart pickers have been removed from this app
+as they are now included in the [Assistant app](https://apps.nextcloud.com/apps/assistant).
+
 ## Ethical AI Rating
 ### Rating: 🟡
 
