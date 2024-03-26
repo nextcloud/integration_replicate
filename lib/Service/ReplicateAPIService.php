@@ -15,7 +15,6 @@ use Exception;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
 use OCA\Replicate\AppInfo\Application;
-use OCA\Replicate\Db\PromptMapper;
 use OCP\Exceptions\AppConfigTypeConflictException;
 use OCP\Files\File;
 use OCP\Files\GenericFileException;
@@ -37,20 +36,9 @@ class ReplicateAPIService {
 		private LoggerInterface $logger,
 		private IL10N $l10n,
 		private IConfig $config,
-		private PromptMapper $promptMapper,
 		IClientService $clientService
 	) {
 		$this->client = $clientService->newClient();
-	}
-
-	/**
-	 * @param string $userId
-	 * @param int $type
-	 * @return array
-	 * @throws \OCP\DB\Exception
-	 */
-	public function getPromptHistory(string $userId, int $type): array {
-		return $this->promptMapper->getPromptsOfUser($userId, $type);
 	}
 
 	/**
@@ -138,12 +126,11 @@ class ReplicateAPIService {
 
 	/**
 	 * @param string $prompt
-	 * @param string|null $userId
 	 * @param int $numOutputs
 	 * @return array|string[]
 	 * @throws \OCP\DB\Exception
 	 */
-	public function createImagePrediction(string $prompt, ?string $userId, int $numOutputs): array {
+	public function createImagePrediction(string $prompt, int $numOutputs): array {
 		$params = [
 			'input' => [
 				'prompt' => $prompt,
@@ -167,9 +154,6 @@ class ReplicateAPIService {
 			$endpoint = 'models/' . $modelName . '/predictions';
 		}
 
-		if ($userId !== null) {
-			$this->promptMapper->createPrompt(Application::PROMPT_TYPE_IMAGE, $userId, $prompt);
-		}
 		return $this->request($endpoint, $params, 'POST');
 	}
 
