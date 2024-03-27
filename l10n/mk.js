@@ -4,11 +4,6 @@ OC.L10N.register(
     "Bad credentials" : "Неточни акредитиви",
     "Connected accounts" : "Поврзани сметки",
     "Small" : "Мал",
-    "Large" : "Голем",
-    "Advanced options" : "Напредни опции",
-    "Send" : "Прати",
-    "Text" : "Текст",
-    "Translate" : "Преведи",
-    "Unknown error" : "Непозната грешка"
+    "Large" : "Голем"
 },
 "nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;");

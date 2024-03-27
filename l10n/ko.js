@@ -7,12 +7,6 @@ OC.L10N.register(
     "Image generation" : "이미지 생성",
     "Small" : "작게",
     "Medium" : "중간",
-    "Large" : "크게",
-    "Advanced options" : "고급 설정",
-    "Send" : "전송",
-    "Preview" : "미리 보기",
-    "Text" : "텍스트",
-    "Translate" : "번역:",
-    "Unknown error" : "알 수 없는 오류"
+    "Large" : "크게"
 },
 "nplurals=1; plural=0;");

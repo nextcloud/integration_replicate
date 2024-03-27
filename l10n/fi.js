@@ -6,13 +6,6 @@ OC.L10N.register(
     "Connected accounts" : "Yhdistetyt tilit",
     "Small" : "Pieni",
     "Medium" : "Keskitasoinen",
-    "Large" : "Suuri",
-    "Show/hide advanced options" : "Näytä/piilota lisäasetukset",
-    "Advanced options" : "Lisävalinnat",
-    "Send" : "Lähetä",
-    "Preview" : "Esikatselu",
-    "Text" : "Teksti",
-    "Translate" : "Käännä",
-    "Unknown error" : "Tuntematon virhe"
+    "Large" : "Suuri"
 },
 "nplurals=2; plural=(n != 1);");

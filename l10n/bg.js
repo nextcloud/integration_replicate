@@ -6,22 +6,6 @@ OC.L10N.register(
     "Connected accounts" : "Свързани профили",
     "Small" : "Малък",
     "Medium" : "Средна",
-    "Large" : "Голям",
-    "Loading image" : "Зареждане на изображение",
-    "Generated image" : "Генерирано изображение",
-    "Direct image link" : "Директна връзка към изображение",
-    "AI image generation" : "Генериране на изображение с помощта на изкуствен интелект",
-    "Show/hide advanced options" : "Показване/скриване на разширени опции",
-    "Advanced options" : "Допълнителни опции",
-    "Send" : "Изпращане",
-    "Size of the generated images" : "Размер на генерираните изображения",
-    "Regenerate" : "Регенериране",
-    "Preview" : "Визуализация",
-    "AI speech-to-text" : "AI от реч към текст",
-    "Transcribe" : "Транскрибиране",
-    "Translate (only to English)" : "Превод (само на английски език)",
-    "Text" : "Текст",
-    "Translate" : "Превод",
-    "Unknown error" : "Неизвестна грешка"
+    "Large" : "Голям"
 },
 "nplurals=2; plural=(n != 1);");

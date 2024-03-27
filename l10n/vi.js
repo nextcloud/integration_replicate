@@ -5,12 +5,6 @@ OC.L10N.register(
     "Image generation" : "Tạo hình ảnh",
     "Small" : "Nhỏ",
     "Medium" : "Trung bình",
-    "Large" : "Lớn",
-    "Advanced options" : "Tùy chọn nâng cao",
-    "Send" : "Gửi",
-    "Preview" : "Xem trước",
-    "Text" : "Văn bản",
-    "Translate" : "Dịch",
-    "Unknown error" : "Lỗi không xác định"
+    "Large" : "Lớn"
 },
 "nplurals=1; plural=0;");

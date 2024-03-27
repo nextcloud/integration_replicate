@@ -6,12 +6,6 @@ OC.L10N.register(
     "Image generation" : "Gerð mynda",
     "Small" : "Lítið",
     "Medium" : "miðlungs",
-    "Large" : "Stórt",
-    "Advanced options" : "Ítarlegir valkostir",
-    "Send" : "Senda",
-    "Preview" : "Forskoðun",
-    "Text" : "Texti",
-    "Translate" : "Þýða",
-    "Unknown error" : "Óþekkt villa"
+    "Large" : "Stórt"
 },
 "nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);");

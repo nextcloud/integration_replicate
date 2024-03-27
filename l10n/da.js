@@ -4,12 +4,6 @@ OC.L10N.register(
     "Connected accounts" : "Forbundne konti",
     "Small" : "Lille",
     "Medium" : "Mellem",
-    "Large" : "Stor",
-    "Advanced options" : "Avancerede indstillinger",
-    "Send" : "Send",
-    "Preview" : "Forhåndsvisning",
-    "Text" : "Tekst",
-    "Translate" : "Oversæt",
-    "Unknown error" : "Ukendt fejl"
+    "Large" : "Stor"
 },
 "nplurals=2; plural=(n != 1);");

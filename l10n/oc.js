@@ -2,12 +2,6 @@ OC.L10N.register(
     "integration_replicate",
     {
     "Bad credentials" : "Marrits identificants",
-    "Connected accounts" : "Comptes connectats",
-    "Advanced options" : "Opcions avançadas",
-    "Send" : "Enviar",
-    "Preview" : "Apercebut",
-    "Text" : "Tèxt",
-    "Translate" : "Tradurre",
-    "Unknown error" : "Error desconeguda"
+    "Connected accounts" : "Comptes connectats"
 },
 "nplurals=2; plural=(n > 1);");

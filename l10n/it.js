@@ -7,12 +7,6 @@ OC.L10N.register(
     "Image generation" : "Generazione di immagini",
     "Small" : "Piccola",
     "Medium" : "Media",
-    "Large" : "Grande",
-    "Advanced options" : "Opzioni avanzate",
-    "Send" : "Invia",
-    "Preview" : "Anteprima",
-    "Text" : "Testo",
-    "Translate" : "Traduci",
-    "Unknown error" : "Errore sconosciuto"
+    "Large" : "Grande"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

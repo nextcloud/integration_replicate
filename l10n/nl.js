@@ -6,12 +6,6 @@ OC.L10N.register(
     "Connected accounts" : "Verbonden accounts",
     "Small" : "Klein",
     "Medium" : "Gemiddeld",
-    "Large" : "Groot",
-    "Advanced options" : "Geavanceerde opties",
-    "Send" : "Verzenden",
-    "Preview" : "Voorbeeld",
-    "Text" : "Tekst",
-    "Translate" : "Vertaal",
-    "Unknown error" : "Onbekende fout"
+    "Large" : "Groot"
 },
 "nplurals=2; plural=(n != 1);");

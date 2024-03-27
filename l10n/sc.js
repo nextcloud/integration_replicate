@@ -7,10 +7,6 @@ OC.L10N.register(
     "Image generation" : "Generatzione de immàgines",
     "Small" : "Piticu",
     "Medium" : "Mesanu",
-    "Large" : "Mannu",
-    "Advanced options" : "Sèberos avantzados",
-    "Text" : "Testu",
-    "Translate" : "Borta",
-    "Unknown error" : "Errore disconnotu"
+    "Large" : "Mannu"
 },
 "nplurals=2; plural=(n != 1);");
