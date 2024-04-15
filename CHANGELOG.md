@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [3.0.0] – 2024-04-15
+
+### Changed
+
+- Moved smart pickers to Nextcloud Assistant
+- Support Nextcloud 30
+
+### Fix
+ - fix: Correct Ethical AI rating
+
 ## [2.0.1] – 2024-03-20
 
 ### Fixed
