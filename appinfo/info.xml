@@ -10,19 +10,25 @@ The Replicate integration app provides a SpeechToText provider, a Text processin
 as they are now included in the [Assistant app](https://apps.nextcloud.com/apps/assistant).
 
 ## Ethical AI Rating
-### Rating: 🟡
+### Speech-to-Text Rating: 🟡
 
 Positive:
-* The software for training and inferencing of this model is open source
-* The trained model is freely available, and thus can be ran on-premises
-* The training data is freely available, making it possible to check or correct for bias or optimise the performance and CO2 usage.
+* The software for training and inference of this model is open source
+* The trained model is freely available, and thus can be run on-premises
 
 Negative:
-* The software for training and inferencing of this model is proprietary, limiting running it locally or training by yourself
-* The trained model is not freely available, so the model can not be ran on-premises
 * The training data is not freely available, limiting the ability of external parties to check and correct for bias or optimise the model’s performance and CO2 usage.
 
+### Text processing Rating
+
+The rating depends on the model you select to use.
+
+### Image generation Rating
+
+The rating depends on the model you select to use.
+
 Learn more about the Nextcloud Ethical AI Rating [in our blog](https://nextcloud.com/blog/nextcloud-ethical-ai-rating/).
+
     ]]></description>
     <version>3.0.0</version>
     <licence>agpl</licence>

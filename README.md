@@ -9,7 +9,7 @@ This app adds:
 as they are now included in the [Assistant app](https://apps.nextcloud.com/apps/assistant).
 
 ## Ethical AI Rating
-### Rating: 🟡
+### Speech-to-Text Rating: 🟡
 
 Positive:
 * The software for training and inference of this model is open source
@@ -17,6 +17,14 @@ Positive:
 
 Negative:
 * The training data is not freely available, limiting the ability of external parties to check and correct for bias or optimise the model’s performance and CO2 usage.
+
+### Text processing Rating
+
+The rating depends on the model you select to use.
+
+### Image generation Rating
+
+The rating depends on the model you select to use.
 
 Learn more about the Nextcloud Ethical AI Rating [in our blog](https://nextcloud.com/blog/nextcloud-ethical-ai-rating/).
 
