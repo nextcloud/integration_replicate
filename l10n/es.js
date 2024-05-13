@@ -6,6 +6,7 @@ OC.L10N.register(
     "Connected accounts" : "Cuentas conectadas",
     "Replicate's Whisper Speech-To-Text" : "Dictado a texto Whisper de Replicate",
     "Replicate integration" : "Integración con Replicate",
+    "Replicate's stable diffusion Text-To-Image" : "Texto a imágenes de difusión estable de Replicate",
     "Integration of Replicate stable-diffusion" : "Integración de la difusión estable de Replicate",
     "Replicate API token" : "Token API de Replicate",
     "You can create a free API token on https://replicate.com" : "Puede crear un token API gratuito en https://replicate.com",
