@@ -1,6 +1,7 @@
 OC.L10N.register(
     "integration_replicate",
     {
+    "Image generation" : "Giniúint íomhá",
     "Small" : "Beaga",
     "Large" : "Mór"
 },
