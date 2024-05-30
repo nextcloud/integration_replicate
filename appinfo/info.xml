@@ -49,6 +49,5 @@ Learn more about the Nextcloud Ethical AI Rating [in our blog](https://nextcloud
     </dependencies>
     <settings>
         <admin>OCA\Replicate\Settings\Admin</admin>
-        <admin-section>OCA\Replicate\Settings\AdminSection</admin-section>
     </settings>
 </info>
