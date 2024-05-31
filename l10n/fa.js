@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "روش HTTP بد",
     "Bad credentials" : "اعتبارنامه بد",
-    "Connected accounts" : "حساب‌های متصل",
     "Replicate's Whisper Speech-To-Text" : "Replicate's Whisper Speech-To-Text",
     "Replicate integration" : "Replicate integration",
     "Integration of Replicate stable-diffusion" : "Integration of Replicate stable-diffusion",

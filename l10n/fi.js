@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "Virheellinen HTTP-metodi",
     "Bad credentials" : "Virheelliset kirjautumistiedot",
-    "Connected accounts" : "Yhdistetyt tilit",
     "Image generation" : "Kuvien generointi",
     "Small" : "Pieni",
     "Medium" : "Keskitasoinen",

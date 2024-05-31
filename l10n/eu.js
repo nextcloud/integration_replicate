@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "HTTP metodo okerra",
     "Bad credentials" : "Kredentzial okerrak",
-    "Connected accounts" : "Konektatutako kontuak",
     "Text generation" : "Testuen sorpena",
     "Image generation" : "Irudien sorpena",
     "Small" : "Txikia",

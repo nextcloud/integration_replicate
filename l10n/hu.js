@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "Hibás HTTP metódus",
     "Bad credentials" : "Hibás hitelesítő adatok",
-    "Connected accounts" : "Kapcsolt fiókok",
     "Replicate's Whisper Speech-To-Text" : "Replicate beszédfelismerés",
     "Replicate integration" : "Replicate megismétlése",
     "Integration of Replicate stable-diffusion" : "Replicate stabil integráció",

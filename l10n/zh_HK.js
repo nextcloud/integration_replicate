@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "不正確的 HTTP 方法",
     "Bad credentials" : "錯誤的憑證",
-    "Connected accounts" : "已連線的賬號",
     "Replicate's Whisper Speech-To-Text" : "Replicate 的 Whisper 音頻轉文本",
     "Replicate integration" : "Replicate 整合",
     "Replicate's stable diffusion Text-To-Image" : "Replicate 的 Stable Diffusion 文字轉影像",

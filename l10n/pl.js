@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "Zła metoda HTTP",
     "Bad credentials" : "Złe poświadczenia",
-    "Connected accounts" : "Połączone konta",
     "Image generation" : "Generowanie obrazu",
     "Small" : "Mała",
     "Medium" : "Średnio",

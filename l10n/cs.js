@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "Nesprávná HTTP metoda",
     "Bad credentials" : "Nesprávné přihlašovací údaje",
-    "Connected accounts" : "Propojené účty",
     "Replicate's Whisper Speech-To-Text" : "Whisper - převod řeči na text (od Whisper)",
     "Replicate integration" : "Napojení na Replicate",
     "Integration of Replicate stable-diffusion" : "Napojení na Replicate stable-diffusion",

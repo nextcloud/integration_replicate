@@ -2,7 +2,6 @@ OC.L10N.register(
     "integration_replicate",
     {
     "Bad credentials" : "Неточни акредитиви",
-    "Connected accounts" : "Поврзани сметки",
     "Small" : "Мал",
     "Large" : "Голем"
 },

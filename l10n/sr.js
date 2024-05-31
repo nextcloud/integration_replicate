@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "Лоша HTTP метода",
     "Bad credentials" : "Лоши креденцијали",
-    "Connected accounts" : "Повезани налози",
     "Replicate's Whisper Speech-To-Text" : "Whisper говор-у-текст од Replicate",
     "Replicate integration" : "Replicate интеграција",
     "Replicate's stable diffusion Text-To-Image" : "Стабилна дифузија Текст-у-слику компаније Replicate",

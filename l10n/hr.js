@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "Pogrešna metoda HTTP-a",
     "Bad credentials" : "Pogrešne vjerodajnice",
-    "Connected accounts" : "Povezani računi",
     "Small" : "Mali",
     "Medium" : "Srednji",
     "Large" : "Veliki"

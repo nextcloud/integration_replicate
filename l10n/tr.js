@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "HTTP yöntemi hatalı",
     "Bad credentials" : "Kimlik doğrulama bilgileri hatalı",
-    "Connected accounts" : "Bağlı hesaplar",
     "Replicate's Whisper Speech-To-Text" : "Replicate Whisper konuşmadan metne",
     "Replicate integration" : "Replicate bütünleştirmesi",
     "Replicate's stable diffusion Text-To-Image" : "Replicate stable diffusion yazıdan görsele",

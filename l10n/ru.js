@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "Неверный метод HTTP",
     "Bad credentials" : "Неверные учётные данные",
-    "Connected accounts" : "Подключённые учётные записи",
     "Replicate API token" : "Репликация токена API",
     "You can create a free API token on https://replicate.com" : "Вы можете создать бесплатный токен API на https://rescribe.com",
     "Small" : "Маленькая",

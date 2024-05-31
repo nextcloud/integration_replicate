@@ -1,7 +1,6 @@
 { "translations": {
     "Bad HTTP method" : "دالة HTTP  غير صحيحة",
     "Bad credentials" : "معلومات تسجيل الدخول غير صحيحة",
-    "Connected accounts" : "حسابات مترابطة",
     "Replicate's Whisper Speech-To-Text" : "ينسخ ما يحُوِّله تطبيق \"الهامس\" Whisper من كلام إلى نص",
     "Replicate integration" : "مكاملة \"الناسخ\" Replicate",
     "Replicate's stable diffusion Text-To-Image" : "الانتشار المستقر للتقليد للنص إلى الصورة",

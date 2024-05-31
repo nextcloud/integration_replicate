@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "Metode HTTP tidak benar",
     "Bad credentials" : "Kredensial tidak benar",
-    "Connected accounts" : "Akun terhubung",
     "Small" : "Kecil",
     "Medium" : "Sedang",
     "Large" : "Besar"

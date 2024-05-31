@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "HTTP-metode er feil",
     "Bad credentials" : "Påloggingsdetaljene er feil",
-    "Connected accounts" : "Tilknyttede kontoer",
     "Replicate's Whisper Speech-To-Text" : "Replicates Whisper tale-til-tekst",
     "Replicate integration" : "Replicate-integrasjon",
     "Replicate's stable diffusion Text-To-Image" : "Replicates stabil diffusjon Tekst-Til-Bilde",

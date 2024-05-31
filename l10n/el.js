@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "Κακή μέθοδος HTTP",
     "Bad credentials" : "Εσφαλμένα διαπιστευτήρια",
-    "Connected accounts" : "Συνδεδεμένοι λογαριασμοί",
     "Small" : "Μικρό",
     "Medium" : "Μεσαία",
     "Large" : "Μεγάλο"

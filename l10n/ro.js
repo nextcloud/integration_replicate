@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "Metodă HTTP nepotrivită",
     "Bad credentials" : "Credențiale greșite",
-    "Connected accounts" : "Conturile conectate",
     "Small" : "Mic",
     "Medium" : "Mediu",
     "Large" : "Mare"

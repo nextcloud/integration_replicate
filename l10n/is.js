@@ -2,7 +2,6 @@ OC.L10N.register(
     "integration_replicate",
     {
     "Bad credentials" : "Gölluð auðkenni",
-    "Connected accounts" : "Tengdir aðgangar",
     "Image generation" : "Gerð mynda",
     "Small" : "Lítið",
     "Medium" : "miðlungs",

@@ -3,7 +3,6 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "Mauvaise méthode HTTP",
     "Bad credentials" : "Identifiants incorrects",
-    "Connected accounts" : "Comptes connectés",
     "Replicate's Whisper Speech-To-Text" : "Synthèse vocale Whisper de Replicate",
     "Replicate integration" : "Intégration Replicate",
     "Integration of Replicate stable-diffusion" : "Integration de Replicate Stable Diffusion",
