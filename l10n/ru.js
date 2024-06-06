@@ -5,6 +5,7 @@ OC.L10N.register(
     "Bad credentials" : "Неверные учётные данные",
     "Replicate API token" : "Репликация токена API",
     "You can create a free API token on https://replicate.com" : "Вы можете создать бесплатный токен API на https://rescribe.com",
+    "Image generation" : "Создание изображений",
     "Small" : "Маленькая",
     "Medium" : "Средняя",
     "Large" : "Большая"
