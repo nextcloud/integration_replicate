@@ -1,6 +1,8 @@
 OC.L10N.register(
     "integration_replicate",
     {
+    "Bad HTTP method" : "Droch-mhodh HTTP",
+    "Bad credentials" : "Dintiúir dona",
     "Image generation" : "Giniúint íomhá",
     "Small" : "Beaga",
     "Medium" : "Mheán",
