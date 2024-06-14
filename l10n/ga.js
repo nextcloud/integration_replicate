@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "Droch-mhodh HTTP",
     "Bad credentials" : "Dintiúir dona",
+    "Text generation" : "Giniúint téacs",
     "Image generation" : "Giniúint íomhá",
     "Small" : "Beaga",
     "Medium" : "Mheán",
