@@ -5,6 +5,9 @@ OC.L10N.register(
     "Bad credentials" : "Kredentzial okerrak",
     "Text generation" : "Testuen sorpena",
     "Image generation" : "Irudien sorpena",
+    "Speech-to-text" : "Ahotsetik testura",
+    "Tiny" : "Oso txikia",
+    "Base" : "Oinarria",
     "Small" : "Txikia",
     "Medium" : "Ertaina",
     "Large" : "Handia"
