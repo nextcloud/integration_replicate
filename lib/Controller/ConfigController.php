@@ -20,10 +20,12 @@ use OCP\IRequest;
 
 class ConfigController extends Controller {
 
-	public function __construct(string   $appName,
+	public function __construct(
+		string   $appName,
 		IRequest $request,
 		private IConfig $config,
-		?string $userId) {
+		?string $userId,
+	) {
 		parent::__construct($appName, $request);
 	}
 

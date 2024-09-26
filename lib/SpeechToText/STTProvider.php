@@ -13,9 +13,11 @@ use Psr\Log\LoggerInterface;
 
 class STTProvider implements ISpeechToTextProvider {
 
-	public function __construct(private ReplicateAPIService $replicateAPIService,
+	public function __construct(
+		private ReplicateAPIService $replicateAPIService,
 		private LoggerInterface $logger,
-		private IL10N $l) {
+		private IL10N $l,
+	) {
 	}
 
 	/**
@@ -31,7 +33,7 @@ class STTProvider implements ISpeechToTextProvider {
 	public function transcribeFile(File $file): string {
 		try {
 			return $this->replicateAPIService->transcribeFile($file);
-		} catch(\Exception $e) {
+		} catch (\Exception $e) {
 			$this->logger->warning('Replicate\'s Whisper transcription failed with: ' . $e->getMessage(), ['exception' => $e]);
 			throw new \RuntimeException('Replicate\'s Whisper transcription failed with: ' . $e->getMessage());
 		}

@@ -36,7 +36,7 @@ class ReplicateAPIService {
 		private LoggerInterface $logger,
 		private IL10N $l10n,
 		private IConfig $config,
-		IClientService $clientService
+		IClientService $clientService,
 	) {
 		$this->client = $clientService->newClient();
 	}
@@ -254,7 +254,7 @@ class ReplicateAPIService {
 			} else {
 				return json_decode($body, true) ?: [];
 			}
-		} catch (ClientException | ServerException $e) {
+		} catch (ClientException|ServerException $e) {
 			$responseBody = $e->getResponse()->getBody();
 			$parsedResponseBody = json_decode($responseBody, true);
 			if ($e->getResponse()->getStatusCode() === 404) {
@@ -266,7 +266,7 @@ class ReplicateAPIService {
 				'error' => $e->getMessage(),
 				'body' => $parsedResponseBody,
 			];
-		} catch (Exception | Throwable $e) {
+		} catch (Exception|Throwable $e) {
 			$this->logger->warning('Replicate API error : ' . $e->getMessage(), ['app' => Application::APP_ID]);
 			return ['error' => $e->getMessage()];
 		}

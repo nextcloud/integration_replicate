@@ -85,7 +85,7 @@ class TextToImageProvider implements IProvider {
 				}
 				$i++;
 			}
-		} catch(\Exception $e) {
+		} catch (\Exception $e) {
 			$this->logger->warning('Replicate\'s text to image generation failed with: ' . $e->getMessage(), ['exception' => $e]);
 			throw new \RuntimeException('Replicate\'s text to image generation failed with: ' . $e->getMessage());
 		}
