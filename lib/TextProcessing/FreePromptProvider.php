@@ -55,7 +55,7 @@ class FreePromptProvider implements IProviderWithExpectedRuntime, IProviderWithU
 				throw new \RuntimeException('Replicate\'s text generation failed, waited more than ' . $maxWaitTime . ' seconds');
 			}
 			// success
-			return implode('', $prediction['output']);
+			return trim(implode('', $prediction['output']));
 		} catch (\Exception $e) {
 			$this->logger->warning('Replicate\'s text generation failed with: ' . $e->getMessage(), ['exception' => $e]);
 			throw new \RuntimeException('Replicate\'s text generation failed with: ' . $e->getMessage());
