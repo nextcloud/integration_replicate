@@ -42,16 +42,19 @@ class ReplicateAPIService {
 	}
 
 	/**
-	 * @param string $audioFileUrl
+	 * @param string $audioFileContent
 	 * @param bool $translate
 	 * @return array|string[]
 	 */
-	public function createWhisperPrediction(string $audioFileUrl, bool $translate = false): array {
-		$model = $this->config->getAppValue(Application::APP_ID, 'model', 'large');
+	public function createWhisperPrediction(string $audioFileContent, bool $translate = false): array {
+		// only large-v3 is supported
+		// $model = $this->config->getAppValue(Application::APP_ID, 'model', 'large');
+		$model = 'large-v3';
 		$params = [
 			'version' => Application::WHISPER_VERSION,
 			'input' => [
-				'audio' => $audioFileUrl,
+				// this works with wav, mp3 or opus audio content
+				'audio' => stripslashes('data:audio/wav;base64\,') . base64_encode($audioFileContent),
 				'translate' => $translate,
 				'model' => $model,
 			],
