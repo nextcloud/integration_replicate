@@ -46,7 +46,7 @@ class TextToImageProvider implements IProvider {
 
 			while ($waitingForAlready < $maxWaitTime && isset($prediction['status'], $prediction['id']) && in_array($prediction['status'], ['starting', 'processing'], true)) {
 				sleep(2);
-				error_log('WAITING for prediction ' . $prediction['id'] . ' status ' . $prediction['status']);
+				$this->logger->debug('WAITING for prediction ' . $prediction['id'] . ' status ' . $prediction['status']);
 				$waitingForAlready += 2;
 				$prediction = $this->replicateAPIService->getPrediction($prediction['id']);
 			}
