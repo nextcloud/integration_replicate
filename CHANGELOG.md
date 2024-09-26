@@ -6,6 +6,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [4.0.1] - 2024-09-26
+
+### Changed
+
+- Use latest Whisper model
+
+### Fixed
+
+- Fix transcription broken by Replicate API changes
+- Trim free prompt result
+
 ## [4.0.0] - 2024-09-18
 
 ### Breaking changes
