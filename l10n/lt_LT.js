@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "Blogas HTTP metodas",
     "Bad credentials" : "Blogi prisijungimo duomenys",
+    "Text generation" : "Teksto generavimas",
     "Small" : "Mažas",
     "Medium" : "Vidutinis",
     "Large" : "Didelis"
