@@ -39,7 +39,11 @@ class ConfigController extends Controller {
 	 */
 	public function setAdminConfig(array $values): DataResponse {
 		foreach ($values as $key => $value) {
-			$this->appConfig->setValueString(Application::APP_ID, $key, $value);
+			if ($key === 'api_key') {
+				$this->appConfig->setValueString(Application::APP_ID, $key, $value, false, true);
+			} else {
+				$this->appConfig->setValueString(Application::APP_ID, $key, $value);
+			}
 		}
 		return new DataResponse(1);
 	}
