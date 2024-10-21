@@ -13,6 +13,8 @@ namespace OCA\Replicate\Controller;
 
 use OCA\Replicate\AppInfo\Application;
 use OCP\AppFramework\Controller;
+use OCP\AppFramework\Http;
+use OCP\AppFramework\Http\Attribute\PasswordConfirmationRequired;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\Exceptions\AppConfigTypeConflictException;
 use OCP\IAppConfig;
@@ -22,10 +24,9 @@ use OCP\IRequest;
 class ConfigController extends Controller {
 
 	public function __construct(
-		string   $appName,
+		string $appName,
 		IRequest $request,
 		private IAppConfig $appConfig,
-		?string $userId,
 	) {
 		parent::__construct($appName, $request);
 	}
@@ -40,11 +41,30 @@ class ConfigController extends Controller {
 	public function setAdminConfig(array $values): DataResponse {
 		foreach ($values as $key => $value) {
 			if ($key === 'api_key') {
+				return new DataResponse([], Http::STATUS_BAD_REQUEST);
+			} else {
+				$this->appConfig->setValueString(Application::APP_ID, $key, $value);
+			}
+		}
+		return new DataResponse([]);
+	}
+
+	/**
+	 * Set sensitive admin config values
+	 *
+	 * @param array $values key/value pairs to store in app config
+	 * @return DataResponse
+	 * @throws AppConfigTypeConflictException
+	 */
+	#[PasswordConfirmationRequired]
+	public function setSensitiveAdminConfig(array $values): DataResponse {
+		foreach ($values as $key => $value) {
+			if ($key === 'api_key') {
 				$this->appConfig->setValueString(Application::APP_ID, $key, $value, false, true);
 			} else {
 				$this->appConfig->setValueString(Application::APP_ID, $key, $value);
 			}
 		}
-		return new DataResponse(1);
+		return new DataResponse([]);
 	}
 }

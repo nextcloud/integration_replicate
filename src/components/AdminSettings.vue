@@ -156,6 +156,7 @@ import { generateUrl } from '@nextcloud/router'
 import axios from '@nextcloud/axios'
 import { delay } from '../utils.js'
 import { showSuccess, showError } from '@nextcloud/dialogs'
+import { confirmPassword } from '@nextcloud/password-confirmation'
 
 const models = {
 	tiny: { label: t('integration_replicate', 'Tiny'), value: 'tiny' },
@@ -199,7 +200,6 @@ export default {
 		onInput() {
 			delay(() => {
 				this.saveOptions({
-					api_key: this.state.api_key,
 					llm_model_name: this.state.llm_model_name,
 					llm_model_version: this.state.llm_model_version,
 					llm_extra_params: this.state.llm_extra_params,
@@ -207,24 +207,28 @@ export default {
 					igen_model_version: this.state.igen_model_version,
 					igen_extra_params: this.state.igen_extra_params,
 				})
+				this.saveOptions({
+					api_key: this.state.api_key,
+				}, true)
 			}, 2000)()
 		},
-		saveOptions(values) {
+		async saveOptions(values, sensitive = false) {
+			if (sensitive) {
+				await confirmPassword()
+			}
 			const req = {
 				values,
 			}
-			const url = generateUrl('/apps/integration_replicate/admin-config')
+			const url = sensitive
+				? generateUrl('/apps/integration_replicate/sensitive-admin-config')
+				: generateUrl('/apps/integration_replicate/admin-config')
 			axios.put(url, req)
 				.then((response) => {
 					showSuccess(t('integration_replicate', 'Replicate admin options saved'))
 				})
 				.catch((error) => {
-					showError(
-						t('integration_replicate', 'Failed to save Replicate admin options')
-						+ ': ' + error.response?.request?.responseText,
-					)
-				})
-				.then(() => {
+					showError(t('integration_replicate', 'Failed to save Replicate admin options'))
+					console.error(error)
 				})
 		},
 		onModelChanged(newValue) {
