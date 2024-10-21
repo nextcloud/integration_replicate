@@ -9,6 +9,7 @@
 				<NcTextField
 					class="input"
 					:value.sync="state.api_key"
+					type="password"
 					:label="t('integration_replicate', 'Replicate API token')"
 					:placeholder="t('integration_replicate', 'Your API token')"
 					:show-trailing-button="!!state.api_key"
@@ -207,9 +208,11 @@ export default {
 					igen_model_version: this.state.igen_model_version,
 					igen_extra_params: this.state.igen_extra_params,
 				})
-				this.saveOptions({
-					api_key: this.state.api_key,
-				}, true)
+				if (this.state.api_key !== 'dummyApiKey') {
+					this.saveOptions({
+						api_key: this.state.api_key,
+					}, true)
+				}
 			}, 2000)()
 		},
 		async saveOptions(values, sensitive = false) {
