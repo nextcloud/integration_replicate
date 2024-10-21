@@ -161,6 +161,7 @@ class ReplicateAPIService {
 	/**
 	 * @param string $configKey
 	 * @return array|null
+	 * @throws AppConfigTypeConflictException
 	 */
 	private function getExtraParams(string $configKey): ?array {
 		$stringValue = $this->appConfig->getValueString(Application::APP_ID, $configKey);
