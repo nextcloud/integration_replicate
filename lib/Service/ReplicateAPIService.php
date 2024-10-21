@@ -21,7 +21,7 @@ use OCP\Files\GenericFileException;
 use OCP\Files\NotPermittedException;
 use OCP\Http\Client\IClient;
 use OCP\Http\Client\IClientService;
-use OCP\IConfig;
+use OCP\IAppConfig;
 use OCP\IL10N;
 use OCP\Lock\LockedException;
 use Psr\Log\LoggerInterface;
@@ -32,10 +32,9 @@ class ReplicateAPIService {
 	private IClient $client;
 
 	public function __construct(
-		string $appName,
 		private LoggerInterface $logger,
 		private IL10N $l10n,
-		private IConfig $config,
+		private IAppConfig $appConfig,
 		IClientService $clientService,
 	) {
 		$this->client = $clientService->newClient();
@@ -48,7 +47,7 @@ class ReplicateAPIService {
 	 */
 	public function createWhisperPrediction(string $audioFileContent, bool $translate = false): array {
 		// only large-v3 is supported
-		// $model = $this->config->getAppValue(Application::APP_ID, 'model', 'large');
+		// $model = $this->appConfig->getValueString(Application::APP_ID, 'model', 'large');
 		$model = 'large-v3';
 		$params = [
 			'version' => Application::WHISPER_VERSION,
@@ -68,10 +67,9 @@ class ReplicateAPIService {
 	 * @param File $file
 	 * @param bool $translate
 	 * @return string
-	 * @throws AppConfigTypeConflictException
+	 * @throws GenericFileException
 	 * @throws LockedException
 	 * @throws NotPermittedException
-	 * @throws GenericFileException
 	 */
 	public function transcribeFile(File $file, bool $translate = false): string {
 		$prediction = $this->createWhisperPrediction($file->getContent(), $translate);
@@ -113,8 +111,8 @@ class ReplicateAPIService {
 			$params['input'] = array_merge($modelExtraParams, $params['input']);
 		}
 
-		$modelName = $this->config->getAppValue(Application::APP_ID, 'llm_model_name', Application::DEFAULT_LLM_NAME);
-		$modelVersion = $this->config->getAppValue(Application::APP_ID, 'llm_model_version', Application::DEFAULT_LLM_VERSION);
+		$modelName = $this->appConfig->getValueString(Application::APP_ID, 'llm_model_name', Application::DEFAULT_LLM_NAME);
+		$modelVersion = $this->appConfig->getValueString(Application::APP_ID, 'llm_model_version', Application::DEFAULT_LLM_VERSION);
 		if ($modelName !== '' || $modelVersion === '') {
 			if ($modelName === '') {
 				$modelName = Application::DEFAULT_LLM_NAME;
@@ -131,7 +129,7 @@ class ReplicateAPIService {
 	 * @param string $prompt
 	 * @param int $numOutputs
 	 * @return array|string[]
-	 * @throws \OCP\DB\Exception
+	 * @throws AppConfigTypeConflictException
 	 */
 	public function createImagePrediction(string $prompt, int $numOutputs): array {
 		$params = [
@@ -145,8 +143,8 @@ class ReplicateAPIService {
 			$params['input'] = array_merge($modelExtraParams, $params['input']);
 		}
 
-		$modelName = $this->config->getAppValue(Application::APP_ID, 'igen_model_name', Application::DEFAULT_IMAGE_GEN_NAME);
-		$modelVersion = $this->config->getAppValue(Application::APP_ID, 'igen_model_version', Application::DEFAULT_IMAGE_GEN_VERSION);
+		$modelName = $this->appConfig->getValueString(Application::APP_ID, 'igen_model_name', Application::DEFAULT_IMAGE_GEN_NAME);
+		$modelVersion = $this->appConfig->getValueString(Application::APP_ID, 'igen_model_version', Application::DEFAULT_IMAGE_GEN_VERSION);
 		if ($modelVersion !== '' || $modelName === '') {
 			if ($modelVersion === '') {
 				$modelVersion = Application::DEFAULT_IMAGE_GEN_VERSION;
@@ -165,7 +163,7 @@ class ReplicateAPIService {
 	 * @return array|null
 	 */
 	private function getExtraParams(string $configKey): ?array {
-		$stringValue = $this->config->getAppValue(Application::APP_ID, $configKey);
+		$stringValue = $this->appConfig->getValueString(Application::APP_ID, $configKey);
 		if ($stringValue === '') {
 			return null;
 		}
@@ -215,7 +213,7 @@ class ReplicateAPIService {
 	 */
 	public function request(string $endPoint, array $params = [], string $method = 'GET'): array {
 		try {
-			$apiKey = $this->config->getAppValue(Application::APP_ID, 'api_key');
+			$apiKey = $this->appConfig->getValueString(Application::APP_ID, 'api_key');
 			if ($apiKey === '') {
 				return ['error' => 'No API key'];
 			}

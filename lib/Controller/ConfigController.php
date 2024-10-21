@@ -14,7 +14,8 @@ namespace OCA\Replicate\Controller;
 use OCA\Replicate\AppInfo\Application;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\DataResponse;
-use OCP\IConfig;
+use OCP\Exceptions\AppConfigTypeConflictException;
+use OCP\IAppConfig;
 
 use OCP\IRequest;
 
@@ -23,7 +24,7 @@ class ConfigController extends Controller {
 	public function __construct(
 		string   $appName,
 		IRequest $request,
-		private IConfig $config,
+		private IAppConfig $appConfig,
 		?string $userId,
 	) {
 		parent::__construct($appName, $request);
@@ -34,10 +35,11 @@ class ConfigController extends Controller {
 	 *
 	 * @param array $values key/value pairs to store in app config
 	 * @return DataResponse
+	 * @throws AppConfigTypeConflictException
 	 */
 	public function setAdminConfig(array $values): DataResponse {
 		foreach ($values as $key => $value) {
-			$this->config->setAppValue(Application::APP_ID, $key, $value);
+			$this->appConfig->setValueString(Application::APP_ID, $key, $value);
 		}
 		return new DataResponse(1);
 	}
