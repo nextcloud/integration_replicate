@@ -17,7 +17,7 @@ OC.L10N.register(
     "Text generation model version (only used if model name is empty)" : "رقم إصدار نموذج توليد النصوص (يُستخدم فقط إذا كان اسم النموذج فارغًا)",
     "For example: '83b6a56e7c828e667f21fd596c338fd4f0039b46bcfa18d973e8e70e455fda70'" : "مثلاً: '83b6a56e7c828e667f21fd596c338fd4f0039b46bcfa18d973e8e70e455fda70'",
     "Extra model parameters" : "معاملات إضافية للنموذج",
-    "Image generation" : "توليد الصورة",
+    "Image generation" : "توليد الصور",
     "Image generation model name (only used if model version is empty)" : "اسم نموذج توليد الصِّوَر (يُستعمل فقط إذا كان رقم إصدار النموذج فارغًا)",
     "For example: 'stability-ai/stable-diffusion'" : "مثلاً: 'stability-ai/stable-diffusion'",
     "Image generation model version" : "رقم إصدار نموذج توليد الصور",

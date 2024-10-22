@@ -30,8 +30,8 @@ OC.L10N.register(
     "Small" : "Pequena",
     "Medium" : "Média",
     "Large" : "Grande",
-    "Extra parameters are model-specific. For example: {\"width\":1920,\"height\":1080}" : "Parâmetros extras são específicos do modelo. Por exemplo: {\"largura\":1920,\"altura\":1080}",
-    "Extra parameters are model-specific. For example: {\"max_new_tokens\":128,\"temperature\":0.7}" : "Parâmetros extras são específicos do modelo. Por exemplo: {\"max_new_tokens\":128,\"temperatura\":0,7}",
+    "Extra parameters are model-specific. For example: {\"width\":1920,\"height\":1080}" : "Parâmetros extras são específicos do modelo. Por exemplo: {\"width\":1920,\"height\":1080}",
+    "Extra parameters are model-specific. For example: {\"max_new_tokens\":128,\"temperature\":0.7}" : "Parâmetros extras são específicos do modelo. Por exemplo: {\"max_new_tokens\":128,\"temperature\":0.7}",
     "Replicate admin options saved" : "Replicar opções de administração salvas",
     "Failed to save Replicate admin options" : "Falha ao salvar opções de administração de replicação"
 },
