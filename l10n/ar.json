@@ -30,7 +30,7 @@
     "Large" : "كبير",
     "Extra parameters are model-specific. For example: {\"width\":1920,\"height\":1080}" : "معاملات إضافية تخص النموذج. مثلاً: {\"width\":1920,\"height\":1080}f",
     "Extra parameters are model-specific. For example: {\"max_new_tokens\":128,\"temperature\":0.7}" : "المعاملات الإضافية تخص النموذج. مثلاً: {\"max_new_tokens\":128,\"temperature\":0.7}",
-    "Replicate admin options saved" : "تمّ حفظ خيارات مشرف \"الناسخ\" Replicate",
-    "Failed to save Replicate admin options" : "تعذّر حفظ خيارات مشرف \"الناسخ\" Replicate"
+    "Replicate admin options saved" : "تمّ حفظ خيارات مدير \"الناسخ\" Replicate",
+    "Failed to save Replicate admin options" : "تعذّر حفظ خيارات مدير \"الناسخ\" Replicate"
 },"pluralForm" :"nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;"
 }
