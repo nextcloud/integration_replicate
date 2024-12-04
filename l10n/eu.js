@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "HTTP metodo okerra",
     "Bad credentials" : "Kredentzial okerrak",
+    "Replicate integration" : "Replicate integrazioa",
     "Text generation" : "Testuen sorpena",
     "Image generation" : "Irudien sorpena",
     "Speech-to-text" : "Ahotsetik testura",
