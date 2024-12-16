@@ -28,8 +28,8 @@
     "Small" : "كىچىك",
     "Medium" : "ئوتتۇراھال",
     "Large" : "چوڭ",
-    "Extra parameters are model-specific. For example: {\"width\":1920,\"height\":1080}" : "قوشۇمچە پارامېتىرلار مودېلغا خاس. مەسىلەن: {\"كەڭلىك\": 1920 ، \"ئېگىزلىك\": 1080}",
-    "Extra parameters are model-specific. For example: {\"max_new_tokens\":128,\"temperature\":0.7}" : "قوشۇمچە پارامېتىرلار مودېلغا خاس. مەسىلەن: {\"max_new_tokens\": 128 ، \"تېمپېراتۇرا\": 0.7}",
+    "Extra parameters are model-specific. For example: {\"width\":1920,\"height\":1080}" : "قوشۇمچە پارامېتىرلار مودېلغا خاس. مەسىلەن: {\"width\":1920,\"height\":1080}",
+    "Extra parameters are model-specific. For example: {\"max_new_tokens\":128,\"temperature\":0.7}" : "قوشۇمچە پارامېتىرلار مودېلغا خاس. مەسىلەن: {\"max_new_tokens\":128,\"temperature\":0.7}",
     "Replicate admin options saved" : "ساقلانغان باشقۇرۇش تاللانمىلىرىنى تەكرارلاڭ",
     "Failed to save Replicate admin options" : "تەكرارلاش تاللانمىلىرىنى ساقلاش مەغلۇب بولدى"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
