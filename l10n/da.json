@@ -1,4 +1,6 @@
 { "translations": {
+    "Bad credentials" : "Forkerte legitimationsoplysninger",
+    "Image generation" : "Billedgenerering",
     "Small" : "Lille",
     "Medium" : "Mellem",
     "Large" : "Stor"
