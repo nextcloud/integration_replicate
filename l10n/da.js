@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "Dårlig HTTP-metode",
     "Bad credentials" : "Forkerte legitimationsoplysninger",
+    "Text generation" : "Tekstgenerering",
     "Image generation" : "Billedgenerering",
     "Small" : "Lille",
     "Medium" : "Mellem",
