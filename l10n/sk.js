@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "Zlá metóda HTTP",
     "Bad credentials" : "Nesprávne prihlasovacie údaje",
+    "Text generation" : "Generovanie textu",
     "Image generation" : "Generovanie obrázkov",
     "Small" : "Malá",
     "Medium" : "Stredná",
