@@ -6,6 +6,15 @@
     "Replicate's stable diffusion Text-To-Image" : "Replicate 的 Stable Diffusion 文字轉影像",
     "Integration of Replicate stable-diffusion" : "Replicate 穩定擴散的整合",
     "The Replicate integration app provides a SpeechToText provider, a Text processing provider and an Image generation provider.\n\n⚠️ The smart pickers have been removed from this app\nas they are now included in the [Assistant app](https://apps.nextcloud.com/apps/assistant).\n\n## Ethical AI Rating\n### Speech-to-Text Rating: 🟡\n\nPositive:\n* The software for training and inference of this model is open source\n* The trained model is freely available, and thus can be run on-premises\n\nNegative:\n* The training data is not freely available, limiting the ability of external parties to check and correct for bias or optimise the model’s performance and CO2 usage.\n\n### Text processing Rating\n\nThe rating depends on the model you select to use.\n\n### Image generation Rating\n\nThe rating depends on the model you select to use.\n\nLearn more about the Nextcloud Ethical AI Rating [in our blog](https://nextcloud.com/blog/nextcloud-ethical-ai-rating/)." : "Replicate 整合應用程式提供了音頻轉文字提供者、文字處理提供者與影像產生提供者。\n\n⚠️ 智慧型挑選器已從此應用程式中移除，因為它們已包含在[小幫手應用程式](https://apps.nextcloud.com/apps/assistant)中。\n\n## 道德人工智慧評分\n### 音頻轉文字評分：🟡\n\n優點：\n* 該模型的訓練與推理軟體是開放原始碼的\n* 訓練好的模型免費提供，因此可以本機執行\n\n缺點：\n* 該模型的訓練與推理軟體是專有的，限制了在本機執行或自行訓練的能力\n* 訓練好的模型並未免費提供，因此無法在本機執行\n* 訓練資料並未免費提供，限制了第三方檢查或修正偏差，或是最佳化效能與二氧化碳排放量的能力。\n\n### 文字處理評分\n\n評分取決於您選擇使用的模型。\n\n### 影像產生評分\n\n評分取決於您選擇使用的模型。\n\n[在我們的部落格上](https://nextcloud.com/blog/nextcloud-ethical-ai-rating/)取得更多關於 Nextcloud 道德人工智慧評分的資訊。",
+    "Tiny" : "微小",
+    "Base" : "基本",
+    "Small" : "小",
+    "Medium" : "中等的",
+    "Large" : "大",
+    "Extra parameters are model-specific. For example: {\"width\":1920,\"height\":1080}" : "額外參數與模型相關。舉例來說：{\"width\":1920,\"height\":1080}",
+    "Extra parameters are model-specific. For example: {\"max_new_tokens\":128,\"temperature\":0.7}" : "額外參數與模型相關。舉例來說：{\"max_new_tokens\":128,\"temperature\":0.7}",
+    "Replicate admin options saved" : "Replicate 管理選項已保存",
+    "Failed to save Replicate admin options" : "儲存 Replicate 管理選項失敗",
     "Replicate API token" : "Replicate API 權杖",
     "Your API token" : "您的 API 權杖",
     "You can create a free API token on https://replicate.com" : "您可以在 https://replicate.com 上創建一個免費的 API 權杖",
@@ -22,15 +31,6 @@
     "For example: 'ac732df83cea7fff18b8472768c88ad041fa750ff7682a21affe81863cbe77e4'" : "舉例來說：'ac732df83cea7fff18b8472768c88ad041fa750ff7682a21affe81863cbe77e4'",
     "Speech-to-text" : "音頻轉文字",
     "Whisper model size" : "Whisper 模型大小",
-    "Larger model size gives better results but uses more credit" : "較大的模型會提供更好的結果，但會使用更多的帳面餘額",
-    "Tiny" : "微小",
-    "Base" : "基本",
-    "Small" : "小",
-    "Medium" : "中等的",
-    "Large" : "大",
-    "Extra parameters are model-specific. For example: {\"width\":1920,\"height\":1080}" : "額外參數與模型相關。舉例來說：{\"width\":1920,\"height\":1080}",
-    "Extra parameters are model-specific. For example: {\"max_new_tokens\":128,\"temperature\":0.7}" : "額外參數與模型相關。舉例來說：{\"max_new_tokens\":128,\"temperature\":0.7}",
-    "Replicate admin options saved" : "Replicate 管理選項已保存",
-    "Failed to save Replicate admin options" : "儲存 Replicate 管理選項失敗"
+    "Larger model size gives better results but uses more credit" : "較大的模型會提供更好的結果，但會使用更多的帳面餘額"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

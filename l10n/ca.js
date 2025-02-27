@@ -3,9 +3,9 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "Mètode HTTP incorrecte",
     "Bad credentials" : "Credencials dolentes",
-    "Image generation" : "Generació d'imatges",
     "Small" : "Petita",
     "Medium" : "Mitjana",
-    "Large" : "Gran"
+    "Large" : "Gran",
+    "Image generation" : "Generació d'imatges"
 },
 "nplurals=2; plural=(n != 1);");

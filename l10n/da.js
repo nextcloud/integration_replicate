@@ -3,10 +3,10 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "Dårlig HTTP metode",
     "Bad credentials" : "Forkerte legitimationsoplysninger",
-    "Text generation" : "Tekstgenerering",
-    "Image generation" : "Billedgenerering",
     "Small" : "Lille",
     "Medium" : "Mellem",
-    "Large" : "Stor"
+    "Large" : "Stor",
+    "Text generation" : "Tekstgenerering",
+    "Image generation" : "Billedgenerering"
 },
 "nplurals=2; plural=(n != 1);");

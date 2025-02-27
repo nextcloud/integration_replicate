@@ -6,6 +6,15 @@
     "Replicate's stable diffusion Text-To-Image" : "Texto a imágenes de difusión estable de Replicate",
     "Integration of Replicate stable-diffusion" : "Integración de la difusión estable de Replicate",
     "The Replicate integration app provides a SpeechToText provider, a Text processing provider and an Image generation provider.\n\n⚠️ The smart pickers have been removed from this app\nas they are now included in the [Assistant app](https://apps.nextcloud.com/apps/assistant).\n\n## Ethical AI Rating\n### Speech-to-Text Rating: 🟡\n\nPositive:\n* The software for training and inference of this model is open source\n* The trained model is freely available, and thus can be run on-premises\n\nNegative:\n* The training data is not freely available, limiting the ability of external parties to check and correct for bias or optimise the model’s performance and CO2 usage.\n\n### Text processing Rating\n\nThe rating depends on the model you select to use.\n\n### Image generation Rating\n\nThe rating depends on the model you select to use.\n\nLearn more about the Nextcloud Ethical AI Rating [in our blog](https://nextcloud.com/blog/nextcloud-ethical-ai-rating/)." : "La app de integración Replicate proporciona un proveedor de Dictado a texto, un proveedor de procesamiento de texto y un proveedor para generación de imágenes.\n\n⚠️ Los selectores inteligentes han sido eliminados de esta app\nya que están ahora incluídos en la [app de Asistente](https://apps.nextcloud.com/apps/assistant).\n\n## Clasificación ética mediante IA\n### Clasificación del dictado a texto: 🟡\n\nPositiva:\n* El software de entretamiento e inferencia de este modelo es de código abierto\n* el modelo entrenado está disponible de forma gratuita, y por tanto, puede ejecutarse en su infraestructura local\n\nNegativa:\n* Los datos de entrenamientos no están disponibles de manera gratuita, limitando la The training data is not freely available, limiting the ability of external parties to check and correct for bias or optimise the model’s performance and CO2 usage.\n\n### Calificación para procesamiento de texto\n\nLa calificación dependerá del modelo que seleccione.\n\n### Calificación para generación de imágenes\n\nLa calificación dependerá del modelo que seleccione.\n\nAprenda más de la clasificación ética mediante IA de Nextcloud [en nuestro blog](https://nextcloud.com/blog/nextcloud-ethical-ai-rating/).",
+    "Tiny" : "Mínimo",
+    "Base" : "Base",
+    "Small" : "Pequeño",
+    "Medium" : "Mediano",
+    "Large" : "Grande",
+    "Extra parameters are model-specific. For example: {\"width\":1920,\"height\":1080}" : "Los parámetros adicionales son específicos por modelo. Por ejemplo: {\"width\":1920,\"height\":1080}",
+    "Extra parameters are model-specific. For example: {\"max_new_tokens\":128,\"temperature\":0.7}" : "Los parámetros adicionales son específicos por modelo. Por ejemplo: {\"max_new_tokens\":128,\"temperature\":0.7}",
+    "Replicate admin options saved" : "Las opciones de administrador de Replicate han sido guardadas",
+    "Failed to save Replicate admin options" : "Fallo al guardar las opciones de administrador de Replicate",
     "Replicate API token" : "Token API de Replicate",
     "Your API token" : "Su token API",
     "You can create a free API token on https://replicate.com" : "Puede crear un token API gratuito en https://replicate.com",
@@ -22,15 +31,6 @@
     "For example: 'ac732df83cea7fff18b8472768c88ad041fa750ff7682a21affe81863cbe77e4'" : "Por ejemplo: 'ac732df83cea7fff18b8472768c88ad041fa750ff7682a21affe81863cbe77e4'",
     "Speech-to-text" : "Dictado a texto",
     "Whisper model size" : "Tamaño del modelo Whisper",
-    "Larger model size gives better results but uses more credit" : "Un modelo más grande proporciona mejores resultados pero usa más créditos",
-    "Tiny" : "Mínimo",
-    "Base" : "Base",
-    "Small" : "Pequeño",
-    "Medium" : "Mediano",
-    "Large" : "Grande",
-    "Extra parameters are model-specific. For example: {\"width\":1920,\"height\":1080}" : "Los parámetros adicionales son específicos por modelo. Por ejemplo: {\"width\":1920,\"height\":1080}",
-    "Extra parameters are model-specific. For example: {\"max_new_tokens\":128,\"temperature\":0.7}" : "Los parámetros adicionales son específicos por modelo. Por ejemplo: {\"max_new_tokens\":128,\"temperature\":0.7}",
-    "Replicate admin options saved" : "Las opciones de administrador de Replicate han sido guardadas",
-    "Failed to save Replicate admin options" : "Fallo al guardar las opciones de administrador de Replicate"
+    "Larger model size gives better results but uses more credit" : "Un modelo más grande proporciona mejores resultados pero usa más créditos"
 },"pluralForm" :"nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }

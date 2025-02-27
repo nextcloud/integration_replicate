@@ -6,6 +6,15 @@
     "Replicate's stable diffusion Text-To-Image" : "مۇقىم تارقىلىشچان تېكىستتىن رەسىمگە كۆپەيتىڭ",
     "Integration of Replicate stable-diffusion" : "تەكرار تۇراقلىق تارقىلىشنىڭ بىرىكىشى",
     "The Replicate integration app provides a SpeechToText provider, a Text processing provider and an Image generation provider.\n\n⚠️ The smart pickers have been removed from this app\nas they are now included in the [Assistant app](https://apps.nextcloud.com/apps/assistant).\n\n## Ethical AI Rating\n### Speech-to-Text Rating: 🟡\n\nPositive:\n* The software for training and inference of this model is open source\n* The trained model is freely available, and thus can be run on-premises\n\nNegative:\n* The training data is not freely available, limiting the ability of external parties to check and correct for bias or optimise the model’s performance and CO2 usage.\n\n### Text processing Rating\n\nThe rating depends on the model you select to use.\n\n### Image generation Rating\n\nThe rating depends on the model you select to use.\n\nLearn more about the Nextcloud Ethical AI Rating [in our blog](https://nextcloud.com/blog/nextcloud-ethical-ai-rating/)." : "كۆپەيتىش بىرلەشتۈرۈش دېتالى SpeechToText تەمىنلىگۈچى ، تېكىست بىر تەرەپ قىلغۇچ ۋە رەسىم ئەۋلاد تەمىنلىگۈچى بىلەن تەمىنلەيدۇ.\n\nSmart ئەقلىي ئىقتىدارلىق تاللىغۇچىلار بۇ دېتالدىن چىقىرىۋېتىلدى\nچۈنكى ئۇلار ھازىر [ياردەمچى ئەپ] (https://apps.nextcloud.com/apps/assistant) غا كىرگۈزۈلدى.\n\n## ئەخلاقىي AI دەرىجىسى\n### سۆزدىن تېكىستكە باھا: 🟡\n\nئاكتىپ:\n* بۇ مودېلنى تەربىيىلەش ۋە يەكۈنلەش يۇمشاق دېتالى ئوچۇق مەنبە\n* تەربىيەلەنگەن مودېلنى ھەقسىز ئىشلەتكىلى بولىدۇ ، شۇڭا نەق مەيداندا ئىجرا قىلغىلى بولىدۇ\n\nسەلبىي:\n* مەشىق سانلىق مەلۇماتلىرىنى ئەركىن ئىشلەتكىلى بولمايدۇ ، بۇ سىرتقى تەرەپلەرنىڭ بىر تەرەپلىمە قاراشنى تەكشۈرۈش ۋە تۈزىتىش ياكى مودېلنىڭ ئىقتىدارى ۋە CO2 ئىشلىتىلىشىنى ئەلالاشتۇرۇش ئىقتىدارىنى چەكلەيدۇ.\n\n### تېكىست بىر تەرەپ قىلىش دەرىجىسى\n\nباھالاش سىز تاللىغان مودېلغا باغلىق.\n\n### رەسىم ھاسىل قىلىش دەرىجىسى\n\nباھالاش سىز تاللىغان مودېلغا باغلىق.\n\nNextcloud ئەخلاق سۈنئىي ئەقىل دەرىجىسى توغرىسىدىكى تەپسىلاتلارنى [بىلوگىمىزدا] (https://nextcloud.com/blog/nextcloud-ethical-ai-rating/).",
+    "Tiny" : "Tiny",
+    "Base" : "بازا",
+    "Small" : "كىچىك",
+    "Medium" : "ئوتتۇراھال",
+    "Large" : "چوڭ",
+    "Extra parameters are model-specific. For example: {\"width\":1920,\"height\":1080}" : "قوشۇمچە پارامېتىرلار مودېلغا خاس. مەسىلەن: {\"width\":1920,\"height\":1080}",
+    "Extra parameters are model-specific. For example: {\"max_new_tokens\":128,\"temperature\":0.7}" : "قوشۇمچە پارامېتىرلار مودېلغا خاس. مەسىلەن: {\"max_new_tokens\":128,\"temperature\":0.7}",
+    "Replicate admin options saved" : "ساقلانغان باشقۇرۇش تاللانمىلىرىنى تەكرارلاڭ",
+    "Failed to save Replicate admin options" : "تەكرارلاش تاللانمىلىرىنى ساقلاش مەغلۇب بولدى",
     "Replicate API token" : "API بەلگىسىنى كۆپەيتىڭ",
     "Your API token" : "API بەلگىسى",
     "You can create a free API token on https://replicate.com" : "سىز https://replicate.com دا ھەقسىز API بەلگىسىنى قۇرالايسىز",
@@ -22,15 +31,6 @@
     "For example: 'ac732df83cea7fff18b8472768c88ad041fa750ff7682a21affe81863cbe77e4'" : "مەسىلەن: 'ac732df83cea7fff18b8472768c88ad041fa750ff7682a21affe81863cbe77e4'",
     "Speech-to-text" : "سۆزدىن تېكىستكە",
     "Whisper model size" : "Whisper model size",
-    "Larger model size gives better results but uses more credit" : "چوڭ تىپتىكى مودېلنىڭ ئۈنۈمى تېخىمۇ ياخشى ئۈنۈم بېرىدۇ ، ئەمما تېخىمۇ كۆپ ئىناۋەتنى ئىشلىتىدۇ",
-    "Tiny" : "Tiny",
-    "Base" : "بازا",
-    "Small" : "كىچىك",
-    "Medium" : "ئوتتۇراھال",
-    "Large" : "چوڭ",
-    "Extra parameters are model-specific. For example: {\"width\":1920,\"height\":1080}" : "قوشۇمچە پارامېتىرلار مودېلغا خاس. مەسىلەن: {\"width\":1920,\"height\":1080}",
-    "Extra parameters are model-specific. For example: {\"max_new_tokens\":128,\"temperature\":0.7}" : "قوشۇمچە پارامېتىرلار مودېلغا خاس. مەسىلەن: {\"max_new_tokens\":128,\"temperature\":0.7}",
-    "Replicate admin options saved" : "ساقلانغان باشقۇرۇش تاللانمىلىرىنى تەكرارلاڭ",
-    "Failed to save Replicate admin options" : "تەكرارلاش تاللانمىلىرىنى ساقلاش مەغلۇب بولدى"
+    "Larger model size gives better results but uses more credit" : "چوڭ تىپتىكى مودېلنىڭ ئۈنۈمى تېخىمۇ ياخشى ئۈنۈم بېرىدۇ ، ئەمما تېخىمۇ كۆپ ئىناۋەتنى ئىشلىتىدۇ"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
