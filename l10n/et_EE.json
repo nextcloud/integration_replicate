@@ -1,5 +1,8 @@
 { "translations": {
     "Bad HTTP method" : "Vigane HTTP-meetod",
-    "Bad credentials" : "Vale kasutajanimi, salasõna või tunnusluba"
+    "Bad credentials" : "Vale kasutajanimi, salasõna või tunnusluba",
+    "Small" : "Väike",
+    "Medium" : "Keskmine",
+    "Large" : "Suur"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
