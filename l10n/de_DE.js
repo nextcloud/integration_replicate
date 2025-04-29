@@ -16,7 +16,7 @@ OC.L10N.register(
     "Extra parameters are model-specific. For example: {\"width\":1920,\"height\":1080}" : "Zusätzliche Parameter sind modellspezifisch. Zum Beispiel: {\"width\":1920,\"height\":1080}",
     "Extra parameters are model-specific. For example: {\"max_new_tokens\":128,\"temperature\":0.7}" : "Zusätzliche Parameter sind modellspezifisch. Zum Beispiel: {\"max_new_tokens\":128,\"temperature\":0.7}",
     "Replicate admin options saved" : "Replicate-Administrationseinstellungen gespeichert",
-    "Failed to save Replicate admin options" : "Fehler beim Speichern der Replicate-Administrationseinstellungen",
+    "Failed to save Replicate admin options" : "Replicate-Administrationseinstellungen konnten nicht gespeichert werden",
     "Replicate API token" : "Replicate API-Schlüssel",
     "Your API token" : "Ihr API-Schlüssel",
     "You can create a free API token on https://replicate.com" : "Sie können einen kostenlosen API-Schlüssel unter https://replicate.com erstellen",
