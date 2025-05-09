@@ -5,6 +5,7 @@ OC.L10N.register(
     "Bad credentials" : "Vale kasutajanimi, salasõna või tunnusluba",
     "Small" : "Väike",
     "Medium" : "Keskmine",
-    "Large" : "Suur"
+    "Large" : "Suur",
+    "Image generation" : "Pildiloome"
 },
 "nplurals=2; plural=(n != 1);");
