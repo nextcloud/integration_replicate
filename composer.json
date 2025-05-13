@@ -14,12 +14,17 @@
 		"test:unit": "phpunit --config tests/phpunit.xml"
 	},
 	"require": {
-		"php": "^8.0"
+		"php": "^8.1"
 	},
 	"require-dev": {
 		"nextcloud/coding-standard": "^1.1",
-		"psalm/phar": "^5.16",
+		"psalm/phar": "6.*",
 		"nextcloud/ocp": "dev-master",
 		"phpunit/phpunit": "^9.5"
+	},
+	"config": {
+		"platform": {
+			"php": "8.1.0"
+		}
 	}
 }
