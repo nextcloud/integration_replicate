@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="6.10.3@90b5b9f5e7c8e441b191d3c82c58214753d7c7c1">
+<files psalm-version="6.8.2@720ed6b578ac24f9543c65c3d4cecea0ff348ccd">
   <file src="lib/AppInfo/Application.php">
     <MissingOverrideAttribute>
       <code><![CDATA[public function boot(IBootContext $context): void {]]></code>
@@ -11,6 +11,11 @@
       <code><![CDATA[public function changeSchema(IOutput $output, Closure $schemaClosure, array $options) {]]></code>
       <code><![CDATA[public function postSchemaChange(IOutput $output, Closure $schemaClosure, array $options) {]]></code>
       <code><![CDATA[public function preSchemaChange(IOutput $output, Closure $schemaClosure, array $options) {]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="lib/Migration/Version040002Date20241021105515.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function postSchemaChange(IOutput $output, Closure $schemaClosure, array $options) {]]></code>
     </MissingOverrideAttribute>
   </file>
   <file src="lib/Settings/Admin.php">
@@ -27,6 +32,9 @@
     </MissingOverrideAttribute>
   </file>
   <file src="lib/TextProcessing/FreePromptProvider.php">
+    <InvalidOperand>
+      <code><![CDATA[$maxWaitTime]]></code>
+    </InvalidOperand>
     <MissingOverrideAttribute>
       <code><![CDATA[public function getExpectedRuntime(): int {]]></code>
       <code><![CDATA[public function getName(): string {]]></code>
@@ -36,6 +44,9 @@
     </MissingOverrideAttribute>
   </file>
   <file src="lib/TextToImage/TextToImageProvider.php">
+    <InvalidOperand>
+      <code><![CDATA[$maxWaitTime]]></code>
+    </InvalidOperand>
     <MissingOverrideAttribute>
       <code><![CDATA[public function generate(string $prompt, array $resources): void {]]></code>
       <code><![CDATA[public function getExpectedRuntime(): int {]]></code>
