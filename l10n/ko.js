@@ -6,6 +6,7 @@ OC.L10N.register(
     "Small" : "작게",
     "Medium" : "중간",
     "Large" : "크게",
+    "Text generation" : "텍스트 생성",
     "Image generation" : "이미지 생성"
 },
 "nplurals=1; plural=0;");
