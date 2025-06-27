@@ -6,6 +6,7 @@ OC.L10N.register(
     "Small" : "Väike",
     "Medium" : "Keskmine",
     "Large" : "Suur",
+    "Text generation" : "Tekstiloome",
     "Image generation" : "Pildiloome"
 },
 "nplurals=2; plural=(n != 1);");

@@ -4,6 +4,7 @@
     "Small" : "Väike",
     "Medium" : "Keskmine",
     "Large" : "Suur",
+    "Text generation" : "Tekstiloome",
     "Image generation" : "Pildiloome"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
