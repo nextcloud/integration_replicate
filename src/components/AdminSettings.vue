@@ -144,7 +144,7 @@
 
 <script>
 import InformationOutlineIcon from 'vue-material-design-icons/InformationOutline.vue'
-import HelpCircleIcon from 'vue-material-design-icons/HelpCircle.vue'
+import HelpCircleIcon from 'vue-material-design-icons/HelpCircleOutline.vue'
 
 import ReplicateIcon from './icons/ReplicateIcon.vue'
 
