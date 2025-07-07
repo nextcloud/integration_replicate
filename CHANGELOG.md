@@ -6,6 +6,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [4.1.0] - 2025-07-07
+
+### New
+
+- Support Nextcloud 32
+
+### Changed
+
+- Use outlined icons
+
+### Fixed
+
+- fix(l10n): Update translations from Transifex
+
 ## [4.0.1] - 2024-09-26
 
 ### Changed
