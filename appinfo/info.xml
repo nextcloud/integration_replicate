@@ -39,6 +39,7 @@ Learn more about the Nextcloud Ethical AI Rating [in our blog](https://nextcloud
     </documentation>
     <category>integration</category>
     <category>dashboard</category>
+    <category>ai</category>
     <website>https://github.com/julien-nc/integration_replicate</website>
     <bugs>https://github.com/julien-nc/integration_replicate/issues</bugs>
     <screenshot>https://github.com/julien-nc/integration_replicate/raw/main/img/screenshot1.jpg</screenshot>
