@@ -2,6 +2,8 @@ OC.L10N.register(
     "integration_replicate",
     {
     "Bad HTTP method" : "Njia mbaya ya HTTP ",
-    "Bad credentials" : "Sifa mbaya"
+    "Bad credentials" : "Sifa mbaya",
+    "Small" : "Small",
+    "Large" : "Large"
 },
 "nplurals=2; plural=(n != 1);");
