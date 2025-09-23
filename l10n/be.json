@@ -1,0 +1,8 @@
+{ "translations": {
+    "Extra parameters are model-specific. For example: {\"max_new_tokens\":128,\"temperature\":0.7}" : "Дадатковыя параметры залежаць ад мадэлі. Напрыклад:{\"max_new_tokens\":128,\"temperature\":0.7}",
+    "Replicate API token" : "Токен API Replicate",
+    "Your API token" : "Ваш токен API",
+    "You can create a free API token on https://replicate.com" : "Вы можаце стварыць бясплатны токен API на https://replicate.com",
+    "Image generation" : "Генерацыя відарысаў"
+},"pluralForm" :"nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);"
+}
