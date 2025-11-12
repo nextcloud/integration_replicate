@@ -30,7 +30,7 @@ jobs:
           tools: php-cs-fixer, phpunit
 
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v5
 
       - name: Get current tag
         id: tag
