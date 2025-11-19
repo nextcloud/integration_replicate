@@ -4,17 +4,19 @@ declare(strict_types=1);
 // SPDX-FileCopyrightText: Julien Veyssier <julien-nc@posteo.net>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-namespace OCA\Replicate\TextToImage;
+namespace OCA\Replicate\TaskProcessing;
 
 use OCA\OpenAi\Service\WatermarkingService;
 use OCA\Replicate\AppInfo\Application;
 use OCA\Replicate\Service\ReplicateAPIService;
 use OCP\Http\Client\IClientService;
 use OCP\IL10N;
+use OCP\TaskProcessing\Exception\ProcessingException;
+use OCP\TaskProcessing\TaskTypes\TextToImage;
 use OCP\TextToImage\IProvider;
 use Psr\Log\LoggerInterface;
 
-class TextToImageProvider implements IProvider {
+class TextToImageProvider implements \OCP\TaskProcessing\ISynchronousProvider {
 
 	public function __construct(
 		private ReplicateAPIService $replicateAPIService,
@@ -29,18 +31,17 @@ class TextToImageProvider implements IProvider {
 		return Application::APP_ID . '_image_generation';
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function getName(): string {
 		return $this->l->t('Replicate\'s stable diffusion Text-To-Image');
 	}
 
-	/**
-	 * @inheritDoc
-	 */
-	public function generate(string $prompt, array $resources): void {
-		$nbOutputs = count($resources);
+	public function getTaskTypeId(): string {
+		return TextToImage::ID;
+	}
+
+	public function process(?string $userId, array $input, callable $reportProgress): array {
+		$prompt = $input['input'];
+		$nbOutputs = $input['numberOfImages'];
 		$waitingForAlready = 0;
 		$maxWaitTime = 60 * 60;
 		try {
@@ -54,54 +55,84 @@ class TextToImageProvider implements IProvider {
 			}
 
 			if (!isset($prediction['status'], $prediction['id'])) {
-				throw new \RuntimeException('Replicate\'s text to image generation failed: ' . ($prediction['error'] ?? 'unknown error'));
+				throw new ProcessingException('Replicate\'s text to image generation failed: ' . ($prediction['error'] ?? 'unknown error'));
 			}
 			if (in_array($prediction['status'], ['failed', 'canceled'])) {
-				throw new \RuntimeException('Replicate\'s text to image generation failed with status: ' . $prediction['status']);
+				throw new ProcessingException('Replicate\'s text to image generation failed with status: ' . $prediction['status']);
 			}
 			if (!isset($prediction['output'])) {
-				throw new \RuntimeException('Replicate\'s text to image generation failed, no output in ' . json_encode($prediction));
+				throw new ProcessingException('Replicate\'s text to image generation failed, no output in ' . json_encode($prediction));
 			}
 			if ($waitingForAlready >= $maxWaitTime) {
-				throw new \RuntimeException('Replicate\'s text to image generation failed, waited more than ' . $maxWaitTime . ' seconds');
+				throw new ProcessingException('Replicate\'s text to image generation failed, waited more than ' . $maxWaitTime . ' seconds');
 			}
 			// success
 			$urls = is_array($prediction['output']) ? $prediction['output'] : [$prediction['output']];
 			$urls = array_filter($urls, static function (?string $url) {
 				return $url !== null;
 			});
-			$urls = array_filter($urls, static function (?string $url) {
-				return $url !== null;
-			});
 			$urls = array_values($urls);
 			if (empty($urls)) {
 				$this->logger->warning('Replicate\'s text to image generation failed: no image returned');
-				throw new \RuntimeException('Replicate\'s text to image generation failed: no image returned');
+				throw new ProcessingException('Replicate\'s text to image generation failed: no image returned');
 			}
 
 			$client = $this->clientService->newClient();
-			// just in case $resources is not 0-based indexed, we know $urls is
-			$i = 0;
-			foreach ($resources as $resource) {
-				if (isset($urls[$i])) {
-					$url = $urls[$i];
-					$imageResponse = $client->get($url);
-					$image = $imageResponse->getBody();
-					$image = $this->watermarkingService->markImage($image);
-					fwrite($resource, $image);
-				}
-				$i++;
+			$images = [];
+			foreach ($urls as $url) {
+				$imageResponse = $client->get($url);
+				$image = $imageResponse->getBody();
+				$images[] = $this->watermarkingService->markImage($image);
 			}
+
+			return ['images' => $images];
 		} catch (\Exception $e) {
 			$this->logger->warning('Replicate\'s text to image generation failed with: ' . $e->getMessage(), ['exception' => $e]);
-			throw new \RuntimeException('Replicate\'s text to image generation failed with: ' . $e->getMessage());
+			throw new ProcessingException('Replicate\'s text to image generation failed with: ' . $e->getMessage());
 		}
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function getExpectedRuntime(): int {
-		return 60 * 60 * 24;
+		return 60;
+	}
+
+	public function getOptionalInputShape(): array
+	{
+		return [];
+	}
+
+	public function getOptionalOutputShape(): array
+	{
+		return [];
+	}
+
+	public function getInputShapeEnumValues(): array
+	{
+		return [];
+	}
+
+	public function getInputShapeDefaults(): array
+	{
+		return [];
+	}
+
+	public function getOptionalInputShapeEnumValues(): array
+	{
+		return [];
+	}
+
+	public function getOptionalInputShapeDefaults(): array
+	{
+		return [];
+	}
+
+	public function getOutputShapeEnumValues(): array
+	{
+		return [];
+	}
+
+	public function getOptionalOutputShapeEnumValues(): array
+	{
+		return [];
 	}
 }
