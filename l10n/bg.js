@@ -5,6 +5,7 @@ OC.L10N.register(
     "Bad credentials" : "Лоши идентификационни данни",
     "Small" : "Малък",
     "Medium" : "Средна",
-    "Large" : "Голям"
+    "Large" : "Голям",
+    "Image generation" : "Генериране на изображения"
 },
 "nplurals=2; plural=(n != 1);");
