@@ -65,15 +65,15 @@ class ReplicateAPIService {
 	/**
 	 * Create a prediction and wait for it to complete to return the text result
 	 *
-	 * @param File $file
+	 * @param string $audio
 	 * @param bool $translate
 	 * @return string
 	 * @throws GenericFileException
 	 * @throws LockedException
 	 * @throws NotPermittedException
 	 */
-	public function transcribeFile(File $file, bool $translate = false): string {
-		$prediction = $this->createWhisperPrediction($file->getContent(), $translate);
+	public function transcribeFile(string $audio, bool $translate = false): string {
+		$prediction = $this->createWhisperPrediction($audio, $translate);
 		if (isset($prediction['id'])) {
 			$predictionId = $prediction['id'];
 
@@ -83,17 +83,17 @@ class ReplicateAPIService {
 						? $prediction['output']['translation']
 						: $prediction['output']['transcription'];
 				} elseif ($prediction['status'] === 'failed') {
-					throw new Exception('Error transcribing file "' . $file->getName() . '": remote job failed');
+					throw new Exception('Error transcribing file: remote job failed');
 				} elseif ($prediction['status'] === 'canceled') {
-					throw new Exception('Error transcribing file "' . $file->getName() . '": remote job was canceled');
+					throw new Exception('Error transcribing file: remote job was canceled');
 				} elseif ($prediction['status'] !== 'starting' && $prediction['status'] !== 'processing') {
-					throw new Exception('Error transcribing file "' . $file->getName() . '": unknown prediction status');
+					throw new Exception('Error transcribing file: unknown prediction status');
 				}
 				sleep(2);
 				$prediction = $this->getPrediction($predictionId);
 			}
 		}
-		throw new Exception('Error transcribing file "' . $file->getName() . '"');
+		throw new Exception('Error transcribing file');
 	}
 
 	/**

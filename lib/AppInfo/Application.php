@@ -44,6 +44,8 @@ class Application extends App implements IBootstrap {
 			$context->registerSpeechToTextProvider(STTProvider::class);
 			$context->registerTextToImageProvider(TextToImageProvider::class);
 			$context->registerTextProcessingProvider(FreePromptProvider::class);
+			$context->registerTaskProcessingProvider(\OCA\Replicate\TaskProcessing\TextToImageProvider::class);
+			$context->registerTaskProcessingProvider(\OCA\Replicate\TaskProcessing\SpeechToTextProvider::class);
 		}
 	}
 
