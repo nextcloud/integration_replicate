@@ -11,22 +11,41 @@
 		"cs:check": "php-cs-fixer fix --dry-run --diff",
 		"cs:fix": "php-cs-fixer fix",
 		"psalm": "psalm.phar --no-cache",
-		"test:unit": "phpunit --config tests/phpunit.xml"
+		"test:unit": "phpunit --config tests/phpunit.xml",
+		"post-install-cmd": [
+			"@composer bin all update --ansi",
+			"grep -r 'OCA\\\\Replicate\\\\Vendor' ./vendor || vendor/bin/php-scoper add-prefix --prefix='OCA\\Replicate\\Vendor' --output-dir=\".\" --working-dir=\"./vendor/\" -f --config=\"../scoper.inc.php\"",
+			"composer dump-autoload"
+		],
+		"post-update-cmd": [
+			"@composer bin all update --ansi",
+			"grep -r 'OCA\\\\Replicate\\\\Vendor' ./vendor || vendor/bin/php-scoper add-prefix --prefix='OCA\\Replicate\\Vendor' --output-dir=\".\" --working-dir=\"./vendor/\" -f --config=\"../scoper.inc.php\"",
+			"composer dump-autoload"
+		]
 	},
 	"require": {
 		"php": "^8.1",
+		"bamarni/composer-bin-plugin": "^1.8",
 		"fileeye/pel": "^0.12.0",
 		"james-heinrich/getid3": "^1.9"
 	},
 	"require-dev": {
-		"nextcloud/coding-standard": "^1.1",
-		"psalm/phar": "6.*",
-		"nextcloud/ocp": "dev-master",
-		"phpunit/phpunit": "^9.5"
+		"nextcloud/ocp": "dev-master"
 	},
 	"config": {
+		"allow-plugins": {
+			"bamarni/composer-bin-plugin": true,
+			"composer/package-versions-deprecated": true
+		},
 		"platform": {
 			"php": "8.1.0"
+		}
+	},
+	"extra": {
+		"bamarni-bin": {
+			"bin-links": true,
+			"target-directory": "vendor-bin",
+			"forward-command": true
 		}
 	}
 }
