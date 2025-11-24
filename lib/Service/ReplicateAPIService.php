@@ -17,7 +17,6 @@ use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
 use OCA\Replicate\AppInfo\Application;
 use OCP\Exceptions\AppConfigTypeConflictException;
-use OCP\Files\File;
 use OCP\Files\GenericFileException;
 use OCP\Files\NotPermittedException;
 use OCP\Http\Client\IClient;

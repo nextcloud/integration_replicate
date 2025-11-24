@@ -5,7 +5,6 @@ declare(strict_types=1);
 // SPDX-License-Identifier: AGPL-3.0-or-later
 namespace OCA\Replicate\TaskProcessing;
 
-use OCA\OpenAi\Service\WatermarkingService;
 use OCA\Replicate\AppInfo\Application;
 use OCA\Replicate\Service\ReplicateAPIService;
 use OCP\IL10N;
@@ -36,8 +35,7 @@ class SpeechToTextProvider implements ISynchronousProvider {
 		}
 	}
 
-	public function getId(): string
-	{
+	public function getId(): string {
 		return Application::APP_ID . '-stt';
 	}
 
@@ -45,48 +43,39 @@ class SpeechToTextProvider implements ISynchronousProvider {
 		return AudioToText::ID;
 	}
 
-	public function getExpectedRuntime(): int
-	{
+	public function getExpectedRuntime(): int {
 		return 60;
 	}
 
-	public function getOptionalInputShape(): array
-	{
+	public function getOptionalInputShape(): array {
 		return [];
 	}
 
-	public function getOptionalOutputShape(): array
-	{
+	public function getOptionalOutputShape(): array {
 		return [];
 	}
 
-	public function getInputShapeEnumValues(): array
-	{
+	public function getInputShapeEnumValues(): array {
 		return [];
 	}
 
-	public function getInputShapeDefaults(): array
-	{
+	public function getInputShapeDefaults(): array {
 		return [];
 	}
 
-	public function getOptionalInputShapeEnumValues(): array
-	{
+	public function getOptionalInputShapeEnumValues(): array {
 		return [];
 	}
 
-	public function getOptionalInputShapeDefaults(): array
-	{
+	public function getOptionalInputShapeDefaults(): array {
 		return [];
 	}
 
-	public function getOutputShapeEnumValues(): array
-	{
+	public function getOutputShapeEnumValues(): array {
 		return [];
 	}
 
-	public function getOptionalOutputShapeEnumValues(): array
-	{
+	public function getOptionalOutputShapeEnumValues(): array {
 		return [];
 	}
 }

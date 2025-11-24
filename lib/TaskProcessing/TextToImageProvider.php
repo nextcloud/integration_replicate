@@ -13,7 +13,6 @@ use OCP\Http\Client\IClientService;
 use OCP\IL10N;
 use OCP\TaskProcessing\Exception\ProcessingException;
 use OCP\TaskProcessing\TaskTypes\TextToImage;
-use OCP\TextToImage\IProvider;
 use Psr\Log\LoggerInterface;
 
 class TextToImageProvider implements \OCP\TaskProcessing\ISynchronousProvider {
@@ -96,43 +95,35 @@ class TextToImageProvider implements \OCP\TaskProcessing\ISynchronousProvider {
 		return 60;
 	}
 
-	public function getOptionalInputShape(): array
-	{
+	public function getOptionalInputShape(): array {
 		return [];
 	}
 
-	public function getOptionalOutputShape(): array
-	{
+	public function getOptionalOutputShape(): array {
 		return [];
 	}
 
-	public function getInputShapeEnumValues(): array
-	{
+	public function getInputShapeEnumValues(): array {
 		return [];
 	}
 
-	public function getInputShapeDefaults(): array
-	{
+	public function getInputShapeDefaults(): array {
 		return [];
 	}
 
-	public function getOptionalInputShapeEnumValues(): array
-	{
+	public function getOptionalInputShapeEnumValues(): array {
 		return [];
 	}
 
-	public function getOptionalInputShapeDefaults(): array
-	{
+	public function getOptionalInputShapeDefaults(): array {
 		return [];
 	}
 
-	public function getOutputShapeEnumValues(): array
-	{
+	public function getOutputShapeEnumValues(): array {
 		return [];
 	}
 
-	public function getOptionalOutputShapeEnumValues(): array
-	{
+	public function getOptionalOutputShapeEnumValues(): array {
 		return [];
 	}
 }
