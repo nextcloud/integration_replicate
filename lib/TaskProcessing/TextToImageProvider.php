@@ -12,10 +12,11 @@ use OCA\Replicate\Service\ReplicateAPIService;
 use OCP\Http\Client\IClientService;
 use OCP\IL10N;
 use OCP\TaskProcessing\Exception\ProcessingException;
+use OCP\TaskProcessing\ISynchronousWatermarkingProvider;
 use OCP\TaskProcessing\TaskTypes\TextToImage;
 use Psr\Log\LoggerInterface;
 
-class TextToImageProvider implements \OCP\TaskProcessing\ISynchronousProvider {
+class TextToImageProvider implements ISynchronousWatermarkingProvider {
 
 	public function __construct(
 		private ReplicateAPIService $replicateAPIService,
@@ -38,7 +39,7 @@ class TextToImageProvider implements \OCP\TaskProcessing\ISynchronousProvider {
 		return TextToImage::ID;
 	}
 
-	public function process(?string $userId, array $input, callable $reportProgress): array {
+	public function process(?string $userId, array $input, callable $reportProgress, bool $includeWatermark = true): array {
 		$prompt = $input['input'];
 		$nbOutputs = $input['numberOfImages'];
 		$waitingForAlready = 0;
@@ -81,7 +82,7 @@ class TextToImageProvider implements \OCP\TaskProcessing\ISynchronousProvider {
 			foreach ($urls as $url) {
 				$imageResponse = $client->get($url);
 				$image = $imageResponse->getBody();
-				$images[] = $this->watermarkingService->markImage($image);
+				$images[] = $includeWatermark ? $this->watermarkingService->markImage($image) : $image;
 			}
 
 			return ['images' => $images];
