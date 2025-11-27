@@ -32,10 +32,10 @@ class STTProvider implements ISpeechToTextProvider {
 	 */
 	public function transcribeFile(File $file): string {
 		try {
-			return $this->replicateAPIService->transcribeFile($file);
+			return $this->replicateAPIService->transcribeFile($file->getContent());
 		} catch (\Exception $e) {
-			$this->logger->warning('Replicate\'s Whisper transcription failed with: ' . $e->getMessage(), ['exception' => $e]);
-			throw new \RuntimeException('Replicate\'s Whisper transcription failed with: ' . $e->getMessage());
+			$this->logger->warning('Replicate\'s Whisper transcription of file "' . $file->getPath() .'" failed with: ' . $e->getMessage(), ['exception' => $e]);
+			throw new \RuntimeException('Replicate\'s Whisper transcription of file "' . $file->getPath() .'"  failed with: ' . $e->getMessage());
 		}
 	}
 }

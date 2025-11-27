@@ -30,7 +30,7 @@ The rating depends on the model you select to use.
 Learn more about the Nextcloud Ethical AI Rating [in our blog](https://nextcloud.com/blog/nextcloud-ethical-ai-rating/).
 
     ]]></description>
-    <version>4.2.0</version>
+    <version>5.0.0-dev</version>
     <licence>agpl</licence>
     <author>Julien Veyssier</author>
     <namespace>Replicate</namespace>
@@ -46,7 +46,7 @@ Learn more about the Nextcloud Ethical AI Rating [in our blog](https://nextcloud
     <screenshot>https://github.com/julien-nc/integration_replicate/raw/main/img/screenshot2.jpg</screenshot>
     <screenshot>https://github.com/julien-nc/integration_replicate/raw/main/img/screenshot3.jpg</screenshot>
     <dependencies>
-        <nextcloud min-version="30" max-version="33"/>
+        <nextcloud min-version="33" max-version="33"/>
     </dependencies>
     <settings>
         <admin>OCA\Replicate\Settings\Admin</admin>

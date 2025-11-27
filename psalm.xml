@@ -1,10 +1,11 @@
 <?xml version="1.0"?>
 <psalm
-	errorBaseline="tests/psalm-baseline.xml"
+	errorBaseline="psalm-baseline.xml"
 	errorLevel="4"
 	findUnusedBaselineEntry="true"
 	findUnusedCode="false"
 	resolveFromConfigFile="true"
+	ensureOverrideAttribute="false"
 	phpVersion="8.1"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="https://getpsalm.org/schema/config"
