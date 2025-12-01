@@ -52,7 +52,6 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer i # twice because of php-scoper
           composer i
 
       - name: Run coding standards check
