@@ -82,6 +82,16 @@ class TextToImageProvider implements ISynchronousWatermarkingProvider {
 			foreach ($urls as $url) {
 				$imageResponse = $client->get($url);
 				$image = $imageResponse->getBody();
+				if ($image === null) {
+					throw new \Exception('Response body is null');
+				}
+				if (is_resource($image)) {
+					$image = stream_get_contents($image);
+					if ($image === false) {
+						throw new \Exception('stream_get_contents() failed');
+					}
+				}
+
 				$images[] = $includeWatermark ? $this->watermarkingService->markImage($image) : $image;
 			}
 
