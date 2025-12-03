@@ -6,9 +6,9 @@ declare(strict_types=1);
 
 namespace OCA\Replicate\TextToImage;
 
-use OCA\Replicate\Service\WatermarkingService;
 use OCA\Replicate\AppInfo\Application;
 use OCA\Replicate\Service\ReplicateAPIService;
+use OCA\Replicate\Service\WatermarkingService;
 use OCP\Http\Client\IClientService;
 use OCP\IL10N;
 use OCP\TextToImage\IProvider;
