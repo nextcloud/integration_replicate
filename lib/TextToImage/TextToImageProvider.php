@@ -8,6 +8,7 @@ namespace OCA\Replicate\TextToImage;
 
 use OCA\Replicate\AppInfo\Application;
 use OCA\Replicate\Service\ReplicateAPIService;
+use OCA\Replicate\Service\WatermarkingService;
 use OCP\Http\Client\IClientService;
 use OCP\IL10N;
 use OCP\TextToImage\IProvider;
@@ -20,6 +21,7 @@ class TextToImageProvider implements IProvider {
 		private LoggerInterface $logger,
 		private IL10N $l,
 		private IClientService $clientService,
+		private WatermarkingService $watermarkingService,
 	) {
 	}
 
@@ -57,14 +59,17 @@ class TextToImageProvider implements IProvider {
 			if (in_array($prediction['status'], ['failed', 'canceled'])) {
 				throw new \RuntimeException('Replicate\'s text to image generation failed with status: ' . $prediction['status']);
 			}
-			if (!isset($prediction['output']) || !is_array($prediction['output'])) {
+			if (!isset($prediction['output'])) {
 				throw new \RuntimeException('Replicate\'s text to image generation failed, no output in ' . json_encode($prediction));
 			}
 			if ($waitingForAlready >= $maxWaitTime) {
 				throw new \RuntimeException('Replicate\'s text to image generation failed, waited more than ' . $maxWaitTime . ' seconds');
 			}
 			// success
-			$urls = $prediction['output'];
+			$urls = is_array($prediction['output']) ? $prediction['output'] : [$prediction['output']];
+			$urls = array_filter($urls, static function (?string $url) {
+				return $url !== null;
+			});
 			$urls = array_filter($urls, static function (?string $url) {
 				return $url !== null;
 			});
@@ -81,7 +86,9 @@ class TextToImageProvider implements IProvider {
 				if (isset($urls[$i])) {
 					$url = $urls[$i];
 					$imageResponse = $client->get($url);
-					fwrite($resource, $imageResponse->getBody());
+					$image = $imageResponse->getBody();
+					$image = $this->watermarkingService->markImage($image);
+					fwrite($resource, $image);
 				}
 				$i++;
 			}

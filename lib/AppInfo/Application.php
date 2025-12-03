@@ -44,9 +44,23 @@ class Application extends App implements IBootstrap {
 			$context->registerSpeechToTextProvider(STTProvider::class);
 			$context->registerTextToImageProvider(TextToImageProvider::class);
 			$context->registerTextProcessingProvider(FreePromptProvider::class);
+			$context->registerTaskProcessingProvider(\OCA\Replicate\TaskProcessing\TextToImageProvider::class);
+			$context->registerTaskProcessingProvider(\OCA\Replicate\TaskProcessing\SpeechToTextProvider::class);
 		}
 	}
 
 	public function boot(IBootContext $context): void {
+		// Load PHP Exif Library for adding image metadata
+		\spl_autoload_register(function ($class) {
+			if (\substr_compare($class, 'OCA\Replicate\Vendor\lsolesen\\pel\\', 0, 13) === 0) {
+				$classname = \str_replace('OCA\\Replicate\\Vendor\\lsolesen\\pel\\', '', $class);
+				$load = \realpath(__DIR__ . '/../../vendor/fileeye/pel/src/' . $classname . '.php');
+				if ($load !== \false) {
+					include_once \realpath($load);
+				}
+			}
+		});
+		// Load getID3 library for adding audio metadata
+		require_once(__DIR__ . '/../../vendor/james-heinrich/getid3/getid3/getid3.php');
 	}
 }
