@@ -32,7 +32,7 @@ return [
 			if (str_contains($filePath, '/pel/')) {
 				return preg_replace(
 					'%([ |<{:,\'](\\\\)?)lsolesen\\\\pel%',
-					'$1OCA\\\\OpenAi\\\\Vendor\\\\lsolesen\\\\pel',
+					'$1OCA\\\\Replicate\\\\Vendor\\\\lsolesen\\\\pel',
 					$content
 				);
 			}
@@ -40,7 +40,7 @@ return [
 			if (str_contains($filePath, '/getid3/')) {
 				return preg_replace(
 					'%\'getid3_\' .%',
-					'\'OCA\\\\OpenAi\\\\Vendor\\\\getid3_\' .',
+					'\'OCA\\\\Replicate\\\\Vendor\\\\getid3_\' .',
 					$content
 				);
 			}

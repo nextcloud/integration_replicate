@@ -13,7 +13,7 @@
       <code><![CDATA[PelTag]]></code>
       <code><![CDATA[PelTag]]></code>
       <code><![CDATA[PelTiff]]></code>
-      <code><![CDATA[\OCA\OpenAi\Vendor\getID3]]></code>
+      <code><![CDATA[\OCA\Replicate\Vendor\getID3]]></code>
       <code><![CDATA[getid3_lib]]></code>
     </UndefinedClass>
   </file>

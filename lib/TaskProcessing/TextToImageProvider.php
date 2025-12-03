@@ -6,7 +6,7 @@ declare(strict_types=1);
 
 namespace OCA\Replicate\TaskProcessing;
 
-use OCA\OpenAi\Service\WatermarkingService;
+use OCA\Replicate\Service\WatermarkingService;
 use OCA\Replicate\AppInfo\Application;
 use OCA\Replicate\Service\ReplicateAPIService;
 use OCP\Http\Client\IClientService;

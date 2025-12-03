@@ -5,19 +5,19 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
-namespace OCA\OpenAi\Service;
+namespace OCA\Replicate\Service;
 
-use OCA\OpenAi\Vendor\getid3_lib;
-use OCA\OpenAi\Vendor\getid3_writetags;
-use OCA\OpenAi\Vendor\lsolesen\pel\PelEntryUndefined;
-use OCA\OpenAi\Vendor\lsolesen\pel\PelExif;
-use OCA\OpenAi\Vendor\lsolesen\pel\PelIfd;
-use OCA\OpenAi\Vendor\lsolesen\pel\PelJpeg;
-use OCA\OpenAi\Vendor\lsolesen\pel\PelTag;
-use OCA\OpenAi\Vendor\lsolesen\pel\PelTiff;
+use OCA\Replicate\Vendor\getid3_lib;
+use OCA\Replicate\Vendor\getid3_writetags;
+use OCA\Replicate\Vendor\lsolesen\pel\PelEntryUndefined;
+use OCA\Replicate\Vendor\lsolesen\pel\PelExif;
+use OCA\Replicate\Vendor\lsolesen\pel\PelIfd;
+use OCA\Replicate\Vendor\lsolesen\pel\PelJpeg;
+use OCA\Replicate\Vendor\lsolesen\pel\PelTag;
+use OCA\Replicate\Vendor\lsolesen\pel\PelTiff;
 use OCP\ITempManager;
 use Psr\Log\LoggerInterface;
-use const OCA\OpenAi\Vendor\GETID3_INCLUDEPATH;
+use const OCA\Replicate\Vendor\GETID3_INCLUDEPATH;
 
 class WatermarkingService {
 	public const COMMENT = 'Generated with Artificial Intelligence';
@@ -103,7 +103,7 @@ class WatermarkingService {
 			$tempFile = $this->tempManager->getTemporaryFile('.mp3');
 			file_put_contents($tempFile, $audio);
 
-			$getID3 = new \OCA\OpenAi\Vendor\getID3;
+			$getID3 = new \OCA\Replicate\Vendor\getID3;
 			$getID3->setOption(['encoding' => 'UTF-8']);
 			/**
 			 * @psalm-suppress UndefinedConstant

@@ -52,8 +52,8 @@ class Application extends App implements IBootstrap {
 	public function boot(IBootContext $context): void {
 		// Load PHP Exif Library for adding image metadata
 		\spl_autoload_register(function ($class) {
-			if (\substr_compare($class, 'OCA\OpenAi\Vendor\lsolesen\\pel\\', 0, 13) === 0) {
-				$classname = \str_replace('OCA\\OpenAi\\Vendor\\lsolesen\\pel\\', '', $class);
+			if (\substr_compare($class, 'OCA\Replicate\Vendor\lsolesen\\pel\\', 0, 13) === 0) {
+				$classname = \str_replace('OCA\\Replicate\\Vendor\\lsolesen\\pel\\', '', $class);
 				$load = \realpath(__DIR__ . '/../../vendor/fileeye/pel/src/' . $classname . '.php');
 				if ($load !== \false) {
 					include_once \realpath($load);
