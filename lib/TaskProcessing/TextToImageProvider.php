@@ -12,6 +12,7 @@ use OCA\Replicate\Service\WatermarkingService;
 use OCP\Http\Client\IClientService;
 use OCP\IL10N;
 use OCP\TaskProcessing\Exception\ProcessingException;
+use OCP\TaskProcessing\Exception\UserFacingProcessingException;
 use OCP\TaskProcessing\ISynchronousWatermarkingProvider;
 use OCP\TaskProcessing\TaskTypes\TextToImage;
 use Psr\Log\LoggerInterface;
@@ -44,6 +45,14 @@ class TextToImageProvider implements ISynchronousWatermarkingProvider {
 		$nbOutputs = $input['numberOfImages'];
 		$waitingForAlready = 0;
 		$maxWaitTime = 60 * 60;
+
+		if ($nbOutputs > 12) {
+			throw new UserFacingProcessingException('numberOfImages is out of bounds', userFacingMessage: $this->l->t('Cannot generate more then 12 images'));
+		}
+		if ($nbOutputs < 1) {
+			throw new UserFacingProcessingException('numberOfImages is out of bounds', userFacingMessage: $this->l->t('Cannot generate less then 1 image'));
+		}
+
 		try {
 			$prediction = $this->replicateAPIService->createImagePrediction($prompt, $nbOutputs);
 
