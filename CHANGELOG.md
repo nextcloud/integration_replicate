@@ -6,6 +6,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [5.0.0] - 2026-01-14
+
+### Breaking changes
+
+- Drop support for Nextcloud < 33
+
+### New
+
+- feat(Watermarking): Add metadata and watermarks to generated images
+
+### Fixed
+- fix(TextToImage): Use user-facing error messages
+
 ## [4.2.0] - 2025-11-12
 
 ### New
