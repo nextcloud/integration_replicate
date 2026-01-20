@@ -5,6 +5,7 @@ OC.L10N.register(
     "Bad credentials" : "Kredensial tidak benar",
     "Small" : "Kecil",
     "Medium" : "Sedang",
-    "Large" : "Besar"
+    "Large" : "Besar",
+    "Image generation" : "Pembuatan gambar"
 },
 "nplurals=1; plural=0;");
