@@ -3,6 +3,8 @@
     "Bad credentials" : "Nesprávné přihlašovací údaje",
     "Replicate's Whisper Speech-To-Text" : "Whisper - převod řeči na text (od Whisper)",
     "Replicate's stable diffusion Text-To-Image" : "Stable diffusion text na obraz od Replicate",
+    "Cannot generate more then 12 images" : "Není možné vytvořit více než 12 obrázků",
+    "Cannot generate less then 1 image" : "Není možné vytvořit méně než 1 obrázek",
     "Replicate integration" : "Napojení na Replicate",
     "Integration of Replicate stable-diffusion" : "Napojení na Replicate stable-diffusion",
     "Tiny" : "Drobný",
