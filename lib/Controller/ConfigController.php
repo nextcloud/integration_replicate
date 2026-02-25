@@ -44,7 +44,7 @@ class ConfigController extends Controller {
 			if ($key === 'api_key') {
 				return new DataResponse([], Http::STATUS_BAD_REQUEST);
 			} else {
-				$this->appConfig->setValueString(Application::APP_ID, $key, $value);
+				$this->appConfig->setValueString(Application::APP_ID, $key, $value, lazy: true);
 			}
 		}
 		return new DataResponse([]);
@@ -61,9 +61,9 @@ class ConfigController extends Controller {
 	public function setSensitiveAdminConfig(array $values): DataResponse {
 		foreach ($values as $key => $value) {
 			if ($key === 'api_key') {
-				$this->appConfig->setValueString(Application::APP_ID, $key, $value, false, true);
+				$this->appConfig->setValueString(Application::APP_ID, $key, $value, lazy: false, sensitive: true);
 			} else {
-				$this->appConfig->setValueString(Application::APP_ID, $key, $value);
+				$this->appConfig->setValueString(Application::APP_ID, $key, $value, lazy: true);
 			}
 		}
 		return new DataResponse([]);
