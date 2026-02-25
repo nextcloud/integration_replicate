@@ -111,8 +111,8 @@ class ReplicateAPIService {
 			$params['input'] = array_merge($modelExtraParams, $params['input']);
 		}
 
-		$modelName = $this->appConfig->getValueString(Application::APP_ID, 'llm_model_name', Application::DEFAULT_LLM_NAME);
-		$modelVersion = $this->appConfig->getValueString(Application::APP_ID, 'llm_model_version', Application::DEFAULT_LLM_VERSION);
+		$modelName = $this->appConfig->getValueString(Application::APP_ID, 'llm_model_name', Application::DEFAULT_LLM_NAME, lazy: true);
+		$modelVersion = $this->appConfig->getValueString(Application::APP_ID, 'llm_model_version', Application::DEFAULT_LLM_VERSION, lazy: true);
 		if ($modelName !== '' || $modelVersion === '') {
 			if ($modelName === '') {
 				$modelName = Application::DEFAULT_LLM_NAME;
@@ -143,8 +143,8 @@ class ReplicateAPIService {
 			$params['input'] = array_merge($modelExtraParams, $params['input']);
 		}
 
-		$modelName = $this->appConfig->getValueString(Application::APP_ID, 'igen_model_name', Application::DEFAULT_IMAGE_GEN_NAME);
-		$modelVersion = $this->appConfig->getValueString(Application::APP_ID, 'igen_model_version', Application::DEFAULT_IMAGE_GEN_VERSION);
+		$modelName = $this->appConfig->getValueString(Application::APP_ID, 'igen_model_name', Application::DEFAULT_IMAGE_GEN_NAME, lazy: true);
+		$modelVersion = $this->appConfig->getValueString(Application::APP_ID, 'igen_model_version', Application::DEFAULT_IMAGE_GEN_VERSION, lazy: true);
 		if ($modelVersion !== '' || $modelName === '') {
 			if ($modelVersion === '') {
 				$modelVersion = Application::DEFAULT_IMAGE_GEN_VERSION;
@@ -164,7 +164,7 @@ class ReplicateAPIService {
 	 * @throws AppConfigTypeConflictException
 	 */
 	private function getExtraParams(string $configKey): ?array {
-		$stringValue = $this->appConfig->getValueString(Application::APP_ID, $configKey);
+		$stringValue = $this->appConfig->getValueString(Application::APP_ID, $configKey, lazy: true);
 		if ($stringValue === '') {
 			return null;
 		}

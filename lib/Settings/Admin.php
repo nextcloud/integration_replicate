@@ -21,13 +21,13 @@ class Admin implements ISettings {
 	 */
 	public function getForm(): TemplateResponse {
 		$apiKey = $this->appConfig->getValueString(Application::APP_ID, 'api_key');
-		$model = $this->appConfig->getValueString(Application::APP_ID, 'model', 'large');
-		$llmModelName = $this->appConfig->getValueString(Application::APP_ID, 'llm_model_name', Application::DEFAULT_LLM_NAME);
-		$llmModelVersion = $this->appConfig->getValueString(Application::APP_ID, 'llm_model_version', Application::DEFAULT_LLM_VERSION);
-		$llmExtraParams = $this->appConfig->getValueString(Application::APP_ID, 'llm_extra_params');
-		$imageGenModelName = $this->appConfig->getValueString(Application::APP_ID, 'igen_model_name');
-		$imageGenModelVersion = $this->appConfig->getValueString(Application::APP_ID, 'igen_model_version', Application::DEFAULT_IMAGE_GEN_VERSION);
-		$imageGenExtraParams = $this->appConfig->getValueString(Application::APP_ID, 'igen_extra_params');
+		$model = $this->appConfig->getValueString(Application::APP_ID, 'model', 'large', lazy: true);
+		$llmModelName = $this->appConfig->getValueString(Application::APP_ID, 'llm_model_name', Application::DEFAULT_LLM_NAME, lazy: true);
+		$llmModelVersion = $this->appConfig->getValueString(Application::APP_ID, 'llm_model_version', Application::DEFAULT_LLM_VERSION, lazy: true);
+		$llmExtraParams = $this->appConfig->getValueString(Application::APP_ID, 'llm_extra_params', lazy: true);
+		$imageGenModelName = $this->appConfig->getValueString(Application::APP_ID, 'igen_model_name', lazy: true);
+		$imageGenModelVersion = $this->appConfig->getValueString(Application::APP_ID, 'igen_model_version', Application::DEFAULT_IMAGE_GEN_VERSION, lazy: true);
+		$imageGenExtraParams = $this->appConfig->getValueString(Application::APP_ID, 'igen_extra_params', lazy: true);
 
 		$adminConfig = [
 			// do not expose the api key to the user
