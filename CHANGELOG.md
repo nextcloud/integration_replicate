@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [5.0.3] - 2026-04-08
+
+### Fixed
+
+* chore. Fix vue-demi install
+
 ## [5.0.2] - 2026-04-08
 
 ### Fixed
