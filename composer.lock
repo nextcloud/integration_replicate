@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "bamarni/composer-bin-plugin",
-            "version": "1.8.3",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bamarni/composer-bin-plugin.git",
-                "reference": "e7ef9e012667327516c24e5fad9903a3bc91389d"
+                "reference": "641d0663f5ac270b1aeec4337b7856f76204df47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bamarni/composer-bin-plugin/zipball/e7ef9e012667327516c24e5fad9903a3bc91389d",
-                "reference": "e7ef9e012667327516c24e5fad9903a3bc91389d",
+                "url": "https://api.github.com/repos/bamarni/composer-bin-plugin/zipball/641d0663f5ac270b1aeec4337b7856f76204df47",
+                "reference": "641d0663f5ac270b1aeec4337b7856f76204df47",
                 "shasum": ""
             },
             "require": {
@@ -25,11 +25,11 @@
                 "php": "^7.2.5 || ^8.0"
             },
             "require-dev": {
-                "composer/composer": "^2.0",
+                "composer/composer": "^2.2.26",
                 "ext-json": "*",
                 "phpstan/extension-installer": "^1.1",
-                "phpstan/phpstan": "^1.8",
-                "phpstan/phpstan-phpunit": "^1.1",
+                "phpstan/phpstan": "^1.8 || ^2.0",
+                "phpstan/phpstan-phpunit": "^1.1 || ^2.0",
                 "phpunit/phpunit": "^8.5 || ^9.6 || ^10.0",
                 "symfony/console": "^2.8.52 || ^3.4.35 || ^4.4 || ^5.0 || ^6.0",
                 "symfony/finder": "^2.8.52 || ^3.4.35 || ^4.4 || ^5.0 || ^6.0",
@@ -59,22 +59,22 @@
             ],
             "support": {
                 "issues": "https://github.com/bamarni/composer-bin-plugin/issues",
-                "source": "https://github.com/bamarni/composer-bin-plugin/tree/1.8.3"
+                "source": "https://github.com/bamarni/composer-bin-plugin/tree/1.9.1"
             },
-            "time": "2025-11-24T19:20:55+00:00"
+            "time": "2026-02-04T10:18:12+00:00"
         },
         {
             "name": "fileeye/pel",
-            "version": "0.12.0",
+            "version": "0.12.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FileEye/pel.git",
-                "reference": "fc531bce31c675ceefbd05b1eeed877915ecde30"
+                "reference": "96cce8aef576c8fe3154282d9d37f3cace7455e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FileEye/pel/zipball/fc531bce31c675ceefbd05b1eeed877915ecde30",
-                "reference": "fc531bce31c675ceefbd05b1eeed877915ecde30",
+                "url": "https://api.github.com/repos/FileEye/pel/zipball/96cce8aef576c8fe3154282d9d37f3cace7455e9",
+                "reference": "96cce8aef576c8fe3154282d9d37f3cace7455e9",
                 "shasum": ""
             },
             "require": {
@@ -83,12 +83,10 @@
             "require-dev": {
                 "ext-exif": "*",
                 "ext-gd": "*",
-                "nunomaduro/phpinsights": "^1 || ^2",
                 "phpstan/extension-installer": "^1.4",
-                "phpstan/phpstan": "^1 || ^2",
-                "phpstan/phpstan-phpunit": "^1 || ^2",
-                "phpunit/phpunit": "^10 || ^11 ",
-                "rector/rector": "^1 || ^2",
+                "phpstan/phpstan": "^2",
+                "phpstan/phpstan-phpunit": "^2",
+                "phpunit/phpunit": "^10 || ^11 || ^12 || ^13",
                 "squizlabs/php_codesniffer": ">=3.7"
             },
             "type": "library",
@@ -123,22 +121,22 @@
             ],
             "support": {
                 "issues": "https://github.com/FileEye/pel/issues",
-                "source": "https://github.com/FileEye/pel/tree/0.12.0"
+                "source": "https://github.com/FileEye/pel/tree/0.12.1"
             },
-            "time": "2025-01-17T21:19:20+00:00"
+            "time": "2026-03-19T18:27:55+00:00"
         },
         {
             "name": "james-heinrich/getid3",
-            "version": "v1.9.24",
+            "version": "v1.9.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JamesHeinrich/getID3.git",
-                "reference": "1e11b9b6eb468b522fe604a42a9fdc8ee759bf8a"
+                "reference": "fefffe762b02be155dcc32eec57feff8a49bc4b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JamesHeinrich/getID3/zipball/1e11b9b6eb468b522fe604a42a9fdc8ee759bf8a",
-                "reference": "1e11b9b6eb468b522fe604a42a9fdc8ee759bf8a",
+                "url": "https://api.github.com/repos/JamesHeinrich/getID3/zipball/fefffe762b02be155dcc32eec57feff8a49bc4b5",
+                "reference": "fefffe762b02be155dcc32eec57feff8a49bc4b5",
                 "shasum": ""
             },
             "require": {
@@ -190,9 +188,9 @@
             ],
             "support": {
                 "issues": "https://github.com/JamesHeinrich/getID3/issues",
-                "source": "https://github.com/JamesHeinrich/getID3/tree/v1.9.24"
+                "source": "https://github.com/JamesHeinrich/getID3/tree/v1.9.25"
             },
-            "time": "2025-10-09T17:48:17+00:00"
+            "time": "2026-03-10T11:56:47+00:00"
         }
     ],
     "packages-dev": [
@@ -202,16 +200,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nextcloud-deps/ocp.git",
-                "reference": "95a5e68a1805bef1e910b2d5f58b9bc418872558"
+                "reference": "9dcd3e441a1cf86b9070cce74e33341f1bb4d164"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nextcloud-deps/ocp/zipball/95a5e68a1805bef1e910b2d5f58b9bc418872558",
-                "reference": "95a5e68a1805bef1e910b2d5f58b9bc418872558",
+                "url": "https://api.github.com/repos/nextcloud-deps/ocp/zipball/9dcd3e441a1cf86b9070cce74e33341f1bb4d164",
+                "reference": "9dcd3e441a1cf86b9070cce74e33341f1bb4d164",
                 "shasum": ""
             },
             "require": {
-                "php": "~8.1 || ~8.2 || ~8.3 || ~8.4",
+                "php": "~8.1 || ~8.2 || ~8.3 || ~8.4 || ~8.5",
                 "psr/clock": "^1.0",
                 "psr/container": "^2.0.2",
                 "psr/event-dispatcher": "^1.0",
@@ -221,7 +219,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "33.0.0-dev"
+                    "dev-master": "34.0.0-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -243,7 +241,7 @@
                 "issues": "https://github.com/nextcloud-deps/ocp/issues",
                 "source": "https://github.com/nextcloud-deps/ocp/tree/master"
             },
-            "time": "2025-11-29T00:50:47+00:00"
+            "time": "2026-04-08T01:20:22+00:00"
         },
         {
             "name": "psr/clock",

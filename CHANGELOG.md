@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [5.0.2] - 2026-04-08
+
+### Fixed
+
+* fix: makefile to include build
+* perf: Make config values lazy if possible
 
 ## [5.0.1] - 2026-01-14
 

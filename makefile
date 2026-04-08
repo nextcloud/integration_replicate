@@ -59,7 +59,7 @@ clean:
 	sudo rm -rf $(build_dir)
 	sudo rm -rf $(sign_dir)
 
-appstore: clean
+appstore: clean build
 	mkdir -p $(sign_dir)
 	mkdir -p $(build_dir)
 	@rsync -a \
