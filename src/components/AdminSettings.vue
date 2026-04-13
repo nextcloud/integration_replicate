@@ -7,8 +7,8 @@
 		<div id="replicate-content">
 			<div class="line">
 				<NcTextField
-					class="input"
 					v-model="state.api_key"
+					class="input"
 					type="password"
 					:label="t('integration_replicate', 'Replicate API token')"
 					:placeholder="t('integration_replicate', 'Your API token')"
@@ -27,8 +27,8 @@
 			</h3>
 			<div class="line">
 				<NcTextField
-					class="input"
 					v-model="state.llm_model_name"
+					class="input"
 					:label="t('integration_replicate', 'Text generation model name')"
 					:show-trailing-button="!!state.llm_model_name"
 					@update:model-value="onInput"
@@ -42,8 +42,8 @@
 			</div>
 			<div class="line">
 				<NcTextField
-					class="input"
 					v-model="state.llm_model_version"
+					class="input"
 					:label="t('integration_replicate', 'Text generation model version (only used if model name is empty)')"
 					:show-trailing-button="!!state.llm_model_version"
 					@update:model-value="onInput"
@@ -57,8 +57,8 @@
 			</div>
 			<div class="line">
 				<NcTextField
-					class="input"
 					v-model="state.llm_extra_params"
+					class="input"
 					:label="t('integration_replicate', 'Extra model parameters')"
 					:show-trailing-button="!!state.llm_extra_params"
 					@update:model-value="onInput"
@@ -75,8 +75,8 @@
 			</h3>
 			<div class="line">
 				<NcTextField
-					class="input"
 					v-model="state.igen_model_name"
+					class="input"
 					:label="t('integration_replicate', 'Image generation model name (only used if model version is empty)')"
 					:show-trailing-button="!!state.igen_model_name"
 					@update:model-value="onInput"
@@ -90,8 +90,8 @@
 			</div>
 			<div class="line">
 				<NcTextField
-					class="input"
 					v-model="state.igen_model_version"
+					class="input"
 					:label="t('integration_replicate', 'Image generation model version')"
 					:show-trailing-button="!!state.igen_model_version"
 					@update:model-value="onInput"
@@ -105,8 +105,8 @@
 			</div>
 			<div class="line">
 				<NcTextField
-					class="input"
 					v-model="state.igen_extra_params"
+					class="input"
 					:label="t('integration_replicate', 'Extra model parameters')"
 					:show-trailing-button="!!state.igen_extra_params"
 					@update:model-value="onInput"

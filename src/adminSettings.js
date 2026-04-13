@@ -16,9 +16,9 @@ import AdminSettings from './components/AdminSettings.vue'
 const view = createApp(AdminSettings)
 
 view.mixin({
-    t: translate,
-    n: translatePlural,
-    OC: window.OC,
-    OCA: window.OCA,
+	t: translate,
+	n: translatePlural,
+	OC: window.OC,
+	OCA: window.OCA,
 })
 view.mount('#replicate_prefs')
