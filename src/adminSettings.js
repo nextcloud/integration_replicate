@@ -9,9 +9,16 @@
  * @copyright Julien Veyssier 2022
  */
 
-import Vue from 'vue'
-import './bootstrap.js'
-import AdminSettings from './components/AdminSettings.vue'
+import { createApp } from 'vue'
+import { translate, translatePlural } from '@nextcloud/l10n'
 
-const View = Vue.extend(AdminSettings)
-new View().$mount('#replicate_prefs')
+import AdminSettings from './components/AdminSettings.vue'
+const view = createApp(AdminSettings)
+
+view.mixin({
+	t: translate,
+	n: translatePlural,
+	OC: window.OC,
+	OCA: window.OCA,
+})
+view.mount('#replicate_prefs')

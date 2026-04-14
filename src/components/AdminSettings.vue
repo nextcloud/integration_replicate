@@ -7,13 +7,13 @@
 		<div id="replicate-content">
 			<div class="line">
 				<NcTextField
+					v-model="state.api_key"
 					class="input"
-					:value.sync="state.api_key"
 					type="password"
 					:label="t('integration_replicate', 'Replicate API token')"
 					:placeholder="t('integration_replicate', 'Your API token')"
 					:show-trailing-button="!!state.api_key"
-					@update:value="onInput"
+					@update:model-value="onInput"
 					@trailing-button-click="state.api_key = '' ; onInput()" />
 			</div>
 			<p class="settings-hint">
@@ -27,13 +27,13 @@
 			</h3>
 			<div class="line">
 				<NcTextField
+					v-model="state.llm_model_name"
 					class="input"
-					:value.sync="state.llm_model_name"
 					:label="t('integration_replicate', 'Text generation model name')"
 					:show-trailing-button="!!state.llm_model_name"
-					@update:value="onInput"
+					@update:model-value="onInput"
 					@trailing-button-click="state.llm_model_name = '' ; onInput()" />
-				<NcButton type="tertiary"
+				<NcButton variant="tertiary"
 					:title="t('integration_replicate', 'You can find model names on the Replicate website. For example: \'mistralai/mixtral-8x7b-instruct-v0.1\' or \'meta/llama-2-70b-chat\'')">
 					<template #icon>
 						<HelpCircleIcon />
@@ -42,13 +42,13 @@
 			</div>
 			<div class="line">
 				<NcTextField
+					v-model="state.llm_model_version"
 					class="input"
-					:value.sync="state.llm_model_version"
 					:label="t('integration_replicate', 'Text generation model version (only used if model name is empty)')"
 					:show-trailing-button="!!state.llm_model_version"
-					@update:value="onInput"
+					@update:model-value="onInput"
 					@trailing-button-click="state.llm_model_version = '' ; onInput()" />
-				<NcButton type="tertiary"
+				<NcButton variant="tertiary"
 					:title="t('integration_replicate', 'For example: \'83b6a56e7c828e667f21fd596c338fd4f0039b46bcfa18d973e8e70e455fda70\'')">
 					<template #icon>
 						<HelpCircleIcon />
@@ -57,13 +57,13 @@
 			</div>
 			<div class="line">
 				<NcTextField
+					v-model="state.llm_extra_params"
 					class="input"
-					:value.sync="state.llm_extra_params"
 					:label="t('integration_replicate', 'Extra model parameters')"
 					:show-trailing-button="!!state.llm_extra_params"
-					@update:value="onInput"
+					@update:model-value="onInput"
 					@trailing-button-click="state.llm_extra_params = '' ; onInput()" />
-				<NcButton type="tertiary"
+				<NcButton variant="tertiary"
 					:title="llmExtraParamHint">
 					<template #icon>
 						<HelpCircleIcon />
@@ -75,13 +75,13 @@
 			</h3>
 			<div class="line">
 				<NcTextField
+					v-model="state.igen_model_name"
 					class="input"
-					:value.sync="state.igen_model_name"
 					:label="t('integration_replicate', 'Image generation model name (only used if model version is empty)')"
 					:show-trailing-button="!!state.igen_model_name"
-					@update:value="onInput"
+					@update:model-value="onInput"
 					@trailing-button-click="state.igen_model_name = '' ; onInput()" />
-				<NcButton type="tertiary"
+				<NcButton variant="tertiary"
 					:title="t('integration_replicate', 'For example: \'stability-ai/stable-diffusion\'')">
 					<template #icon>
 						<HelpCircleIcon />
@@ -90,13 +90,13 @@
 			</div>
 			<div class="line">
 				<NcTextField
+					v-model="state.igen_model_version"
 					class="input"
-					:value.sync="state.igen_model_version"
 					:label="t('integration_replicate', 'Image generation model version')"
 					:show-trailing-button="!!state.igen_model_version"
-					@update:value="onInput"
+					@update:model-value="onInput"
 					@trailing-button-click="state.igen_model_version = '' ; onInput()" />
-				<NcButton type="tertiary"
+				<NcButton variant="tertiary"
 					:title="t('integration_replicate', 'For example: \'ac732df83cea7fff18b8472768c88ad041fa750ff7682a21affe81863cbe77e4\'')">
 					<template #icon>
 						<HelpCircleIcon />
@@ -105,13 +105,13 @@
 			</div>
 			<div class="line">
 				<NcTextField
+					v-model="state.igen_extra_params"
 					class="input"
-					:value.sync="state.igen_extra_params"
 					:label="t('integration_replicate', 'Extra model parameters')"
 					:show-trailing-button="!!state.igen_extra_params"
-					@update:value="onInput"
+					@update:model-value="onInput"
 					@trailing-button-click="state.igen_extra_params = '' ; onInput()" />
-				<NcButton type="tertiary"
+				<NcButton variant="tertiary"
 					:title="igenExtraParamHint">
 					<template #icon>
 						<HelpCircleIcon />
@@ -131,7 +131,7 @@
 					:aria-label-combobox="t('integration_replicate', 'Whisper model size')"
 					input-id="models"
 					@option:selected="onModelChanged" />
-				<NcButton type="tertiary"
+				<NcButton variant="tertiary"
 					:title="t('integration_replicate', 'Larger model size gives better results but uses more credit')">
 					<template #icon>
 						<HelpCircleIcon />
@@ -148,9 +148,9 @@ import HelpCircleIcon from 'vue-material-design-icons/HelpCircleOutline.vue'
 
 import ReplicateIcon from './icons/ReplicateIcon.vue'
 
-import NcSelect from '@nextcloud/vue/dist/Components/NcSelect.js'
-import NcButton from '@nextcloud/vue/dist/Components/NcButton.js'
-import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
+import NcSelect from '@nextcloud/vue/components/NcSelect'
+import NcButton from '@nextcloud/vue/components/NcButton'
+import NcTextField from '@nextcloud/vue/components/NcTextField'
 
 import { loadState } from '@nextcloud/initial-state'
 import { generateUrl } from '@nextcloud/router'
