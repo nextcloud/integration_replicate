@@ -6,6 +6,9 @@ OC.L10N.register(
     "Small" : "Mažas",
     "Medium" : "Vidutinis",
     "Large" : "Didelis",
+    "Replicate API token" : "API žymens kopijavimas",
+    "Your API token" : "Jūsų API žymuo",
+    "You can create a free API token on https://replicate.com" : "Nemokamą API žymenį galite susikurti svetainėje https://replicate.com",
     "Text generation" : "Teksto generavimas",
     "Image generation" : "Paveikslėlio generavimas"
 },
