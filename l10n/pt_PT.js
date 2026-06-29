@@ -3,8 +3,10 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "Método HTTP incorreto",
     "Bad credentials" : "Credenciais inválidas",
+    "Cannot generate more then 12 images" : "Não é possível gerar mais de 12 imagens",
     "Small" : "Pequena",
     "Medium" : "Médio",
-    "Large" : "Grande"
+    "Large" : "Grande",
+    "Extra parameters are model-specific. For example: {\"max_new_tokens\":128,\"temperature\":0.7}" : "Parâmetros extras são específicos do modelo. Por exemplo: {\"max_new_tokens\":128,\"temperature\":0.7}"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");
