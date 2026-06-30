@@ -3,10 +3,17 @@ OC.L10N.register(
     {
     "Bad HTTP method" : "Método HTTP incorreto",
     "Bad credentials" : "Credenciais inválidas",
+    "Replicate's Whisper Speech-To-Text" : "Whisper Fala-Para-Texto do Replicate",
     "Cannot generate more then 12 images" : "Não é possível gerar mais de 12 imagens",
+    "Replicate integration" : "Integração Replicate",
+    "Tiny" : "Minúsculo",
     "Small" : "Pequena",
     "Medium" : "Médio",
     "Large" : "Grande",
-    "Extra parameters are model-specific. For example: {\"max_new_tokens\":128,\"temperature\":0.7}" : "Parâmetros extras são específicos do modelo. Por exemplo: {\"max_new_tokens\":128,\"temperature\":0.7}"
+    "Extra parameters are model-specific. For example: {\"max_new_tokens\":128,\"temperature\":0.7}" : "Parâmetros extras são específicos do modelo. Por exemplo: {\"max_new_tokens\":128,\"temperature\":0.7}",
+    "Replicate admin options saved" : "Opções de administração do Replicate salvas",
+    "Image generation" : "Geração de imagens",
+    "Image generation model version" : "Versão do modelo de geração de imagem",
+    "Whisper model size" : "Tamanho do modelo Whisper"
 },
 "nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");
