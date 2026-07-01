@@ -3,15 +3,19 @@
     "Bad credentials" : "Credenciais inválidas",
     "Replicate's Whisper Speech-To-Text" : "Whisper Fala-Para-Texto do Replicate",
     "Cannot generate more then 12 images" : "Não é possível gerar mais de 12 imagens",
+    "Cannot generate less then 1 image" : "Não é possível gerar menos de 1 imagem",
     "Replicate integration" : "Integração Replicate",
     "Tiny" : "Minúsculo",
+    "Base" : "Base",
     "Small" : "Pequena",
     "Medium" : "Médio",
     "Large" : "Grande",
     "Extra parameters are model-specific. For example: {\"max_new_tokens\":128,\"temperature\":0.7}" : "Parâmetros extras são específicos do modelo. Por exemplo: {\"max_new_tokens\":128,\"temperature\":0.7}",
     "Replicate admin options saved" : "Opções de administração do Replicate salvas",
+    "Extra model parameters" : "Parâmetros extras do modelo",
     "Image generation" : "Geração de imagens",
     "Image generation model version" : "Versão do modelo de geração de imagem",
+    "For example: 'ac732df83cea7fff18b8472768c88ad041fa750ff7682a21affe81863cbe77e4'" : "Por exemplo: 'ac732df83cea7fff18b8472768c88ad041fa750ff7682a21affe81863cbe77e4'",
     "Whisper model size" : "Tamanho do modelo Whisper"
 },"pluralForm" :"nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }
