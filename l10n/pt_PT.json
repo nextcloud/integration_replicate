@@ -5,6 +5,8 @@
     "Cannot generate more then 12 images" : "Não é possível gerar mais de 12 imagens",
     "Cannot generate less then 1 image" : "Não é possível gerar menos de 1 imagem",
     "Replicate integration" : "Integração Replicate",
+    "Integration of Replicate stable-diffusion" : "Integração da Stable Diffusion do Replicate",
+    "The Replicate integration app provides a SpeechToText provider, a Text processing provider and an Image generation provider.\n\n⚠️ The smart pickers have been removed from this app\nas they are now included in the [Assistant app](https://apps.nextcloud.com/apps/assistant).\n\n## Ethical AI Rating\n### Speech-to-Text Rating: 🟡\n\nPositive:\n* The software for training and inference of this model is open source\n* The trained model is freely available, and thus can be run on-premises\n\nNegative:\n* The training data is not freely available, limiting the ability of external parties to check and correct for bias or optimise the model’s performance and CO2 usage.\n\n### Text processing Rating\n\nThe rating depends on the model you select to use.\n\n### Image generation Rating\n\nThe rating depends on the model you select to use.\n\nLearn more about the Nextcloud Ethical AI Rating [in our blog](https://nextcloud.com/blog/nextcloud-ethical-ai-rating/)." : "O aplicativo de integração Replicate fornece um provedor fala-para-texto, um provedor de processamento de texto e um provedor de geração de imagens.\n\n⚠️ Os seletores inteligentes foram removidos deste aplicativo\njá que agora estão incluídos no [aplicativo Assistente](https://apps.nextcloud.com/apps/assistant).\n\n## Classificação Ética de IA\n### Classificação de fala para texto:🟡\n\nPositivo:\n* O software para treinamento e inferência deste modelo é fonte aberta\n* O modelo treinado está disponível livremente e, portanto, pode ser executado no local\n\nNegativo:\n* Os dados de treinamento não estão disponíveis livremente, limitando a capacidade de terceiros verificarem e corrigirem tendências ou otimizarem o desempenho e o uso de CO2 do modelo.\n\n### Classificação de processamento de texto\n\nA classificação depende do modelo que você seleciona para usar.\n\n### Classificação de geração de imagem\n\nA classificação depende do modelo que você seleciona para usar.\n\nSaiba mais sobre a Classificação Ética de IA do Nextcloud [em nosso blog](https://nextcloud.com/blog/nextcloud-ethical-ai-rating/).",
     "Tiny" : "Minúsculo",
     "Base" : "Base",
     "Small" : "Pequena",
@@ -12,10 +14,14 @@
     "Large" : "Grande",
     "Extra parameters are model-specific. For example: {\"max_new_tokens\":128,\"temperature\":0.7}" : "Parâmetros extras são específicos do modelo. Por exemplo: {\"max_new_tokens\":128,\"temperature\":0.7}",
     "Replicate admin options saved" : "Opções de administração do Replicate salvas",
+    "Replicate API token" : "Token de API do Replicate",
+    "Text generation model name" : "Nome do modelo de geração de texto",
+    "For example: '83b6a56e7c828e667f21fd596c338fd4f0039b46bcfa18d973e8e70e455fda70'" : "Por exemplo: '83b6a56e7c828e667f21fd596c338fd4f0039b46bcfa18d973e8e70e455fda70'",
     "Extra model parameters" : "Parâmetros extras do modelo",
     "Image generation" : "Geração de imagens",
     "Image generation model version" : "Versão do modelo de geração de imagem",
     "For example: 'ac732df83cea7fff18b8472768c88ad041fa750ff7682a21affe81863cbe77e4'" : "Por exemplo: 'ac732df83cea7fff18b8472768c88ad041fa750ff7682a21affe81863cbe77e4'",
+    "Speech-to-text" : "Fala-para-texto",
     "Whisper model size" : "Tamanho do modelo Whisper"
 },"pluralForm" :"nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }
