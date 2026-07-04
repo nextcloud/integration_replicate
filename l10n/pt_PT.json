@@ -17,9 +17,12 @@
     "Replicate admin options saved" : "Opções de administração do Replicate salvas",
     "Failed to save Replicate admin options" : "Falha ao salvar opções de administração do Replicate",
     "Replicate API token" : "Token de API do Replicate",
+    "Your API token" : "Seu token de API",
     "You can create a free API token on https://replicate.com" : "Você pode criar um token de API gratuito em https://replicate.com",
     "Text generation" : "Geração de texto",
     "Text generation model name" : "Nome do modelo de geração de texto",
+    "You can find model names on the Replicate website. For example: 'mistralai/mixtral-8x7b-instruct-v0.1' or 'meta/llama-2-70b-chat'" : "Você pode encontrar nomes de modelos no site Replicate. Por exemplo: 'mistralai/mixtral-8x7b-instruct-v0.1' ou 'meta/llama-2-70b-chat'",
+    "Text generation model version (only used if model name is empty)" : "Versão do modelo de geração de texto (usado apenas se o nome do modelo estiver vazio)",
     "For example: '83b6a56e7c828e667f21fd596c338fd4f0039b46bcfa18d973e8e70e455fda70'" : "Por exemplo: '83b6a56e7c828e667f21fd596c338fd4f0039b46bcfa18d973e8e70e455fda70'",
     "Extra model parameters" : "Parâmetros extras do modelo",
     "Image generation" : "Geração de imagens",
@@ -28,6 +31,7 @@
     "Image generation model version" : "Versão do modelo de geração de imagem",
     "For example: 'ac732df83cea7fff18b8472768c88ad041fa750ff7682a21affe81863cbe77e4'" : "Por exemplo: 'ac732df83cea7fff18b8472768c88ad041fa750ff7682a21affe81863cbe77e4'",
     "Speech-to-text" : "Fala-para-texto",
-    "Whisper model size" : "Tamanho do modelo Whisper"
+    "Whisper model size" : "Tamanho do modelo Whisper",
+    "Larger model size gives better results but uses more credit" : "Tamanho de modelo maior dá melhores resultados, mas usa mais crédito"
 },"pluralForm" :"nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;"
 }
