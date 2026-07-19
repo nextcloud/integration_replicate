@@ -4,7 +4,7 @@ OC.L10N.register(
     "Bad HTTP method" : "Felaktig HTTP-metod",
     "Bad credentials" : "Ogiltiga inloggningsuppgifter",
     "Small" : "Liten",
-    "Medium" : "Medium",
+    "Medium" : "Medelstor",
     "Large" : "Stor",
     "Image generation" : "Bildgenerering"
 },
