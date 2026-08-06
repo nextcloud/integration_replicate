@@ -6,6 +6,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [6.0.0] - 2026-08-06
+
+### Breaking changes
+
+- Drop support for nc < 35
+
+### New
+
+- Support nc 35
+
+### Fixed
+- chore: Upgrade to vue3
+- fix: Load getid3 lazily
+- fix: Ship vendor directory
+- Update dependencies
+- fix(l10n): Update translations from Transifex
+
 ## [5.0.3] - 2026-04-08
 
 ### Fixed
