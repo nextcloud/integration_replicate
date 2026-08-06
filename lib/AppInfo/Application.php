@@ -50,7 +50,10 @@ class Application extends App implements IBootstrap {
 	}
 
 	public function boot(IBootContext $context): void {
-		// Load PHP Exif Library for adding image metadata
+		// Load PHP Exif Library for adding image metadata.
+		// The getID3 library used for audio metadata is loaded lazily in
+		// WatermarkingService to avoid a fatal error at boot if the vendored
+		// dependency is missing (see nextcloud/integration_replicate#82).
 		\spl_autoload_register(function ($class) {
 			if (\substr_compare($class, 'OCA\Replicate\Vendor\lsolesen\\pel\\', 0, 13) === 0) {
 				$classname = \str_replace('OCA\\Replicate\\Vendor\\lsolesen\\pel\\', '', $class);
@@ -60,7 +63,5 @@ class Application extends App implements IBootstrap {
 				}
 			}
 		});
-		// Load getID3 library for adding audio metadata
-		require_once(__DIR__ . '/../../vendor/james-heinrich/getid3/getid3/getid3.php');
 	}
 }

@@ -100,6 +100,16 @@ class WatermarkingService {
 
 	public function markAudio(string $audio): string {
 		try {
+			// Load the getID3 library lazily. It is not PSR-autoloadable, so we
+			// require it here instead of at app boot to avoid a fatal error that
+			// would break the whole instance if the dependency is missing
+			// (see nextcloud/integration_replicate#82).
+			$getId3File = __DIR__ . '/../../vendor/james-heinrich/getid3/getid3/getid3.php';
+			if (!is_file($getId3File)) {
+				throw new \RuntimeException('getID3 library not found at ' . $getId3File);
+			}
+			require_once $getId3File;
+
 			$tempFile = $this->tempManager->getTemporaryFile('.mp3');
 			file_put_contents($tempFile, $audio);
 

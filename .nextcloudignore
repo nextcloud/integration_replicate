@@ -20,6 +20,9 @@
 /screenshots
 /src
 /vendor/bin
+/vendor-bin
+/scoper.inc.php
+/psalm-baseline.xml
 /jest.config.js
 /Makefile
 /makefile
