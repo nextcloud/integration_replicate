@@ -51,7 +51,7 @@
 	},
 	"devDependencies": {
 		"@nextcloud/browserslist-config": "3.x",
-		"@nextcloud/eslint-config": "^8.0.0",
+		"@nextcloud/eslint-config": "^9.0.1",
 		"@nextcloud/stylelint-config": "3.x",
 		"@nextcloud/webpack-vue-config": "7.x"
 	}
