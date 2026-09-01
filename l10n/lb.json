@@ -1,0 +1,6 @@
+{ "translations": {
+    "Small" : "Kleng",
+    "Medium" : "Mëttel",
+    "Large" : "Grouss"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}
