@@ -13,7 +13,7 @@ OC.L10N.register(
     "Tiny" : "Malý",
     "Base" : "Základný",
     "Small" : "Malá",
-    "Medium" : "Stredná",
+    "Medium" : "Stredný",
     "Large" : "Veľká",
     "Extra parameters are model-specific. For example: {\"width\":1920,\"height\":1080}" : "Ďalšie parametre závisia od modelu. Napríklad: {\"width\":1920,\"height\":1080}",
     "Extra parameters are model-specific. For example: {\"max_new_tokens\":128,\"temperature\":0.7}" : "Ďalšie parametre závisia od modelu. Napríklad: {\"max_new_tokens\":128,\"temperature\":0.7}",
