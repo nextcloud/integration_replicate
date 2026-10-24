@@ -6,6 +6,7 @@ OC.L10N.register(
     "Small" : "Mic",
     "Medium" : "Mediu",
     "Large" : "Mare",
+    "Text generation" : "Generare de text",
     "Image generation" : "Generare de imagini"
 },
 "nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));");
