@@ -1,8 +1,8 @@
 OC.L10N.register(
     "integration_replicate",
     {
-    "Bad HTTP method" : "Dårlig HTTP metode",
-    "Bad credentials" : "Forkerte legitimationsoplysninger",
+    "Bad HTTP method" : "Ugyldig HTTP-metode",
+    "Bad credentials" : "Forkerte loginoplysninger",
     "Replicate's Whisper Speech-To-Text" : "Replicates tale til tekst med Whisper",
     "Replicate's stable diffusion Text-To-Image" : "Replicates tekst til billede med Stable Diffusion",
     "Cannot generate more then 12 images" : "Der kan højst genereres 12 billeder",
