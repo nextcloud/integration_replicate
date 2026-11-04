@@ -24,7 +24,7 @@
 			"@composer bin all update --ansi",
 			"grep -r 'OCA\\\\Replicate\\\\Vendor' ./vendor || vendor/bin/php-scoper add-prefix --prefix='OCA\\Replicate\\Vendor' --output-dir=\".\" --working-dir=\"./vendor/\" -f --config=\"../scoper.inc.php\"",
 			"composer dump-autoload",
-			"composer update --no-scripts"
+			"composer install --no-scripts"
 		]
 	},
 	"require": {
