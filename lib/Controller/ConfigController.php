@@ -12,15 +12,12 @@
 
 namespace OCA\Replicate\Controller;
 
-use OCA\Replicate\AppInfo\Application;
 use OCA\Replicate\Service\ConfigService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\Attribute\PasswordConfirmationRequired;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\Exceptions\AppConfigTypeConflictException;
-use OCP\IAppConfig;
-
 use OCP\IRequest;
 
 class ConfigController extends Controller {
@@ -28,7 +25,6 @@ class ConfigController extends Controller {
 	public function __construct(
 		string $appName,
 		IRequest $request,
-		private IAppConfig $appConfig,
 		private ConfigService $configService,
 	) {
 		parent::__construct($appName, $request);
@@ -63,7 +59,7 @@ class ConfigController extends Controller {
 	public function setSensitiveAdminConfig(array $values): DataResponse {
 		foreach ($values as $key => $value) {
 			if ($key === 'api_key') {
-				$this->appConfig->setValueString(Application::APP_ID, $key, $value, lazy: false, sensitive: true);
+				$this->configService->setApiKey($value);
 			} else {
 				$this->configService->setAdminValue($key, $value);
 			}

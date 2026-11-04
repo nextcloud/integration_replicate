@@ -58,4 +58,22 @@ class ConfigService {
 		}
 		$this->eventDispatcher->dispatchTyped($event);
 	}
+
+	/**
+	 * Never logs the key itself
+	 *
+	 * @throws AppConfigTypeConflictException
+	 */
+	public function setApiKey(string $apiKey): void {
+		$changed = $this->appConfig->setValueString(Application::APP_ID, 'api_key', $apiKey, lazy: false, sensitive: true);
+		if (!$changed) {
+			return;
+		}
+		$apiKeySet = $apiKey !== '';
+		$this->eventDispatcher->dispatchTyped(AuditEventFactory::create(
+			Operation::ApiKeyUpdated,
+			$apiKeySet ? 'Replicate API key was changed' : 'Replicate API key was removed',
+			['apiKeySet' => $apiKeySet],
+		));
+	}
 }

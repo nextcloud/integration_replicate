@@ -109,4 +109,47 @@ class ConfigServiceTest extends TestCase {
 
 		$this->assertSame([], $this->events);
 	}
+
+	public static function dataApiKey(): array {
+		return [
+			['r8_newkey', 'Replicate API key was changed', true],
+			['', 'Replicate API key was removed', false],
+		];
+	}
+
+	#[DataProvider('dataApiKey')]
+	public function testSetApiKeyLogsWithoutTheKey(string $apiKey, string $message, bool $apiKeySet): void {
+		$this->appConfig->expects($this->once())
+			->method('setValueString')
+			->with(Application::APP_ID, 'api_key', $apiKey, false, true)
+			->willReturn(true);
+
+		$this->service->setApiKey($apiKey);
+
+		$this->assertCount(1, $this->events);
+		$event = $this->events[0];
+		$this->assertSame($message, $event->getLogMessage());
+		$this->assertSame(['apiKeySet' => $apiKeySet], $event->getParameters());
+		$this->assertTrue(AuditLogHelper::hasOperation($event, Operation::ApiKeyUpdated->value));
+	}
+
+	public function testSetApiKeyUnchangedDoesNotLog(): void {
+		$this->appConfig->method('setValueString')->willReturn(false);
+
+		$this->service->setApiKey('r8_samekey');
+
+		$this->assertSame([], $this->events);
+	}
+
+	public function testSetApiKeyFailureDoesNotLog(): void {
+		$this->appConfig->method('setValueString')->willThrowException(new \RuntimeException('db failure'));
+
+		try {
+			$this->service->setApiKey('r8_newkey');
+			$this->fail('Exception expected');
+		} catch (\RuntimeException) {
+		}
+
+		$this->assertSame([], $this->events);
+	}
 }

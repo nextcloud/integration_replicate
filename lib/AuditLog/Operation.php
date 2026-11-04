@@ -16,10 +16,12 @@ namespace OCA\Replicate\AuditLog;
  */
 enum Operation: string {
 	case AdminConfigUpdated = 'integration_replicate.admin_config.updated';
+	case ApiKeyUpdated = 'integration_replicate.api_key.updated';
 
 	public function description(): string {
 		return match ($this) {
 			self::AdminConfigUpdated => 'An admin changed the value of a non-secret setting of the app.',
+			self::ApiKeyUpdated => 'An admin set, changed or removed the Replicate API key.',
 		};
 	}
 }
