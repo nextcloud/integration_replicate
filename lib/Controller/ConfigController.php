@@ -13,6 +13,7 @@
 namespace OCA\Replicate\Controller;
 
 use OCA\Replicate\AppInfo\Application;
+use OCA\Replicate\Service\ConfigService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\Attribute\PasswordConfirmationRequired;
@@ -28,6 +29,7 @@ class ConfigController extends Controller {
 		string $appName,
 		IRequest $request,
 		private IAppConfig $appConfig,
+		private ConfigService $configService,
 	) {
 		parent::__construct($appName, $request);
 	}
@@ -44,7 +46,7 @@ class ConfigController extends Controller {
 			if ($key === 'api_key') {
 				return new DataResponse([], Http::STATUS_BAD_REQUEST);
 			} else {
-				$this->appConfig->setValueString(Application::APP_ID, $key, $value, lazy: true);
+				$this->configService->setAdminValue($key, $value);
 			}
 		}
 		return new DataResponse([]);
@@ -63,7 +65,7 @@ class ConfigController extends Controller {
 			if ($key === 'api_key') {
 				$this->appConfig->setValueString(Application::APP_ID, $key, $value, lazy: false, sensitive: true);
 			} else {
-				$this->appConfig->setValueString(Application::APP_ID, $key, $value, lazy: true);
+				$this->configService->setAdminValue($key, $value);
 			}
 		}
 		return new DataResponse([]);
