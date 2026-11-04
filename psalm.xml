@@ -37,16 +37,6 @@
 				<referencedClass name="GuzzleHttp\Exception\ClientException" />
 			</errorLevel>
 		</UndefinedClass>
-		<UndefinedDocblockClass>
-			<errorLevel type="suppress">
-				<referencedClass name="Doctrine\DBAL\Schema\Table" />
-				<referencedClass name="OC\User\NoUserException" />
-				<referencedClass name="OCA\Circles\Exceptions\RequestBuilderException" />
-				<referencedClass name="OCA\Circles\Exceptions\InitiatorNotFoundException" />
-				<referencedClass name="Doctrine\DBAL\Schema\Schema" />
-				<referencedClass name="Doctrine\DBAL\Types\Type" />
-			</errorLevel>
-		</UndefinedDocblockClass>
 	</issueHandlers>
 	<!--stubs>
 	</stubs-->
